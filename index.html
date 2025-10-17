@@ -70,6 +70,34 @@
       color: var(--accent-color) !important;
     }
 
+    .navbar-nav .nav-link.nav-cta {
+      background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+      color: #ffffff !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      margin-left: 1rem;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    .navbar-nav .nav-link.nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(37, 99, 235, 0.35);
+      color: #ffffff !important;
+    }
+
+    .navbar-nav .nav-link.nav-cta i {
+      margin-right: 0.5rem;
+    }
+
+    @media (max-width: 991.98px) {
+      .navbar-nav .nav-link.nav-cta {
+        margin: 1rem 0 0;
+        text-align: center;
+      }
+    }
+
     /* Mobile Navigation */
     .navbar-toggler {
       border: 2px solid var(--text-muted);
@@ -206,6 +234,24 @@
       z-index: 2;
     }
 
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      color: var(--text-light);
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-badge i {
+      color: var(--accent-color);
+    }
+
     .hero h1 {
       font-size: 3.5rem;
       font-weight: 700;
@@ -223,6 +269,12 @@
       max-width: 600px;
     }
 
+    .hero-note {
+      color: var(--text-muted);
+      margin-top: 1.5rem;
+      max-width: 550px;
+    }
+
     .btn-primary {
       background-color: var(--primary-color);
       border-color: var(--primary-color);
@@ -237,6 +289,16 @@
       border-color: var(--secondary-color);
       transform: translateY(-2px);
       box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-primary.job-cta {
+      background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+      border: none;
+      box-shadow: 0 15px 35px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-primary.job-cta:hover {
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.4);
     }
 
     .btn-outline-light {
@@ -449,6 +511,11 @@
             <a class="nav-link" href="#contact">Contact</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link nav-cta" href="https://jobs.athena.live" target="_blank" rel="noopener">
+              <i class="fas fa-briefcase"></i>Jobs Portal
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="https://chatgpt.com/g/g-688da8975c0081919cd2d8ea356ceaf4-athena" target="_blank">
               <i class="fas fa-robot me-1"></i>Athena GPT
             </a>
@@ -475,14 +542,21 @@
       <div class="row align-items-center">
         <div class="col-lg-6">
           <div class="hero-content">
-            <h1>Athena Live</h1>
-            <p class="lead">Athena delivers applications for job posting, professional profiles, and more—empowering businesses through cutting-edge information technology, innovative software engineering, and intelligent automation solutions.</p>
-            <div class="d-flex gap-3 flex-wrap">
-              <a href="https://chatgpt.com/g/g-688da8975c0081919cd2d8ea356ceaf4-athena" target="_blank" class="btn btn-primary">
-                <i class="fas fa-robot me-2"></i>Try Athena GPT
-              </a>
-
+            <div class="hero-badge">
+              <i class="fas fa-briefcase"></i>
+              Introducing jobs.athena.live
             </div>
+            <h1>Find Your Next Role with Athena</h1>
+            <p class="lead">jobs.athena.live is the home for discovering jobs, building your professional profile, and connecting directly with industry partners across the Athena ecosystem.</p>
+            <div class="d-flex gap-3 flex-wrap">
+              <a href="https://jobs.athena.live" target="_blank" rel="noopener" class="btn btn-primary btn-lg job-cta">
+                <i class="fas fa-briefcase me-2"></i>Explore Jobs
+              </a>
+              <a href="https://chatgpt.com/g/g-688da8975c0081919cd2d8ea356ceaf4-athena" target="_blank" class="btn btn-outline-light">
+                <i class="fas fa-robot me-2"></i>Meet Athena GPT
+              </a>
+            </div>
+            <p class="hero-note">Join the community to unlock curated opportunities, collaborate with mentors, and stay ahead with real-time industry insights.</p>
           </div>
         </div>
         <div class="col-lg-6">
