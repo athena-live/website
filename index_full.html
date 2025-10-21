@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Athena - Information Technology & Software Engineering</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #1e40af;
+      --accent-color: #3b82f6;
+      --dark-bg: #0f172a;
+      --darker-bg: #020617;
+      --text-light: #e2e8f0;
+      --text-muted: #94a3b8;
+      --border-color: #334155;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    .navbar {
+      background-color: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 0;
+      min-height: 70px;
+      z-index: 1050;
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-light) !important;
+    }
+
+    .navbar-nav .nav-link {
+      color: var(--text-muted) !important;
+      font-weight: 500;
+      margin: 0 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: var(--accent-color) !important;
+    }
+
+    .navbar-nav .nav-link.active {
+      color: var(--accent-color) !important;
+    }
+
+    .navbar-nav .nav-link.nav-cta {
+      background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+      color: #ffffff !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      margin-left: 1rem;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    .navbar-nav .nav-link.nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(37, 99, 235, 0.35);
+      color: #ffffff !important;
+    }
+
+    .navbar-nav .nav-link.nav-cta i {
+      margin-right: 0.5rem;
+    }
+
+    @media (max-width: 991.98px) {
+      .navbar-nav .nav-link.nav-cta {
+        margin: 1rem 0 0;
+        text-align: center;
+      }
+
+      .navbar .dropdown-menu {
+        position: static;
+        float: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin-top: 0.5rem;
+      }
+
+      .navbar .dropdown-item {
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+      }
+
+      .navbar .dropdown-item:hover {
+        background-color: rgba(59, 130, 246, 0.2);
+      }
+    }
+
+    .navbar .dropdown-menu {
+      background-color: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--border-color);
+      border-radius: 0.75rem;
+      padding: 0.75rem 0;
+      min-width: 220px;
+      box-shadow: 0 20px 45px rgba(2, 6, 23, 0.45);
+      backdrop-filter: blur(12px);
+    }
+
+    .navbar .dropdown-item {
+      color: var(--text-light);
+      font-weight: 500;
+      padding: 0.5rem 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .navbar .dropdown-item:hover {
+      background-color: rgba(59, 130, 246, 0.2);
+      color: var(--accent-color);
+    }
+
+    .navbar .dropdown-toggle::after {
+      margin-left: 0.35rem;
+      vertical-align: middle;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar .show > .nav-link.dropdown-toggle::after {
+      transform: rotate(180deg);
+    }
+
+    /* Mobile Navigation */
+    .navbar-toggler {
+      border: 2px solid var(--text-muted);
+      padding: 0.5rem 0.75rem;
+      background: transparent;
+      border-radius: 0.375rem;
+      position: relative;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+      border-color: var(--accent-color);
+    }
+
+    .navbar-toggler:hover {
+      border-color: var(--accent-color);
+    }
+
+    /* Custom hamburger icon */
+    .navbar-toggler-icon {
+      display: block;
+      width: 25px;
+      height: 20px;
+      position: relative;
+      background: transparent;
+    }
+
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after,
+    .navbar-toggler-icon {
+      background-color: var(--text-light);
+    }
+
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--text-light);
+      transition: all 0.3s ease;
+    }
+
+    .navbar-toggler-icon::before {
+      top: 0;
+    }
+
+    .navbar-toggler-icon::after {
+      bottom: 0;
+    }
+
+    .navbar-toggler-icon {
+      background-color: var(--text-light);
+      height: 2px;
+      width: 100%;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* Show toggler only on mobile */
+    @media (min-width: 992px) {
+      .navbar-toggler {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 991.98px) {
+      .navbar-toggler {
+        display: block !important;
+      }
+
+      .navbar-collapse {
+        background-color: rgba(15, 23, 42, 0.98);
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+        padding: 1rem;
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(10px);
+      }
+
+      .navbar-nav {
+        text-align: center;
+      }
+
+      .navbar-nav .nav-link {
+        margin: 0.5rem 0;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+        display: block;
+        color: var(--text-light) !important;
+      }
+
+      .navbar-nav .nav-link:hover {
+        background-color: rgba(59, 130, 246, 0.2);
+        color: var(--accent-color) !important;
+      }
+
+      .navbar-nav .nav-item {
+        width: 100%;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23334155" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      color: var(--text-light);
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-badge i {
+      color: var(--accent-color);
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-color) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero .lead {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    .hero-note {
+      color: var(--text-muted);
+      margin-top: 1.5rem;
+      max-width: 550px;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-primary.job-cta {
+      background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+      border: none;
+      box-shadow: 0 15px 35px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-primary.job-cta:hover {
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-outline-light {
+      border-color: var(--border-color);
+      color: var(--text-light);
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-light:hover {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Sections */
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--text-light);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 4rem;
+    }
+
+    /* Service Cards */
+    .service-card {
+      background: linear-gradient(135deg, rgba(51, 65, 85, 0.1) 0%, rgba(30, 41, 59, 0.1) 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 2rem;
+      height: 100%;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-color);
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      color: var(--accent-color);
+      margin-bottom: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-light);
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .service-features {
+      list-style: none;
+      padding: 0;
+    }
+
+    .service-features li {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .service-features li::before {
+      content: '✓';
+      color: var(--accent-color);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    /* About Section */
+    .about-section {
+      background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+    }
+
+    .stats {
+      background: rgba(37, 99, 235, 0.1);
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      display: block;
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Contact Section */
+    .contact-card {
+      background: linear-gradient(135deg, rgba(51, 65, 85, 0.1) 0%, rgba(30, 41, 59, 0.1) 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-icon {
+      font-size: 1.5rem;
+      color: var(--accent-color);
+      margin-right: 1rem;
+      width: 40px;
+      text-align: center;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--darker-bg);
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 0 2rem;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .social-links {
+      margin-bottom: 2rem;
+    }
+
+    .social-links a {
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      margin: 0 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .service-card {
+        margin-bottom: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">
+        <i class="fas fa-brain me-2"></i>Athena
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+          <!-- Fallback hamburger icon -->
+          <i class="fas fa-bars" style="color: var(--text-light); font-size: 1.2rem; display: none;"></i>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-cta" href="https://jobs.athena.live" target="_blank" rel="noopener">
+              <i class="fas fa-briefcase"></i>Jobs Portal
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://chatgpt.com/g/g-688da8975c0081919cd2d8ea356ceaf4-athena" target="_blank">
+              <i class="fas fa-robot me-1"></i>Athena GPT
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="communityDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-users me-1"></i>Community
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="communityDropdown">
+              <li>
+                <a class="dropdown-item" href="https://www.youtube.com/@athena_live" target="_blank" rel="noopener">
+                  <i class="fab fa-youtube me-2"></i>YouTube
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="https://www.reddit.com/r/athenalive/" target="_blank" rel="noopener">
+                  <i class="fab fa-reddit me-2"></i>Reddit
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <i class="fas fa-briefcase"></i>
+              Introducing jobs.athena.live
+            </div>
+            <h1>Find Your Next Role with Athena</h1>
+            <p class="lead">jobs.athena.live is the home for discovering jobs, building your professional profile, and connecting directly with industry partners across the Athena ecosystem.</p>
+            <div class="d-flex gap-3 flex-wrap">
+              <a href="https://jobs.athena.live" target="_blank" rel="noopener" class="btn btn-primary btn-lg job-cta">
+                <i class="fas fa-briefcase me-2"></i>Explore Jobs
+              </a>
+              <a href="https://chatgpt.com/g/g-688da8975c0081919cd2d8ea356ceaf4-athena" target="_blank" class="btn btn-outline-light">
+                <i class="fas fa-robot me-2"></i>Meet Athena GPT
+              </a>
+            </div>
+            <p class="hero-note">Join the community to unlock curated opportunities, collaborate with mentors, and stay ahead with real-time industry insights.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="text-center">
+            <i class="fas fa-microchip" style="font-size: 15rem; color: var(--accent-color); opacity: 0.1;"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-subtitle">We deliver comprehensive technology solutions tailored to your business needs</p>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>Software Engineering</h3>
+            <p>Custom software development solutions built with modern technologies and best practices.</p>
+            <ul class="service-features">
+              <li>Web Application Development</li>
+              <li>Mobile App Development</li>
+              <li>API Design & Integration</li>
+              <li>Database Architecture</li>
+              <li>Cloud-Native Solutions</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3>Automation Solutions</h3>
+            <p>Streamline your operations with intelligent automation and AI-powered workflows.</p>
+            <ul class="service-features">
+              <li>Process Automation</li>
+              <li>AI & Machine Learning</li>
+              <li>Workflow Optimization</li>
+              <li>Data Pipeline Automation</li>
+              <li>DevOps & CI/CD</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-server"></i>
+            </div>
+            <h3>Information Technology</h3>
+            <p>Comprehensive IT infrastructure and support services to keep your business running smoothly.</p>
+            <ul class="service-features">
+              <li>Cloud Infrastructure</li>
+              <li>System Integration</li>
+              <li>Cybersecurity Solutions</li>
+              <li>IT Consulting</li>
+              <li>Technical Support</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <h3>Athena Jobs</h3>
+            <p>We aggregate job listings so you can quickly find your next role, complete with deep analysis on hot markets and talent movement.</p>
+            <ul class="service-features">
+              <li>Aggregated multi-source job feeds</li>
+              <li>Market heat insights by role and region</li>
+              <li>Talent movement analytics</li>
+              <li>Trend tracking across industries</li>
+              <li>Personalized opportunity alerts</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Athena GPT Section -->
+  <section class="section" style="background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="text-center mb-5 mb-lg-0">
+            <i class="fas fa-brain" style="font-size: 8rem; color: var(--accent-color); opacity: 0.8;"></i>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h2 style="font-size: 2.5rem; font-weight: 700; color: var(--text-light); margin-bottom: 1.5rem;">
+            Meet Athena GPT
+          </h2>
+          <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem;">
+            Experience the power of our AI assistant - a specialized GPT model designed to help with
+            technology consulting, software development guidance, and automation solutions.
+          </p>
+          <div class="row mb-4">
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-check-circle me-3" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                <span style="color: var(--text-light);">Technical Consulting</span>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-check-circle me-3" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                <span style="color: var(--text-light);">Code Review & Optimization</span>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-check-circle me-3" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                <span style="color: var(--text-light);">Architecture Planning</span>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-check-circle me-3" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                <span style="color: var(--text-light);">Automation Strategies</span>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex gap-3 flex-wrap">
+            <a href="https://chatgpt.com/g/g-688da8975c0081919cd2d8ea356ceaf4-athena" target="_blank" class="btn btn-primary btn-lg">
+              <i class="fas fa-robot me-2"></i>Chat with Athena GPT
+            </a>
+            <a href="#about" class="btn btn-outline-light btn-lg">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Content & Media Section -->
+  <section class="section" style="background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);">
+    <div class="container">
+      <h2 class="section-title">Stay Connected</h2>
+      <p class="section-subtitle">Join our community and follow our journey for the latest insights on technology, AI, and innovation</p>
+
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="text-center mb-5 mb-lg-0">
+            <i class="fab fa-youtube" style="font-size: 8rem; color: #ff0000; opacity: 0.8;"></i>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h3 style="font-size: 2rem; font-weight: 600; color: var(--text-light); margin-bottom: 1.5rem;">
+            <i class="fab fa-youtube me-3" style="color: #ff0000;"></i>
+            Content & Community
+          </h3>
+          <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Subscribe to our YouTube channel for in-depth tutorials, technology insights,
+            AI demonstrations, and behind-the-scenes content from the Athena team.
+          </p>
+          <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem;">
+            Join our Reddit community at <strong style="color: var(--accent-color);">r/athenalive</strong> to connect with other
+            technology enthusiasts, share ideas, and participate in discussions about AI, automation, and the future of tech.
+          </p>
+
+          <div class="row mb-4">
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-play-circle me-3" style="color: #ff0000; font-size: 1.2rem;"></i>
+                <span style="color: var(--text-light);">Tech Tutorials</span>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-lightbulb me-3" style="color: #ff0000; font-size: 1.2rem;"></i>
+                <span style="color: var(--text-light);">AI Insights</span>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-code me-3" style="color: #ff0000; font-size: 1.2rem;"></i>
+                <span style="color: var(--text-light);">Live Coding</span>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-rocket me-3" style="color: #ff0000; font-size: 1.2rem;"></i>
+                <span style="color: var(--text-light);">Product Updates</span>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-center">
+                <i class="fab fa-reddit me-3" style="color: #ff4500; font-size: 1.2rem;"></i>
+                <span style="color: var(--text-light);">Community Discussions</span>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-users me-3" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                <span style="color: var(--text-light);">Tech Enthusiasts</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex gap-3 flex-wrap">
+            <a href="https://www.youtube.com/@athena_live" target="_blank" class="btn btn-lg" style="background-color: #ff0000; border-color: #ff0000; color: white;">
+              <i class="fab fa-youtube me-2"></i>Subscribe Now
+            </a>
+            <a href="https://www.reddit.com/r/athenalive/" target="_blank" class="btn btn-lg" style="background-color: #ff4500; border-color: #ff4500; color: white;">
+              <i class="fab fa-reddit me-2"></i>Join Community
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <h2 class="section-title">About Athena</h2>
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h3 class="mb-4" style="color: var(--text-light); font-size: 2rem;">Pioneering the Future of Technology</h3>
+          <p class="mb-4" style="color: var(--text-muted); font-size: 1.1rem;">
+            Athena builds modern applications for job posting, professional profiles, and end-to-end talent experiences—combining cutting-edge artificial intelligence with proven information technology, software engineering, and automation expertise.
+          </p>
+          <p class="mb-4" style="color: var(--text-muted); font-size: 1.1rem;">
+            Our team of expert engineers and technologists is dedicated to pushing the boundaries of what's
+            possible, creating intelligent systems that drive efficiency, innovation, and growth.
+          </p>
+          <div class="d-flex gap-3 flex-wrap">
+            <a href="#contact" class="btn btn-primary">Work With Us</a>
+            <a href="https://www.youtube.com/@athena_live" target="_blank" class="btn btn-outline-light">
+              <i class="fab fa-youtube me-2"></i>YouTube Channel
+            </a>
+            <a href="https://x.com/_athenalive" target="_blank" class="btn btn-outline-light">
+              <i class="fab fa-twitter me-2"></i>Follow Us
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-6 mb-4">
+              <div class="stats">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Projects Delivered</span>
+              </div>
+            </div>
+            <div class="col-6 mb-4">
+              <div class="stats">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Support Available</span>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="stats">
+                <span class="stat-number">99.9%</span>
+                <span class="stat-label">Uptime Guarantee</span>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="stats">
+                <span class="stat-number">5+</span>
+                <span class="stat-label">Years Experience</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-subtitle">Ready to transform your business with cutting-edge technology? Let's discuss your project.</p>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="contact-card">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="contact-info">
+                  <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                  <div>
+                    <h5 style="color: var(--text-light); margin-bottom: 0.5rem;">Email Us</h5>
+                    <a href="mailto:info@athena.live" style="color: var(--accent-color); text-decoration: none;">info@athena.live</a>
+                  </div>
+                </div>
+
+                <div class="contact-info">
+                  <div class="contact-icon">
+                    <i class="fab fa-twitter"></i>
+                  </div>
+                  <div>
+                    <h5 style="color: var(--text-light); margin-bottom: 0.5rem;">Follow Us</h5>
+                    <a href="https://x.com/_athenalive" target="_blank" style="color: var(--accent-color); text-decoration: none;">@_athenalive</a>
+                  </div>
+                </div>
+
+                <div class="contact-info">
+                  <div class="contact-icon">
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <div>
+                    <h5 style="color: var(--text-light); margin-bottom: 0.5rem;">Response Time</h5>
+                    <span style="color: var(--text-muted);">Within 24 hours</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <h4 style="color: var(--text-light); margin-bottom: 1.5rem;">Start Your Project</h4>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">
+                  Whether you need custom software development, automation solutions, or IT consulting,
+                  we're here to help bring your vision to life.
+                </p>
+                <a href="mailto:info@athena.live?subject=Project Inquiry" class="btn btn-primary w-100">
+                  <i class="fas fa-paper-plane me-2"></i>Send Project Inquiry
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="social-links">
+        <a href="https://www.reddit.com/r/athenalive/" target="_blank" title="Reddit Community">
+          <i class="fab fa-reddit"></i>
+        </a>
+        <a href="https://www.youtube.com/@athena_live" target="_blank" title="YouTube Channel">
+          <i class="fab fa-youtube"></i>
+        </a>
+
+        <a href="https://chatgpt.com/g/g-688da8975c0081919cd2d8ea356ceaf4-athena" target="_blank" title="Athena GPT">
+          <i class="fas fa-robot"></i>
+        </a>
+        <a href="https://x.com/_athenalive" target="_blank" title="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="mailto:info@athena.live" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="#" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/athena-live" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 text-md-start text-center">
+          <p>&copy; <span id="year"></span> Athena Technologies. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end text-center">
+          <p>Powered by Innovation & Intelligence</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Ensure mobile menu works properly
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if custom hamburger icon is working, if not show fallback
+      const togglerIcon = document.querySelector('.navbar-toggler-icon');
+      const fallbackIcon = document.querySelector('.navbar-toggler-icon i');
+
+      // Show fallback icon if CSS hamburger doesn't work
+      if (window.getComputedStyle(togglerIcon, '::before').content === 'none') {
+        if (fallbackIcon) {
+          fallbackIcon.style.display = 'block';
+          togglerIcon.style.background = 'transparent';
+        }
+      }
+
+      // Ensure toggler is visible on mobile
+      function checkMobileView() {
+        const toggler = document.querySelector('.navbar-toggler');
+        if (window.innerWidth <= 991) {
+          toggler.style.display = 'block';
+        } else {
+          toggler.style.display = 'none';
+        }
+      }
+
+      checkMobileView();
+      window.addEventListener('resize', checkMobileView);
+    });
+
+
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          // Close mobile menu if open
+          const navbarCollapse = document.querySelector('.navbar-collapse');
+          const navbarToggler = document.querySelector('.navbar-toggler');
+          if (navbarCollapse.classList.contains('show')) {
+            navbarToggler.click();
+          }
+
+          const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Add active class to navigation items on scroll
+    window.addEventListener('scroll', function() {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.clientHeight;
+        if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Add animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe service cards and stats
+    document.querySelectorAll('.service-card, .stats').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MW9Z4L9WTY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MW9Z4L9WTY');
+</script>
+</body>
+</html>
