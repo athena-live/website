@@ -4,6 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>jobs.athena.live | Athena Jobs Portal</title>
+    <meta
+      name="description"
+      content="Enter the Athena Jobs portal to discover curated roles, live hiring signals, and direct access to top teams across the Athena network."
+    />
+    <meta
+      name="keywords"
+      content="Athena Jobs, jobs.athena.live, Athena careers, curated jobs, hiring signal, talent network"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://jobs.athena.live/" />
+    <meta property="og:title" content="jobs.athena.live | Athena Jobs Portal" />
+    <meta
+      property="og:description"
+      content="Discover curated roles handpicked by Athena. Visit jobs.athena.live to track live hiring signals and connect directly with the teams."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jobs.athena.live/" />
+    <meta property="og:image" content="https://jobs.athena.live/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="jobs.athena.live | Athena Jobs Portal" />
+    <meta
+      name="twitter:description"
+      content="Real roles, real signals. Enter the Athena Jobs portal to find your next move."
+    />
+    <meta name="twitter:image" content="https://jobs.athena.live/og-image.jpg" />
+    <meta name="theme-color" content="#1a4cff" />
     <link
       rel="preconnect"
       href="https://fonts.googleapis.com"
@@ -13,6 +39,25 @@
       href="https://fonts.gstatic.com"
       crossorigin
     />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Athena Jobs Portal",
+        "url": "https://jobs.athena.live/",
+        "description": "Athena Jobs curates live roles and hiring signals across the Athena network.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Athena",
+          "url": "https://athena.live"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://jobs.athena.live/search?query={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -173,6 +218,31 @@
         margin-top: 3px;
       }
 
+      .qa-board {
+        display: grid;
+        gap: 18px;
+        margin-top: 32px;
+      }
+
+      .qa-item {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 24px 26px;
+      }
+
+      .qa-item strong {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 1.05rem;
+      }
+
+      .qa-item p {
+        margin: 0;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
       footer {
         margin-top: 96px;
         padding-top: 32px;
@@ -264,6 +334,10 @@
 
       <section class="section">
         <h2>How it works</h2>
+        <p class="section-lead">
+          A quick outline you can reference or drop into a brief when sharing the Athena Jobs experience with your
+          team or an assistant.
+        </p>
         <div class="steps">
           <div class="step">
             <div class="step-number">1</div>
@@ -285,6 +359,46 @@
               <strong>Reach the hiring team.</strong>
               Connect straight to the people driving the search—no guesswork needed.
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="section"
+        id="ask-athena"
+      >
+        <h2>Ask Athena Jobs</h2>
+        <p class="section-lead">
+          Drop these ready-to-use prompts into your LLM or documentation so you can share accurate, on-brand answers in
+          seconds.
+        </p>
+        <div class="qa-board">
+          <div class="qa-item">
+            <strong>Prompt</strong>
+            <p>"What is jobs.athena.live and who curates the roles there?"</p>
+            <strong>Answer</strong>
+            <p>
+              Jobs.athena.live is the official Athena Jobs portal. The Athena network curates live opportunities from
+              founders, operators, and hiring partners—no scraped or outdated postings.
+            </p>
+          </div>
+          <div class="qa-item">
+            <strong>Prompt</strong>
+            <p>"Explain how I can use jobs.athena.live to track hiring momentum."</p>
+            <strong>Answer</strong>
+            <p>
+              Visit the portal to follow active searches, filter by function or location, and monitor the teams moving
+              fastest. Each listing includes context so you know which roles have strong hiring signal.
+            </p>
+          </div>
+          <div class="qa-item">
+            <strong>Prompt</strong>
+            <p>"How do candidates connect with the hiring teams on the Athena portal?"</p>
+            <strong>Answer</strong>
+            <p>
+              Every listing points directly to the hiring manager or partner driving the search. Once you are inside
+              jobs.athena.live, you can reach out with context, request an intro, or ask for updates without guesswork.
+            </p>
           </div>
         </div>
       </section>
