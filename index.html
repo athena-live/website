@@ -370,7 +370,7 @@
         </div>
         <div class="stat-board" aria-live="polite">
           <div class="stat-total">
-            <span class="stat-label">Open roles live</span>
+            <span class="stat-label">Total active jobs</span>
             <strong
               class="stat-value"
               id="jobs-count"
@@ -380,7 +380,7 @@
             </strong>
           </div>
           <div class="stat-types">
-            <span class="stat-label">Highlights by role type</span>
+            <span class="stat-label">Top job types</span>
             <div
               class="stat-type-grid"
               id="jobs-type-count"
@@ -507,10 +507,12 @@
             .replace(/_/g, " ")
             .replace(/\s+/g, " ")
             .trim()
-            .replace(/\b\w/g, (char) => char.toUpperCase());
+            .replace(/\b\w/g, (char) => char.toUpperCase())
+            .replace(/\bJobs?$/i, "")
+            .trim();
 
         const animateCount = (element, target) => {
-          const duration = 1200;
+          const duration = 2400;
           const start = performance.now();
 
           const step = (timestamp) => {
@@ -542,7 +544,9 @@
             const count = entry.count ?? entry.total ?? entry.value;
             const label = entry.type ?? entry.label ?? entry.name ?? entry.category;
             if (typeof count !== "number" || !label) return null;
-            return { label: formatLabel(String(label)), count };
+            const formatted = formatLabel(String(label));
+            if (!formatted) return null;
+            return { label: formatted, count };
           };
 
           if (Array.isArray(payload)) {
@@ -585,7 +589,7 @@
             .forEach(({ label, count }) => {
               const pill = document.createElement("div");
               pill.className = "stat-type-pill";
-              pill.textContent = `${numberFormatter.format(count)} ${label}`;
+              pill.textContent = `${label}: ${numberFormatter.format(count)}`;
               typeContainer.appendChild(pill);
             });
         };
