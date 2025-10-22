@@ -165,6 +165,58 @@
         transform: translateY(-2px);
       }
 
+      .stat-board {
+        margin-top: 32px;
+        display: grid;
+        gap: 18px;
+        padding: 26px 28px;
+        border-radius: 24px;
+        border: 1px solid rgba(26, 76, 255, 0.2);
+        background: linear-gradient(135deg, rgba(26, 76, 255, 0.08), rgba(26, 76, 255, 0.02));
+      }
+
+      .stat-total {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .stat-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(21, 24, 35, 0.6);
+      }
+
+      .stat-value {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 700;
+        color: var(--accent);
+        transition: color 0.2s ease;
+      }
+
+      .stat-types {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .stat-type-grid {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .stat-type-pill {
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(26, 76, 255, 0.08);
+        color: var(--accent);
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
       .section {
         margin-top: 80px;
       }
@@ -269,6 +321,14 @@
           flex: 1;
           justify-content: center;
         }
+
+        .stat-board {
+          padding: 22px 24px;
+        }
+
+        .stat-type-grid {
+          flex-direction: column;
+        }
       }
     </style>
   </head>
@@ -307,6 +367,27 @@
           >
             View the Athena site
           </a>
+        </div>
+        <div class="stat-board" aria-live="polite">
+          <div class="stat-total">
+            <span class="stat-label">Open roles live</span>
+            <strong
+              class="stat-value"
+              id="jobs-count"
+              data-default="—"
+            >
+              —
+            </strong>
+          </div>
+          <div class="stat-types">
+            <span class="stat-label">Highlights by role type</span>
+            <div
+              class="stat-type-grid"
+              id="jobs-type-count"
+            >
+              <div class="stat-type-pill">Loading…</div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -379,7 +460,7 @@
             <strong>Answer</strong>
             <p>
               Jobs.athena.live is the official Athena Jobs portal. The Athena network curates live opportunities from
-              founders, operators, and hiring partners.
+              founders, operators, and hiring partners—no scraped or outdated postings.
             </p>
           </div>
           <div class="qa-item">
@@ -408,5 +489,144 @@
         contact for access or invitations.
       </footer>
     </div>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const totalEl = document.getElementById("jobs-count");
+        const typeContainer = document.getElementById("jobs-type-count");
+        if (!totalEl || !typeContainer) return;
+
+        const API_BASE = "https://jobs.athena.live";
+        const endpoints = {
+          total: `${API_BASE}/api/jobs/count/`,
+          types: `${API_BASE}/api/jobs/type-count/`
+        };
+
+        const numberFormatter = new Intl.NumberFormat("en-US");
+        const formatLabel = (value) =>
+          value
+            .replace(/_/g, " ")
+            .replace(/\s+/g, " ")
+            .trim()
+            .replace(/\b\w/g, (char) => char.toUpperCase());
+
+        const animateCount = (element, target) => {
+          const duration = 1200;
+          const start = performance.now();
+
+          const step = (timestamp) => {
+            const progress = Math.min((timestamp - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const value = Math.round(target * eased);
+            element.textContent = numberFormatter.format(value);
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            }
+          };
+
+          element.textContent = "0";
+          requestAnimationFrame(step);
+        };
+
+        const normalizeTotal = (payload) => {
+          if (typeof payload === "number") return payload;
+          if (!payload || typeof payload !== "object") return null;
+          if (typeof payload.count === "number") return payload.count;
+          if (typeof payload.total === "number") return payload.total;
+          if (typeof payload.value === "number") return payload.value;
+          return null;
+        };
+
+        const normalizeTypeCounts = (payload) => {
+          const normalizeEntry = (entry) => {
+            if (!entry || typeof entry !== "object") return null;
+            const count = entry.count ?? entry.total ?? entry.value;
+            const label = entry.type ?? entry.label ?? entry.name ?? entry.category;
+            if (typeof count !== "number" || !label) return null;
+            return { label: formatLabel(String(label)), count };
+          };
+
+          if (Array.isArray(payload)) {
+            return payload.map(normalizeEntry).filter(Boolean);
+          }
+
+          if (payload && typeof payload === "object") {
+            if (Array.isArray(payload.results)) {
+              return payload.results.map(normalizeEntry).filter(Boolean);
+            }
+
+            if (Array.isArray(payload.data)) {
+              return payload.data.map(normalizeEntry).filter(Boolean);
+            }
+
+            return Object.entries(payload)
+              .map(([key, value]) => {
+                if (typeof value !== "number") return null;
+                return { label: formatLabel(String(key)), count: value };
+              })
+              .filter(Boolean);
+          }
+
+          return [];
+        };
+
+        const renderTypes = (types) => {
+          typeContainer.innerHTML = "";
+          if (!types.length) {
+            const fallback = document.createElement("div");
+            fallback.className = "stat-type-pill";
+            fallback.textContent = "Live data updates soon";
+            typeContainer.appendChild(fallback);
+            return;
+          }
+
+          types
+            .sort((a, b) => b.count - a.count)
+            .slice(0, 4)
+            .forEach(({ label, count }) => {
+              const pill = document.createElement("div");
+              pill.className = "stat-type-pill";
+              pill.textContent = `${numberFormatter.format(count)} ${label}`;
+              typeContainer.appendChild(pill);
+            });
+        };
+
+        const setTotalFallback = () => {
+          totalEl.textContent = totalEl.dataset.default || "—";
+          totalEl.classList.add("stat-value");
+          renderTypes([]);
+        };
+
+        const loadStats = async () => {
+          try {
+            const [totalRes, typesRes] = await Promise.all([
+              fetch(endpoints.total, { credentials: "omit", mode: "cors" }),
+              fetch(endpoints.types, { credentials: "omit", mode: "cors" })
+            ]);
+
+            if (!totalRes.ok) throw new Error(`Total fetch failed: ${totalRes.status}`);
+            if (!typesRes.ok) throw new Error(`Type fetch failed: ${typesRes.status}`);
+
+            const [totalPayload, typesPayload] = await Promise.all([totalRes.json(), typesRes.json()]);
+
+            const total = normalizeTotal(totalPayload);
+            const types = normalizeTypeCounts(typesPayload);
+
+            if (typeof total === "number" && total > 0) {
+              totalEl.classList.add("stat-value");
+              animateCount(totalEl, total);
+            } else {
+              setTotalFallback();
+            }
+
+            renderTypes(types);
+          } catch (error) {
+            console.error("Athena Jobs stats failed to load", error);
+            setTotalFallback();
+          }
+        };
+
+        loadStats();
+      });
+    </script>
   </body>
 </html>
