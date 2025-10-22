@@ -518,6 +518,17 @@
       color: var(--accent-color);
     }
 
+    .footer a.legal-link {
+      color: var(--text-muted);
+      font-weight: 600;
+      text-decoration: none;
+      margin-left: 0.35rem;
+    }
+
+    .footer a.legal-link:hover {
+      color: var(--accent-color);
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .hero h1 {
@@ -985,7 +996,22 @@
           <p>&copy; <span id="year"></span> Athena Technologies. All rights reserved.</p>
         </div>
         <div class="col-md-6 text-md-end text-center">
-          <p>Powered by Innovation & Intelligence</p>
+          <p>
+            Powered by Innovation &amp; Intelligence |
+            <a
+              class="legal-link"
+              href="terms.html"
+            >
+              Terms of Service
+            </a>
+            |
+            <a
+              class="legal-link"
+              href="privacy.html"
+            >
+              Privacy Policy
+            </a>
+          </p>
         </div>
       </div>
     </div>
