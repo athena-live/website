@@ -374,6 +374,67 @@
         line-height: 1.6;
       }
 
+      .faq-grid {
+        display: grid;
+        gap: 24px;
+        margin-top: 32px;
+      }
+
+      .faq-group {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 28px;
+      }
+
+      .faq-group h3 {
+        margin: 0 0 12px;
+        font-size: 1.2rem;
+      }
+
+      .faq-item {
+        border-top: 1px solid var(--border);
+        padding: 18px 0;
+      }
+
+      .faq-item:first-of-type {
+        border-top: none;
+        padding-top: 0;
+      }
+
+      .faq-item summary {
+        margin: 0;
+        font-weight: 600;
+        color: var(--text-main);
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-item summary::after {
+        content: "+";
+        font-size: 1.25rem;
+        color: var(--accent);
+        transition: transform 0.2s ease;
+      }
+
+      .faq-item[open] summary::after {
+        transform: rotate(45deg);
+      }
+
+      .faq-item p {
+        margin: 12px 0 0;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
       footer {
         margin-top: 96px;
         padding-top: 32px;
@@ -569,6 +630,96 @@
         </div>
       </section>
 
+      <section
+        class="section"
+        id="athena-faq"
+      >
+        <h2>Athena Jobs Q&A</h2>
+        <p class="section-lead">
+          Reference these answers when teammates and candidates ask how the portal works. They mirror the guidance we
+          share with members every day.
+        </p>
+        <div class="faq-grid">
+          <div class="faq-group">
+            <h3>Quality & Coverage</h3>
+            <details class="faq-item">
+              <summary>How does Athena source the roles that appear on the portal?</summary>
+              <p>
+                Roles are submitted directly by founders, hiring managers, and operators across the Athena network. The
+                concierge team reviews every update before it goes live, so each listing reflects a real and active
+                search.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>How often are listings refreshed or retired?</summary>
+              <p>
+                Hiring signals are checked throughout the week with the teams running each search. When a role is filled
+                or paused we remove it, and we welcome flags from members if something looks out of date so we can act
+                quickly.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>Can I focus on remote or location-specific opportunities?</summary>
+              <p>
+                Yes. Listings are tagged by location, function, and whether they are remote, hybrid, or on-site. Use the
+                filters in the portal to zero in on the geographies and work styles that matter to you.
+              </p>
+            </details>
+          </div>
+          <div class="faq-group">
+            <h3>Access & Eligibility</h3>
+            <details class="faq-item">
+              <summary>Who can access jobs.athena.live?</summary>
+              <p>
+                Access is reserved for members of the Athena community—operators, founders, and partners who collaborate
+                with us. Each login is tied to a specific person so we can keep the environment trusted and high-signal.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>How do I request access for a teammate or chief of staff?</summary>
+              <p>
+                Share the name and email of the person who needs access with your Athena point of contact. We provision
+                new seats quickly and confirm once their account is live so you can collaborate without sharing
+                credentials.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>What happens after I'm invited to the portal?</summary>
+              <p>
+                Invited users receive a secure link to set their password and confirm their profile. From there they can
+                browse live searches, follow the teams they care about, and start requesting intros directly from the
+                listings.
+              </p>
+            </details>
+          </div>
+          <div class="faq-group">
+            <h3>Working with Hiring Teams</h3>
+            <details class="faq-item">
+              <summary>How do I keep tabs on new or high-signal roles?</summary>
+              <p>
+                The home feed surfaces the most recent updates first and highlights searches with strong hiring signal.
+                Follow the teams you care about inside the portal and check in regularly—we update several times each
+                week as founders share new needs.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>Can I connect with the hiring team from a listing?</summary>
+              <p>
+                Yes. Each role includes context on who is driving the search plus a direct way to request an intro or
+                contact them. Bring your background and interest when you reach out so the conversation moves quickly.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>What if I need more context or spot something inaccurate?</summary>
+              <p>
+                Send a quick note to your Athena contact with the role link. We'll confirm the details with the hiring
+                team and update or remove the listing if the search has wrapped.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
       <footer>
         Athena © 2024. The Athena Jobs portal lives at <strong>jobs.athena.live</strong>. Reach out to your Athena
         contact for access or invitations.
@@ -603,32 +754,18 @@
           }
           return null;
         };
-        const LABEL_OVERRIDES = {
-          total: "Active Roles",
-          overall: "Active Roles",
-          classified: "Featured Roles",
-          unclassified: "Open Roles",
-          remote: "Remote Roles",
-          hybrid: "Hybrid Roles",
-          onsite: "Onsite Roles"
-        };
-        const ensureSuffix = (label) => {
-          if (/roles$/i.test(label) || /types$/i.test(label)) return label;
-          return `${label} Roles`;
-        };
         const formatLabel = (value) => {
           if (!value) return "";
-          const key = String(value).trim().toLowerCase();
-          if (LABEL_OVERRIDES[key]) return LABEL_OVERRIDES[key];
-          const cleaned = String(value)
+          let cleaned = String(value)
             .replace(/_/g, " ")
+            .replace(/\bjobs?\b/gi, "")
+            .replace(/classified/gi, "Roles")
             .replace(/\s+/g, " ")
-            .trim()
-            .replace(/\b\w/g, (char) => char.toUpperCase())
-            .replace(/\bJobs?$/i, "")
             .trim();
+          const lower = cleaned.toLowerCase();
+          if (lower === "total") cleaned = "Active Roles";
           if (!cleaned) return "";
-          return ensureSuffix(cleaned);
+          return cleaned.replace(/\b\w/g, (char) => char.toUpperCase());
         };
 
         const showTypeLoading = () => {
