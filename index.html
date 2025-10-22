@@ -166,40 +166,84 @@
       }
 
       .stat-board {
-        margin-top: 32px;
+        margin-top: 36px;
         display: grid;
-        gap: 18px;
-        padding: 26px 28px;
-        border-radius: 24px;
-        border: 1px solid rgba(26, 76, 255, 0.2);
-        background: linear-gradient(135deg, rgba(26, 76, 255, 0.08), rgba(26, 76, 255, 0.02));
+        gap: 24px;
+        padding: 32px;
+        border-radius: 28px;
+        border: 1px solid rgba(26, 76, 255, 0.14);
+        background: linear-gradient(160deg, rgba(26, 76, 255, 0.12) 0%, rgba(255, 255, 255, 0.94) 55%);
+        box-shadow: 0 22px 48px rgba(26, 76, 255, 0.08);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stat-board::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top left, rgba(26, 76, 255, 0.15), transparent 55%);
+        opacity: 0.6;
+        pointer-events: none;
       }
 
       .stat-total {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 10px;
+        position: relative;
+        z-index: 1;
       }
 
       .stat-label {
-        font-size: 0.75rem;
+        font-size: 0.72rem;
         font-weight: 600;
-        letter-spacing: 0.14em;
+        letter-spacing: 0.16em;
         text-transform: uppercase;
-        color: rgba(21, 24, 35, 0.6);
+        color: rgba(21, 24, 35, 0.52);
       }
 
       .stat-value {
-        font-size: clamp(2rem, 4vw, 3rem);
+        font-size: clamp(2.2rem, 4.6vw, 3.2rem);
         font-weight: 700;
         color: var(--accent);
-        transition: color 0.2s ease;
+        line-height: 1;
+      }
+
+      .stat-board[data-state="loading"] .stat-value {
+        color: rgba(26, 76, 255, 0.35);
+        position: relative;
+      }
+
+      .stat-board[data-state="loading"] .stat-value::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 8px;
+        background: linear-gradient(90deg, rgba(26, 76, 255, 0.15), rgba(26, 76, 255, 0.35), rgba(26, 76, 255, 0.15));
+        animation: shimmer 1.8s ease-in-out infinite;
+      }
+
+      .stat-board[data-state="animating"] .stat-value,
+      .stat-board[data-state="ready"] .stat-value {
+        color: var(--accent);
+      }
+
+      .stat-board[data-state="error"] {
+        border-color: rgba(26, 76, 255, 0.08);
+        background: linear-gradient(150deg, rgba(21, 24, 35, 0.05), rgba(255, 255, 255, 0.88));
+      }
+
+      .stat-board[data-state="error"] .stat-value {
+        color: rgba(21, 24, 35, 0.5);
       }
 
       .stat-types {
         display: flex;
         flex-direction: column;
         gap: 12px;
+        position: relative;
+        z-index: 1;
       }
 
       .stat-type-grid {
@@ -209,12 +253,47 @@
       }
 
       .stat-type-pill {
-        padding: 10px 14px;
+        min-width: 132px;
+        padding: 10px 16px;
         border-radius: 999px;
-        background: rgba(26, 76, 255, 0.08);
+        background: rgba(26, 76, 255, 0.12);
         color: var(--accent);
         font-weight: 600;
-        font-size: 0.9rem;
+        font-size: 0.92rem;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .stat-type-pill.is-loading {
+        color: transparent;
+        overflow: hidden;
+      }
+
+      .stat-type-pill.is-loading::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba(124, 92, 255, 0.0), rgba(124, 92, 255, 0.35), rgba(124, 92, 255, 0.0));
+        animation: shimmer 1.4s ease-in-out infinite;
+      }
+
+      .stat-type-grid[data-state="error"] .stat-type-pill {
+        background: rgba(21, 24, 35, 0.08);
+        color: rgba(21, 24, 35, 0.6);
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%);
+        }
+        50% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
       }
 
       .section {
@@ -368,15 +447,20 @@
             View the Athena site
           </a>
         </div>
-        <div class="stat-board" aria-live="polite">
+        <div
+          class="stat-board"
+          id="jobs-statboard"
+          aria-live="polite"
+          data-state="loading"
+        >
           <div class="stat-total">
             <span class="stat-label">Total active jobs</span>
             <strong
               class="stat-value"
               id="jobs-count"
-              data-default="—"
+              data-default="0"
             >
-              —
+              0
             </strong>
           </div>
           <div class="stat-types">
@@ -385,7 +469,8 @@
               class="stat-type-grid"
               id="jobs-type-count"
             >
-              <div class="stat-type-pill">Loading…</div>
+              <div class="stat-type-pill is-loading"></div>
+              <div class="stat-type-pill is-loading"></div>
             </div>
           </div>
         </div>
@@ -493,7 +578,11 @@
       window.addEventListener("DOMContentLoaded", () => {
         const totalEl = document.getElementById("jobs-count");
         const typeContainer = document.getElementById("jobs-type-count");
+        const board = document.getElementById("jobs-statboard");
         if (!totalEl || !typeContainer) return;
+
+        if (board) board.setAttribute("data-state", "loading");
+        typeContainer.setAttribute("data-state", "loading");
 
         const API_BASE = "https://jobs.athena.live";
         const endpoints = {
@@ -502,6 +591,10 @@
         };
 
         const numberFormatter = new Intl.NumberFormat("en-US");
+        const setBoardState = (state) => {
+          if (!board) return;
+          board.setAttribute("data-state", state);
+        };
         const toNumber = (value) => {
           if (typeof value === "number" && Number.isFinite(value)) return value;
           if (typeof value === "string") {
@@ -538,28 +631,40 @@
           return ensureSuffix(cleaned);
         };
 
+        const showTypeLoading = () => {
+          typeContainer.innerHTML = "";
+          typeContainer.setAttribute("data-state", "loading");
+          for (let i = 0; i < 2; i += 1) {
+            const skeleton = document.createElement("div");
+            skeleton.className = "stat-type-pill is-loading";
+            typeContainer.appendChild(skeleton);
+          }
+        };
+
         const animateCount = (element, target) => {
+          setBoardState("animating");
           if (target <= 0) {
             element.textContent = numberFormatter.format(Math.max(target, 0));
+            setBoardState("ready");
             return;
           }
           const duration = 3200;
-          const totalFrames = Math.max(Math.round((duration / 1000) * 60), 1);
-          let frame = 0;
+          const steps = Math.max(Math.round(duration / 45), 24);
+          let current = 0;
 
-          const counter = () => {
-            frame += 1;
-            const progress = Math.min(frame / totalFrames, 1);
+          const interval = setInterval(() => {
+            current += 1;
+            const progress = Math.min(current / steps, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
             const value = Math.round(target * eased);
             element.textContent = numberFormatter.format(value);
-            if (frame < totalFrames) {
-              requestAnimationFrame(counter);
+            if (current >= steps) {
+              clearInterval(interval);
+              setBoardState("ready");
             }
-          };
+          }, duration / steps);
 
           element.textContent = "0";
-          requestAnimationFrame(counter);
         };
 
         const normalizeTotal = (payload) => {
@@ -614,6 +719,7 @@
 
         const renderTypes = (types) => {
           typeContainer.innerHTML = "";
+          typeContainer.setAttribute("data-state", types.length ? "ready" : "error");
           if (!types.length) {
             const fallback = document.createElement("div");
             fallback.className = "stat-type-pill";
@@ -637,12 +743,14 @@
         };
 
         const setTotalFallback = () => {
-          totalEl.textContent = totalEl.dataset.default || "—";
-          totalEl.classList.add("stat-value");
+          totalEl.textContent = totalEl.dataset.default || "0";
+          setBoardState("error");
           renderTypes([]);
         };
 
         const loadStats = async () => {
+          setBoardState("loading");
+          showTypeLoading();
           try {
             const [totalRes, typesRes] = await Promise.all([
               fetch(endpoints.total, { credentials: "omit", mode: "cors" }),
