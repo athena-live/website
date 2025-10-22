@@ -502,49 +502,85 @@
         };
 
         const numberFormatter = new Intl.NumberFormat("en-US");
-        const formatLabel = (value) =>
-          value
+        const toNumber = (value) => {
+          if (typeof value === "number" && Number.isFinite(value)) return value;
+          if (typeof value === "string") {
+            const normalized = Number(value.replace(/,/g, "").trim());
+            if (Number.isFinite(normalized)) return normalized;
+          }
+          return null;
+        };
+        const LABEL_OVERRIDES = {
+          total: "All Roles",
+          overall: "All Roles",
+          classified: "Classified Roles",
+          unclassified: "Unclassified Roles",
+          remote: "Remote Roles",
+          hybrid: "Hybrid Roles",
+          onsite: "Onsite Roles"
+        };
+        const ensureSuffix = (label) => {
+          if (/roles$/i.test(label) || /types$/i.test(label)) return label;
+          return `${label} Roles`;
+        };
+        const formatLabel = (value) => {
+          if (!value) return "";
+          const key = String(value).trim().toLowerCase();
+          if (LABEL_OVERRIDES[key]) return LABEL_OVERRIDES[key];
+          const cleaned = String(value)
             .replace(/_/g, " ")
             .replace(/\s+/g, " ")
             .trim()
             .replace(/\b\w/g, (char) => char.toUpperCase())
             .replace(/\bJobs?$/i, "")
             .trim();
+          if (!cleaned) return "";
+          return ensureSuffix(cleaned);
+        };
 
         const animateCount = (element, target) => {
-          const duration = 2400;
-          const start = performance.now();
+          if (target <= 0) {
+            element.textContent = numberFormatter.format(Math.max(target, 0));
+            return;
+          }
+          const duration = 3200;
+          const totalFrames = Math.max(Math.round((duration / 1000) * 60), 1);
+          let frame = 0;
 
-          const step = (timestamp) => {
-            const progress = Math.min((timestamp - start) / duration, 1);
+          const counter = () => {
+            frame += 1;
+            const progress = Math.min(frame / totalFrames, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
             const value = Math.round(target * eased);
             element.textContent = numberFormatter.format(value);
-            if (progress < 1) {
-              requestAnimationFrame(step);
+            if (frame < totalFrames) {
+              requestAnimationFrame(counter);
             }
           };
 
           element.textContent = "0";
-          requestAnimationFrame(step);
+          requestAnimationFrame(counter);
         };
 
         const normalizeTotal = (payload) => {
-          if (typeof payload === "number") return payload;
+          const direct = toNumber(payload);
+          if (direct !== null) return direct;
           if (!payload || typeof payload !== "object") return null;
-          if (typeof payload.count === "number") return payload.count;
-          if (typeof payload.total === "number") return payload.total;
-          if (typeof payload.value === "number") return payload.value;
+          const candidates = [payload.count, payload.total, payload.value];
+          for (const candidate of candidates) {
+            const parsed = toNumber(candidate);
+            if (parsed !== null) return parsed;
+          }
           return null;
         };
 
         const normalizeTypeCounts = (payload) => {
           const normalizeEntry = (entry) => {
             if (!entry || typeof entry !== "object") return null;
-            const count = entry.count ?? entry.total ?? entry.value;
-            const label = entry.type ?? entry.label ?? entry.name ?? entry.category;
-            if (typeof count !== "number" || !label) return null;
-            const formatted = formatLabel(String(label));
+            const count = toNumber(entry.count ?? entry.total ?? entry.value);
+            const rawLabel = entry.type ?? entry.label ?? entry.name ?? entry.category ?? entry.slug;
+            if (count === null || !rawLabel) return null;
+            const formatted = formatLabel(rawLabel);
             if (!formatted) return null;
             return { label: formatted, count };
           };
@@ -564,8 +600,11 @@
 
             return Object.entries(payload)
               .map(([key, value]) => {
-                if (typeof value !== "number") return null;
-                return { label: formatLabel(String(key)), count: value };
+                const count = toNumber(value);
+                if (count === null) return null;
+                const formatted = formatLabel(key);
+                if (!formatted) return null;
+                return { label: formatted, count };
               })
               .filter(Boolean);
           }
@@ -583,13 +622,16 @@
             return;
           }
 
-          types
+          const meaningfulTypes = types.filter(({ label }) => label && !/all roles/i.test(label));
+          const displayTypes = meaningfulTypes.length ? meaningfulTypes : types;
+
+          displayTypes
             .sort((a, b) => b.count - a.count)
             .slice(0, 4)
             .forEach(({ label, count }) => {
               const pill = document.createElement("div");
               pill.className = "stat-type-pill";
-              pill.textContent = `${label}: ${numberFormatter.format(count)}`;
+              pill.textContent = `${numberFormatter.format(count)} ${label}`;
               typeContainer.appendChild(pill);
             });
         };
