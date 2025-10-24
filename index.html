@@ -29,7 +29,7 @@
       content="Real roles, real signals. Enter the Athena Jobs portal to find your next move."
     />
     <meta name="twitter:image" content="https://jobs.athena.live/og-image.jpg" />
-    <meta name="theme-color" content="#1a4cff" />
+    <meta name="theme-color" content="#05070f" />
     <link
       rel="preconnect"
       href="https://fonts.googleapis.com"
@@ -74,13 +74,16 @@
     </script>
     <style>
       :root {
-        --background: #f7f8fc;
-        --surface: #ffffff;
-        --accent: #1a4cff;
-        --text-main: #151823;
-        --text-muted: #505466;
-        --border: #e3e6f0;
-        --shadow: 0 18px 40px rgba(26, 76, 255, 0.1);
+        --background: #05070f;
+        --surface: #0f172a;
+        --surface-alt: #141d33;
+        --accent: #ff6b6b;
+        --accent-soft: rgba(255, 107, 107, 0.16);
+        --accent-strong: rgba(255, 107, 107, 0.32);
+        --text-main: #f8fbff;
+        --text-muted: #b7bfd6;
+        --border: rgba(255, 255, 255, 0.08);
+        --shadow: 0 28px 60px rgba(5, 7, 15, 0.55);
       }
 
       * {
@@ -90,8 +93,12 @@
       body {
         margin: 0;
         font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-        background: var(--background);
+        background: radial-gradient(140% 120% at 80% 0%, rgba(255, 107, 107, 0.12), transparent),
+          radial-gradient(120% 120% at 0% 100%, rgba(255, 144, 103, 0.18), transparent), var(--background);
         color: var(--text-main);
+        min-height: 100vh;
+        color-scheme: dark;
+        -webkit-font-smoothing: antialiased;
       }
 
       .page {
@@ -164,21 +171,24 @@
         font-weight: 600;
         text-decoration: none;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border: 1px solid rgba(255, 107, 107, 0.3);
       }
 
       .button.primary {
-        background: var(--accent);
+        background: linear-gradient(135deg, #ff6b6b, #ff9067);
         color: #fff;
-        box-shadow: var(--shadow);
+        box-shadow: 0 20px 45px rgba(255, 107, 107, 0.28);
       }
 
       .button.secondary {
-        background: rgba(21, 24, 35, 0.04);
+        background: rgba(255, 255, 255, 0.04);
         color: var(--text-main);
+        border-color: rgba(255, 255, 255, 0.1);
       }
 
       .button:hover {
         transform: translateY(-2px);
+        box-shadow: 0 22px 50px rgba(255, 107, 107, 0.34);
       }
 
       .stat-board {
@@ -187,9 +197,9 @@
         gap: 24px;
         padding: 32px;
         border-radius: 28px;
-        border: 1px solid rgba(26, 76, 255, 0.14);
-        background: linear-gradient(160deg, rgba(26, 76, 255, 0.12) 0%, rgba(255, 255, 255, 0.94) 55%);
-        box-shadow: 0 22px 48px rgba(26, 76, 255, 0.08);
+        border: 1px solid var(--accent-strong);
+        background: linear-gradient(160deg, rgba(255, 107, 107, 0.16) 0%, rgba(15, 23, 42, 0.96) 60%);
+        box-shadow: 0 30px 60px rgba(5, 7, 15, 0.65);
         position: relative;
         overflow: hidden;
       }
@@ -198,8 +208,8 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: radial-gradient(circle at top left, rgba(26, 76, 255, 0.15), transparent 55%);
-        opacity: 0.6;
+        background: radial-gradient(circle at top left, rgba(255, 107, 107, 0.28), transparent 55%);
+        opacity: 0.5;
         pointer-events: none;
       }
 
@@ -216,7 +226,7 @@
         font-weight: 600;
         letter-spacing: 0.16em;
         text-transform: uppercase;
-        color: rgba(21, 24, 35, 0.52);
+        color: rgba(248, 251, 255, 0.58);
       }
 
       .stat-value {
@@ -227,7 +237,7 @@
       }
 
       .stat-board[data-state="loading"] .stat-value {
-        color: rgba(26, 76, 255, 0.35);
+        color: rgba(255, 107, 107, 0.4);
         position: relative;
       }
 
@@ -236,7 +246,7 @@
         position: absolute;
         inset: 0;
         border-radius: 8px;
-        background: linear-gradient(90deg, rgba(26, 76, 255, 0.15), rgba(26, 76, 255, 0.35), rgba(26, 76, 255, 0.15));
+        background: linear-gradient(90deg, rgba(255, 107, 107, 0.2), rgba(255, 107, 107, 0.45), rgba(255, 107, 107, 0.2));
         animation: shimmer 1.8s ease-in-out infinite;
       }
 
@@ -246,12 +256,12 @@
       }
 
       .stat-board[data-state="error"] {
-        border-color: rgba(26, 76, 255, 0.08);
-        background: linear-gradient(150deg, rgba(21, 24, 35, 0.05), rgba(255, 255, 255, 0.88));
+        border-color: rgba(255, 255, 255, 0.08);
+        background: linear-gradient(150deg, rgba(15, 22, 39, 0.8), rgba(20, 29, 51, 0.95));
       }
 
       .stat-board[data-state="error"] .stat-value {
-        color: rgba(21, 24, 35, 0.5);
+        color: rgba(248, 251, 255, 0.45);
       }
 
       .stat-types {
@@ -272,7 +282,7 @@
         min-width: 132px;
         padding: 10px 16px;
         border-radius: 999px;
-        background: rgba(26, 76, 255, 0.12);
+        background: var(--accent-soft);
         color: var(--accent);
         font-weight: 600;
         font-size: 0.92rem;
@@ -280,6 +290,7 @@
         justify-content: center;
         align-items: center;
         position: relative;
+        border: 1px solid transparent;
       }
 
       .stat-type-pill.is-loading {
@@ -291,13 +302,13 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(90deg, rgba(124, 92, 255, 0.0), rgba(124, 92, 255, 0.35), rgba(124, 92, 255, 0.0));
+        background: linear-gradient(90deg, rgba(255, 139, 139, 0.0), rgba(255, 139, 139, 0.45), rgba(255, 139, 139, 0.0));
         animation: shimmer 1.4s ease-in-out infinite;
       }
 
       .stat-type-grid[data-state="error"] .stat-type-pill {
-        background: rgba(21, 24, 35, 0.08);
-        color: rgba(21, 24, 35, 0.6);
+        background: rgba(255, 255, 255, 0.04);
+        color: rgba(248, 251, 255, 0.6);
       }
 
       @keyframes shimmer {
@@ -327,6 +338,12 @@
         line-height: 1.7;
       }
 
+      .section-lead {
+        font-size: 1.05rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+      }
+
       .feature-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -335,10 +352,11 @@
       }
 
       .feature-card {
-        background: var(--surface);
+        background: var(--surface-alt);
         border: 1px solid var(--border);
         border-radius: 22px;
         padding: 28px;
+        box-shadow: 0 18px 40px rgba(5, 7, 15, 0.35);
       }
 
       .feature-card h3 {
@@ -372,10 +390,11 @@
       }
 
       .qa-item {
-        background: var(--surface);
+        background: var(--surface-alt);
         border: 1px solid var(--border);
         border-radius: 20px;
         padding: 24px 26px;
+        box-shadow: 0 16px 36px rgba(5, 7, 15, 0.32);
       }
 
       .qa-item strong {
@@ -397,10 +416,11 @@
       }
 
       .faq-group {
-        background: var(--surface);
+        background: var(--surface-alt);
         border: 1px solid var(--border);
         border-radius: 24px;
         padding: 28px;
+        box-shadow: 0 18px 40px rgba(5, 7, 15, 0.32);
       }
 
       .faq-group h3 {
@@ -505,8 +525,8 @@
       <section class="hero">
         <h1>jobs.athena.live</h1>
         <p>
-          Where great talent meets real opportunity. Browse open positions, track where hiring is happening, and connect
-          directly with the teams that make it happen.
+          Athena Jobs is now open to everyone. Discover curated roles, follow live hiring signals, and connect directly
+          with the teams building what's next—no invite code or waitlist required.
         </p>
         <div class="cta-group">
           <a
@@ -515,7 +535,13 @@
             target="_blank"
             rel="noopener"
           >
-            Enter the portal
+            Explore open roles
+          </a>
+          <a
+            class="button secondary"
+            href="#how-it-works"
+          >
+            See how it works
           </a>
         </div>
         <div
@@ -547,7 +573,10 @@
         </div>
       </section>
 
-      <section class="section">
+      <section
+        class="section"
+        id="how-it-works"
+      >
         <h2>What to expect</h2>
         <p>
           The portal brings together hiring signals from the founders, operators, and companies in our orbit.
@@ -580,7 +609,7 @@
             <div class="step-number">1</div>
             <div>
               <strong>Visit jobs.athena.live.</strong>
-              Enter the portal to browse active searches and follow teams you care about.
+              Create your free account, then browse active searches and follow the teams you care about.
             </div>
           </div>
           <div class="step">
@@ -647,7 +676,7 @@
         <h2>Athena Jobs Q&A</h2>
         <p class="section-lead">
           Reference these answers when teammates and candidates ask how the portal works. They mirror the guidance we
-          share with members every day.
+          share with operators, candidates, and hiring teams every day.
         </p>
         <div class="faq-grid">
           <div class="faq-group">
@@ -664,8 +693,8 @@
               <summary>How often are listings refreshed or retired?</summary>
               <p>
                 Hiring signals are checked throughout the week with the teams running each search. When a role is filled
-                or paused we remove it, and we welcome flags from members if something looks out of date so we can act
-                quickly.
+                or paused we remove it, and we welcome flags from the community if something looks out of date so we can
+                act quickly.
               </p>
             </details>
             <details class="faq-item">
@@ -681,24 +710,22 @@
             <details class="faq-item">
               <summary>Who can access jobs.athena.live?</summary>
               <p>
-                Access is reserved for members of the Athena community—operators, founders, and partners who collaborate
-                with us. Each login is tied to a specific person so we can keep the environment trusted and high-signal.
+                Everyone is welcome. Create a free account to explore the portal instantly—no invite code, referrals, or
+                waitlist. We designed the experience so you can get to the opportunities as fast as possible.
               </p>
             </details>
             <details class="faq-item">
-              <summary>How do I request access for a teammate or chief of staff?</summary>
+              <summary>How do I onboard a teammate or chief of staff?</summary>
               <p>
-                Share the name and email of the person who needs access with your Athena point of contact. We provision
-                new seats quickly and confirm once their account is live so you can collaborate without sharing
-                credentials.
+                Share the jobs.athena.live link with them—they can spin up their own login in minutes. We encourage each
+                teammate to keep their own profile so they can follow companies and manage alerts separately.
               </p>
             </details>
             <details class="faq-item">
-              <summary>What happens after I'm invited to the portal?</summary>
+              <summary>What happens after I create an account?</summary>
               <p>
-                Invited users receive a secure link to set their password and confirm their profile. From there they can
-                browse live searches, follow the teams they care about, and start requesting intros directly from the
-                listings.
+                You choose your interests, follow teams, and start tracking roles right away. Personalize alerts, save
+                searches, and request intros directly from listings—all without waiting on manual approvals.
               </p>
             </details>
           </div>
@@ -722,8 +749,8 @@
             <details class="faq-item">
               <summary>What if I need more context or spot something inaccurate?</summary>
               <p>
-                Send a quick note to your Athena contact with the role link. We'll confirm the details with the hiring
-                team and update or remove the listing if the search has wrapped.
+                Flag it right from the listing or drop us a note at jobs@athena.live. We'll verify the details with the
+                hiring team and refresh or retire the post so the feed stays high-signal.
               </p>
             </details>
           </div>
@@ -731,8 +758,14 @@
       </section>
 
       <footer>
-        Athena © 2024. The Athena Jobs portal lives at <strong>jobs.athena.live</strong>. Reach out to your Athena
-        contact for access or invitations. Explore the Athena company site at
+        Athena © 2024. The Athena Jobs portal lives at <strong>jobs.athena.live</strong>. Need a hand? Email
+        <a
+          class="footer-link"
+          href="mailto:jobs@athena.live"
+        >
+          jobs@athena.live
+        </a>
+        any time. Explore the Athena company site at
         <a
           class="footer-link"
           href="https://athena.live"
