@@ -465,10 +465,20 @@
     .gsc-result .gs-title,
     .gsc-result .gs-title * {
       color: var(--accent-color) !important;
+      font-size: 1.05rem !important;
+      font-weight: 700 !important;
     }
 
     .gsc-result .gs-snippet {
       color: var(--text-muted) !important;
+      line-height: 1.5;
+    }
+
+    .gsc-url-top,
+    .gsc-url-bottom,
+    .gs-visibleUrl {
+      color: var(--text-muted) !important;
+      font-size: 0.9rem !important;
     }
 
     .gsc-webResult.gsc-result,
@@ -476,6 +486,54 @@
       background: rgba(15, 23, 42, 0.45) !important;
       border: 1px solid var(--border-color) !important;
       border-radius: 0.85rem !important;
+      padding: 1.1rem !important;
+      margin-bottom: 1rem !important;
+      box-shadow: 0 15px 30px rgba(2, 6, 23, 0.35) !important;
+    }
+
+    .gsc-webResult.gsc-result:hover {
+      border-color: rgba(59, 130, 246, 0.7) !important;
+      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15) !important;
+    }
+
+    .gsc-table-result,
+    .gsc-thumbnail-inside,
+    .gsc-url-top {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    .gsc-above-wrapper-area-container,
+    .gsc-above-wrapper-area {
+      border: none !important;
+      background: transparent !important;
+      padding: 0 0 0.75rem 0 !important;
+    }
+
+    .gsc-tabsArea,
+    .gsc-tabHeader {
+      border: none !important;
+      background: transparent !important;
+    }
+
+    .gsc-tabHeader.gsc-tabhActive {
+      border-bottom: 2px solid var(--accent-color) !important;
+      color: var(--accent-color) !important;
+    }
+
+    .gsc-tabHeader.gsc-tabhInactive {
+      color: var(--text-muted) !important;
+    }
+
+    .gsc-cursor-page {
+      color: var(--text-muted) !important;
+      border-radius: 0.35rem !important;
+      padding: 0.25rem 0.6rem !important;
+    }
+
+    .gsc-cursor-page.gsc-cursor-current-page {
+      background: rgba(59, 130, 246, 0.15) !important;
+      color: var(--accent-color) !important;
     }
 
     /* Service Cards */
