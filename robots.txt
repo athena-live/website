@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Allow: /athena-live-profile.html
+Allow: /athena-live-agent.html
 
 Sitemap: https://athena.live/sitemap.xml
