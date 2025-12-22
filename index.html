@@ -487,11 +487,20 @@
       border: 1px solid rgba(37, 99, 235, 0.2);
     }
 
+    .stats.compact {
+      padding: 1.25rem;
+    }
+
     .stat-number {
       font-size: 2.5rem;
       font-weight: 700;
       color: var(--accent-color);
       display: block;
+    }
+
+    .stats.compact .stat-number {
+      font-size: 2rem;
+      line-height: 1.1;
     }
 
     .stat-label {
@@ -940,13 +949,13 @@
                 </div>
                 <div class="row g-3">
                   <div class="col-6">
-                    <div class="stats" style="padding: 1rem;">
+                    <div class="stats compact">
                       <span class="stat-number">24/7</span>
                       <span class="stat-label">Support Available</span>
                     </div>
                   </div>
                   <div class="col-6">
-                    <div class="stats" style="padding: 1rem;">
+                    <div class="stats compact">
                       <span class="stat-number">99.99%</span>
                       <span class="stat-label">Uptime Guarantee</span>
                     </div>
