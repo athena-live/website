@@ -1,87 +1,136 @@
 # Athena.live - Official Website
 
-Welcome to the official website repository for **Athena.live** - a cutting-edge technology company specializing in information technology, software engineering, and intelligent automation solutions.
+Official website repository for Athena.live.
 
-## About This Repository
+This repo contains the static HTML/CSS/JavaScript source code for:
 
-This repository contains the main website for Athena.live, showcasing our services, products, and community. The website features:
+- 🌐 https://athena.live
+- 💼 https://jobs.athena.live
 
-- **Modern, responsive design** built with Bootstrap 5
-- **Interactive sections** highlighting our technology services
-- **Athena GPT integration** - our specialized AI assistant
-- **Community links** and social media integration
-- **Social media integration** with YouTube, Reddit, and Twitter
-- **Contact forms** and project inquiry functionality
+## Overview
 
-## What is Athena.live?
+This repository hosts the public-facing website for Athena.live.
 
-Athena Technologies empowers businesses through cutting-edge information technology, innovative software engineering, and intelligent automation solutions. We specialize in:
+The site is intentionally built as a simple, fast, static website:
 
-- Custom Software Development
-- AI & Machine Learning Solutions
-- Business Process Automation
-- Cloud Infrastructure & DevOps
-- Technology Consulting
-- System Integration
+- No backend
+- No build step
+- No frameworks
+- Easy to deploy anywhere
+- Designed for speed, clarity, and long-term maintainability.
 
-## Key Features
+## Tech Stack
 
-### 🤖 Athena GPT
-Experience our specialized AI assistant designed for technology consulting, software development guidance, and automation solutions.
+- HTML5
+- CSS3
+- Vanilla JavaScript
 
-
-
-### 📺 Community & Content
-- **YouTube Channel**: [@athena_live](https://www.youtube.com/@athena_live) - Tutorials, insights, and tech content
-- **Reddit Community**: [r/athenalive](https://www.reddit.com/r/athenalive/) - Connect with tech enthusiasts
-- **Twitter**: [@_athenalive](https://x.com/_athenalive) - Latest updates and announcements
+That's it.
 
 ## Repository Structure
 
+Typical layout:
+
 ```
-├── index.html          # Main website file
-├── README.md          # This file
-├── CNAME             # Domain configuration
-└── LICENSE           # License information
+/
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   └── main.js
+├── assets/
+│   ├── images/
+│   └── icons/
+└── README.md
 ```
 
-## Technologies Used
+Structure may evolve, but the project will remain static-first.
 
-- **HTML5** with semantic markup
-- **CSS3** with custom properties and modern layouts
-- **Bootstrap 5.3.3** for responsive design
-- **Font Awesome 6.4.0** for icons
-- **Google Fonts (Inter)** for typography
-- **Vanilla JavaScript** for interactions
+## Local Development
 
-## Getting Started
+Because this is a static site, setup is minimal.
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/athena-live/website.git
-   ```
+### Option 1: Open Directly
 
-2. Open `index.html` in your browser or serve it with a local web server.
+Open `index.html` in your browser.
+
+### Option 2: Run a Local Server (Recommended)
+
+```bash
+python3 -m http.server 8080
+```
+
+Then visit:
+
+http://localhost:8080
+
+## Deployment
+
+This site can be deployed to any static host, including:
+
+- GitHub Pages
+- Cloudflare Pages
+- Netlify
+- Vercel (static mode)
+- Any standard web server (Apache / Nginx)
+
+No build or compilation required.
+
+## Issues
+
+Use GitHub Issues for:
+
+- 🐛 Bugs
+- ✏️ Content fixes
+- 🎨 UI/UX improvements
+- 💡 Suggestions or enhancements
+
+Please include:
+
+- Page URL or file name
+- Clear description
+- Screenshots if relevant
+
+➡️ Issues:
+https://github.com/athena-live/website/issues
 
 ## Contributing
 
-We welcome contributions to improve our website! Please feel free to:
+Contributions are welcome and should remain simple.
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+Guidelines:
 
-## Contact
+- Fork the repository
+- Create a clean feature or fix branch
+- Keep changes readable and minimal
+- Open a pull request
+- Avoid unnecessary dependencies or tooling.
 
-- **Website**: [athena.live](https://athena.live)
-- **Email**: [info@athena.live](mailto:info@athena.live)
-- **GitHub**: [https://github.com/athena-live](https://github.com/athena-live)
+## Links & Profiles
 
-## License
+- 🌐 Website: https://athena.live
+- 💼 Careers: https://jobs.athena.live
+- 🐙 GitHub Org: https://github.com/athena-live
+- 🐦 X (Twitter): https://x.com/_athenalive
+- 📺 YouTube: https://www.youtube.com/@athena_live
+- 👽 Reddit: https://www.reddit.com/r/athenalive/
 
-This project is licensed under the terms specified in the LICENSE file.
+## Philosophy
 
----
+Question everything.
+Fight like a samurai.
+Be your own.
+Dream huge.
+Charm when you can. Cut when you must.
 
-**Powered by Innovation & Intelligence** 🧠✨
+## Next (optional, recommended)
+
+I can instantly generate:
+
+- ISSUE_TEMPLATE.md
+- CONTRIBUTING.md
+- GitHub org profile README
+- GitHub Pages config
+- SEO meta tags for index.html
+
+Say the word and I'll ship it.
