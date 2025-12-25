@@ -9,12 +9,8 @@
   <title>Athena - Information Technology & Software Engineering</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   </noscript>
   <style>
@@ -42,6 +38,152 @@
       line-height: 1.6;
     }
 
+    .icon {
+      width: 1em;
+      height: 1em;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vertical-align: -0.125em;
+    }
+
+    .icon-fill {
+      fill: currentColor;
+      stroke: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: -0.75rem;
+      margin-right: -0.75rem;
+    }
+
+    .row > [class*="col-"] {
+      width: 100%;
+      padding: 0 0.75rem;
+    }
+
+    .col-6 {
+      width: 50%;
+    }
+
+    .row.g-3 {
+      row-gap: 1rem;
+    }
+
+    .row.g-4 {
+      row-gap: 1.5rem;
+    }
+
+    .d-flex {
+      display: flex !important;
+    }
+
+    .flex-wrap {
+      flex-wrap: wrap !important;
+    }
+
+    .align-items-center {
+      align-items: center !important;
+    }
+
+    .align-items-start {
+      align-items: flex-start !important;
+    }
+
+    .justify-content-center {
+      justify-content: center !important;
+    }
+
+    .text-center {
+      text-align: center !important;
+    }
+
+    .w-100 {
+      width: 100% !important;
+    }
+
+    .gap-3 {
+      gap: 1rem !important;
+    }
+
+    .mb-0 {
+      margin-bottom: 0 !important;
+    }
+
+    .mb-3 {
+      margin-bottom: 1rem !important;
+    }
+
+    .mb-4 {
+      margin-bottom: 1.5rem !important;
+    }
+
+    .mb-5 {
+      margin-bottom: 3rem !important;
+    }
+
+    .p-3 {
+      padding: 1rem !important;
+    }
+
+    .p-4 {
+      padding: 1.5rem !important;
+    }
+
+    .lead {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-lg {
+      padding: 0.85rem 1.75rem !important;
+      font-size: 1.1rem;
+    }
+
+    .ms-auto {
+      margin-left: auto !important;
+    }
+
+    .me-1 {
+      margin-right: 0.25rem !important;
+    }
+
+    .me-2 {
+      margin-right: 0.5rem !important;
+    }
+
+    .me-3 {
+      margin-right: 1rem !important;
+    }
+
+    .fixed-top {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
     /* Navigation */
     .navbar {
       background-color: rgba(15, 23, 42, 0.95);
@@ -59,10 +201,30 @@
       width: 100%;
     }
 
+    .navbar-collapse {
+      display: none;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .navbar-collapse.is-open {
+      display: block;
+    }
+
     .navbar-brand {
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--text-light) !important;
+    }
+
+    .navbar-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding-left: 0;
+      margin: 0;
+      width: 100%;
     }
 
     .navbar-nav .nav-link {
@@ -70,6 +232,9 @@
       font-weight: 500;
       margin: 0 0.5rem;
       transition: color 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
     }
 
     .navbar-nav .nav-link:hover {
@@ -97,7 +262,7 @@
       color: #ffffff !important;
     }
 
-    .navbar-nav .nav-link.nav-cta i {
+    .navbar-nav .nav-link.nav-cta .icon {
       margin-right: 0.5rem;
     }
 
@@ -128,6 +293,7 @@
     }
 
     .navbar .dropdown-menu {
+      display: none;
       background-color: rgba(15, 23, 42, 0.95);
       border: 1px solid var(--border-color);
       border-radius: 0.75rem;
@@ -135,6 +301,10 @@
       min-width: 220px;
       box-shadow: 0 20px 45px rgba(2, 6, 23, 0.45);
       backdrop-filter: blur(12px);
+    }
+
+    .navbar .dropdown.is-open .dropdown-menu {
+      display: block;
     }
 
     .navbar .dropdown-item {
@@ -155,7 +325,7 @@
       transition: transform 0.3s ease;
     }
 
-    .navbar .show > .nav-link.dropdown-toggle::after {
+    .navbar .dropdown.is-open > .nav-link.dropdown-toggle::after {
       transform: rotate(180deg);
     }
 
@@ -229,6 +399,20 @@
     @media (min-width: 992px) {
       .navbar-toggler {
         display: none !important;
+      }
+
+      .navbar-collapse {
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-end;
+        margin-top: 0;
+      }
+
+      .navbar-nav {
+        flex-direction: row;
+        align-items: center;
+        gap: 0;
+        width: auto;
       }
     }
 
@@ -335,7 +519,7 @@
       letter-spacing: 0.02em;
     }
 
-    .hero-badge i {
+    .hero-badge .icon {
       color: var(--accent-color);
     }
 
@@ -575,6 +759,58 @@
       color: var(--accent-color);
     }
 
+    @media (min-width: 768px) {
+      .col-md-6 {
+        width: 50%;
+      }
+
+      .text-md-start {
+        text-align: left !important;
+      }
+
+      .text-md-end {
+        text-align: right !important;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .col-lg-4 {
+        width: 33.3333%;
+      }
+
+      .col-lg-5 {
+        width: 41.6667%;
+      }
+
+      .col-lg-6 {
+        width: 50%;
+      }
+
+      .col-lg-7 {
+        width: 58.3333%;
+      }
+
+      .col-lg-8 {
+        width: 66.6667%;
+      }
+
+      .col-lg-10 {
+        width: 83.3333%;
+      }
+
+      .col-lg-12 {
+        width: 100%;
+      }
+
+      .mb-lg-0 {
+        margin-bottom: 0 !important;
+      }
+
+      .p-lg-5 {
+        padding: 3rem !important;
+      }
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .hero h1 {
@@ -592,19 +828,116 @@
   </style>
 </head>
 <body>
+  <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden;">
+    <symbol id="icon-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="10" r="5"></circle>
+      <path d="M12 5v10"></path>
+      <path d="M9 8h6"></path>
+      <path d="M9 12h6"></path>
+      <path d="M10 15c1 2 3 2 4 0"></path>
+    </symbol>
+    <symbol id="icon-robot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="5" y="7" width="14" height="12" rx="2"></rect>
+      <rect x="9" y="3" width="6" height="3" rx="1"></rect>
+      <circle cx="10" cy="12" r="1"></circle>
+      <circle cx="14" cy="12" r="1"></circle>
+      <path d="M9 16h6"></path>
+    </symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="8" cy="9" r="3"></circle>
+      <circle cx="16" cy="9" r="3"></circle>
+      <path d="M4 19c0-2 2-4 4-4h2c2 0 4 2 4 4"></path>
+      <path d="M12 19c0-1.8 1.8-3.5 3.5-3.5h1c1.7 0 3.5 1.7 3.5 3.5"></path>
+    </symbol>
+    <symbol id="icon-youtube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="7" width="18" height="10" rx="3"></rect>
+      <polygon points="10,9 16,12 10,15" fill="currentColor" stroke="none"></polygon>
+    </symbol>
+    <symbol id="icon-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 7l-5 5 5 5"></path>
+      <path d="M15 7l5 5-5 5"></path>
+    </symbol>
+    <symbol id="icon-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"></circle>
+      <path d="M8 12l3 3 5-6"></path>
+    </symbol>
+    <symbol id="icon-chart-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 18V6"></path>
+      <path d="M4 18h16"></path>
+      <path d="M7 14l4-4 3 3 5-5"></path>
+    </symbol>
+    <symbol id="icon-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="16" height="6" rx="1"></rect>
+      <rect x="4" y="14" width="16" height="6" rx="1"></rect>
+      <circle cx="8" cy="7" r="1"></circle>
+      <circle cx="8" cy="17" r="1"></circle>
+    </symbol>
+    <symbol id="icon-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="7" width="16" height="11" rx="2"></rect>
+      <path d="M9 7V5h6v2"></path>
+      <path d="M4 12h16"></path>
+    </symbol>
+    <symbol id="icon-play-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"></circle>
+      <polygon points="10,9 16,12 10,15" fill="currentColor" stroke="none"></polygon>
+    </symbol>
+    <symbol id="icon-lightbulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18h6"></path>
+      <path d="M10 21h4"></path>
+      <path d="M8 10a4 4 0 1 1 8 0c0 2-1 3-2 4s-1 2-1 3h-2c0-1 0-2-1-3s-2-2-2-4z"></path>
+    </symbol>
+    <symbol id="icon-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3l5 5-5 11-5-11 5-5z"></path>
+      <circle cx="12" cy="10" r="1.5"></circle>
+    </symbol>
+    <symbol id="icon-envelope" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="6" width="18" height="12" rx="2"></rect>
+      <path d="M3 8l9 6 9-6"></path>
+    </symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M5 5l14 14"></path>
+      <path d="M19 5L5 19"></path>
+    </symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"></circle>
+      <path d="M12 7v6l4 2"></path>
+    </symbol>
+    <symbol id="icon-paper-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 11l18-8-6 18-3-6-9-4z"></path>
+      <path d="M12 13l6-6"></path>
+    </symbol>
+    <symbol id="icon-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+      <circle cx="8" cy="8" r="1"></circle>
+      <path d="M8 11v6"></path>
+      <path d="M12 11v6"></path>
+      <path d="M12 13c0-1 1-2 2-2s2 1 2 2v4"></path>
+    </symbol>
+    <symbol id="icon-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="7"></circle>
+      <circle cx="9.5" cy="11" r="0.8"></circle>
+      <circle cx="14.5" cy="11" r="0.8"></circle>
+      <path d="M9 15c1 1 5 1 6 0"></path>
+      <path d="M8 8l-2-2"></path>
+      <path d="M16 8l2-2"></path>
+    </symbol>
+    <symbol id="icon-dot" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4" fill="currentColor"></circle>
+    </symbol>
+  </svg>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#home">
-        <i class="fas fa-brain me-2"></i>Athena
+        <svg class="icon me-2" aria-hidden="true" focusable="false">
+          <use href="#icon-brain"></use>
+        </svg>
+        Athena
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon">
-          <!-- Fallback hamburger icon -->
-          <i class="fas fa-bars" style="color: var(--text-light); font-size: 1.2rem; display: none;"></i>
-        </span>
+      <button class="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link" href="#home">Home</a>
@@ -620,17 +953,26 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://chatgpt.com/g/g-688da8975c0081919cd2d8ea356ceaf4-athena" target="_blank">
-              <i class="fas fa-robot me-1"></i>Athena GPT
+              <svg class="icon me-1" aria-hidden="true" focusable="false">
+                <use href="#icon-robot"></use>
+              </svg>
+              Athena GPT
             </a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="communityDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fas fa-users me-1"></i>Community
+            <a class="nav-link dropdown-toggle" href="#" id="communityDropdown" role="button" aria-expanded="false">
+              <svg class="icon me-1" aria-hidden="true" focusable="false">
+                <use href="#icon-users"></use>
+              </svg>
+              Community
             </a>
             <ul class="dropdown-menu" aria-labelledby="communityDropdown">
               <li>
                 <a class="dropdown-item" href="https://www.youtube.com/@athena_live" target="_blank" rel="noopener">
-                  <i class="fab fa-youtube me-2"></i>YouTube
+                  <svg class="icon me-2" aria-hidden="true" focusable="false">
+                    <use href="#icon-youtube"></use>
+                  </svg>
+                  YouTube
                 </a>
               </li>
             </ul>
@@ -647,7 +989,10 @@
         <div class="col-lg-8">
           <div class="hero-content">
             <div class="hero-badge">
-              <i class="fas fa-circle"></i> Community Powered by Technology
+              <svg class="icon icon-fill" aria-hidden="true" focusable="false">
+                <use href="#icon-dot"></use>
+              </svg>
+              Community Powered by Technology
             </div>
             <h1>Welcome to Athena</h1>
             <p class="lead">A growing community where ideas, services, and people connect through technology.</p>
@@ -671,7 +1016,9 @@
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="service-card">
             <div class="service-icon">
-              <i class="fas fa-code"></i>
+              <svg class="icon" aria-hidden="true" focusable="false">
+                <use href="#icon-code"></use>
+              </svg>
             </div>
             <h3>Software Engineering</h3>
             <p>Custom software development solutions built with modern technologies and best practices.</p>
@@ -688,7 +1035,9 @@
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="service-card">
             <div class="service-icon">
-              <i class="fas fa-robot"></i>
+              <svg class="icon" aria-hidden="true" focusable="false">
+                <use href="#icon-robot"></use>
+              </svg>
             </div>
             <h3>Automation Solutions</h3>
             <p>Streamline your operations with intelligent automation and AI-powered workflows.</p>
@@ -705,7 +1054,9 @@
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="service-card">
             <div class="service-icon">
-              <i class="fas fa-brain"></i>
+              <svg class="icon" aria-hidden="true" focusable="false">
+                <use href="#icon-brain"></use>
+              </svg>
             </div>
             <h3>AI Agents & Intelligent Systems</h3>
             <p>Purpose-built AI agents that reason, act, integrate with systems, and operate continuously on your behalf.</p>
@@ -723,7 +1074,9 @@
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="service-card">
             <div class="service-icon">
-              <i class="fas fa-chart-line"></i>
+              <svg class="icon" aria-hidden="true" focusable="false">
+                <use href="#icon-chart-line"></use>
+              </svg>
             </div>
             <h3>Data Intelligence & Strategic Insights</h3>
             <p>Advanced analytics and strategic insight systems that guide decision-making at executive and market levels.</p>
@@ -741,7 +1094,9 @@
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="service-card">
             <div class="service-icon">
-              <i class="fas fa-server"></i>
+              <svg class="icon" aria-hidden="true" focusable="false">
+                <use href="#icon-server"></use>
+              </svg>
             </div>
             <h3>Information Technology</h3>
             <p>Comprehensive IT infrastructure and support services to keep your business running smoothly.</p>
@@ -758,7 +1113,9 @@
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="service-card">
             <div class="service-icon">
-              <i class="fas fa-briefcase"></i>
+              <svg class="icon" aria-hidden="true" focusable="false">
+                <use href="#icon-briefcase"></use>
+              </svg>
             </div>
             <h3>Athena Jobs</h3>
             <p>We aggregate job listings so you can quickly find your next role, complete with deep analysis on hot markets and talent movement.</p>
@@ -782,7 +1139,9 @@
       <div class="row align-items-center">
         <div class="col-lg-12">
           <div class="text-center mb-5 mb-lg-0">
-            <i class="fas fa-brain" style="font-size: 8rem; color: var(--accent-color); opacity: 0.8;"></i>
+            <svg class="icon" aria-hidden="true" focusable="false" style="font-size: 8rem; color: var(--accent-color); opacity: 0.8;">
+              <use href="#icon-brain"></use>
+            </svg>
           </div>
         </div>
         <div class="col-lg-6">
@@ -796,32 +1155,43 @@
           <div class="row mb-4">
             <div class="col-md-6 mb-3">
               <div class="d-flex align-items-center">
-                <i class="fas fa-check-circle me-3" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                <svg class="icon me-3" aria-hidden="true" focusable="false" style="color: var(--accent-color); font-size: 1.2rem;">
+                  <use href="#icon-check-circle"></use>
+                </svg>
                 <span style="color: var(--text-light);">Technical Consulting</span>
               </div>
             </div>
             <div class="col-md-6 mb-3">
               <div class="d-flex align-items-center">
-                <i class="fas fa-check-circle me-3" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                <svg class="icon me-3" aria-hidden="true" focusable="false" style="color: var(--accent-color); font-size: 1.2rem;">
+                  <use href="#icon-check-circle"></use>
+                </svg>
                 <span style="color: var(--text-light);">Code Review & Optimization</span>
               </div>
             </div>
             <div class="col-md-6 mb-3">
               <div class="d-flex align-items-center">
-                <i class="fas fa-check-circle me-3" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                <svg class="icon me-3" aria-hidden="true" focusable="false" style="color: var(--accent-color); font-size: 1.2rem;">
+                  <use href="#icon-check-circle"></use>
+                </svg>
                 <span style="color: var(--text-light);">Architecture Planning</span>
               </div>
             </div>
             <div class="col-md-6 mb-3">
               <div class="d-flex align-items-center">
-                <i class="fas fa-check-circle me-3" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                <svg class="icon me-3" aria-hidden="true" focusable="false" style="color: var(--accent-color); font-size: 1.2rem;">
+                  <use href="#icon-check-circle"></use>
+                </svg>
                 <span style="color: var(--text-light);">Automation Strategies</span>
               </div>
             </div>
           </div>
           <div class="d-flex gap-3 flex-wrap">
             <a href="https://chatgpt.com/g/g-688da8975c0081919cd2d8ea356ceaf4-athena" target="_blank" class="btn btn-primary btn-lg">
-              <i class="fas fa-robot me-2"></i>Chat with Athena GPT
+              <svg class="icon me-2" aria-hidden="true" focusable="false">
+                <use href="#icon-robot"></use>
+              </svg>
+              Chat with Athena GPT
             </a>
             <a href="#about" class="btn btn-outline-light btn-lg">Learn More</a>
           </div>
@@ -841,12 +1211,16 @@
       <div class="row align-items-center">
         <div class="col-lg-6">
           <div class="text-center mb-5 mb-lg-0">
-            <i class="fab fa-youtube" style="font-size: 8rem; color: #ff0000; opacity: 0.8;"></i>
+            <svg class="icon" aria-hidden="true" focusable="false" style="font-size: 8rem; color: #ff0000; opacity: 0.8;">
+              <use href="#icon-youtube"></use>
+            </svg>
           </div>
         </div>
         <div class="col-lg-6">
           <h3 style="font-size: 2rem; font-weight: 600; color: var(--text-light); margin-bottom: 1.5rem;">
-            <i class="fab fa-youtube me-3" style="color: #ff0000;"></i>
+            <svg class="icon me-3" aria-hidden="true" focusable="false" style="color: #ff0000;">
+              <use href="#icon-youtube"></use>
+            </svg>
             Content & Community
           </h3>
           <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1rem;">
@@ -861,31 +1235,41 @@
           <div class="row mb-4">
             <div class="col-md-6 mb-3">
               <div class="d-flex align-items-center">
-                <i class="fas fa-play-circle me-3" style="color: #ff0000; font-size: 1.2rem;"></i>
+                <svg class="icon me-3" aria-hidden="true" focusable="false" style="color: #ff0000; font-size: 1.2rem;">
+                  <use href="#icon-play-circle"></use>
+                </svg>
                 <span style="color: var(--text-light);">Tech Tutorials</span>
               </div>
             </div>
             <div class="col-md-6 mb-3">
               <div class="d-flex align-items-center">
-                <i class="fas fa-lightbulb me-3" style="color: #ff0000; font-size: 1.2rem;"></i>
+                <svg class="icon me-3" aria-hidden="true" focusable="false" style="color: #ff0000; font-size: 1.2rem;">
+                  <use href="#icon-lightbulb"></use>
+                </svg>
                 <span style="color: var(--text-light);">AI Insights</span>
               </div>
             </div>
             <div class="col-md-6 mb-3">
               <div class="d-flex align-items-center">
-                <i class="fas fa-code me-3" style="color: #ff0000; font-size: 1.2rem;"></i>
+                <svg class="icon me-3" aria-hidden="true" focusable="false" style="color: #ff0000; font-size: 1.2rem;">
+                  <use href="#icon-code"></use>
+                </svg>
                 <span style="color: var(--text-light);">Live Coding</span>
               </div>
             </div>
             <div class="col-md-6 mb-3">
               <div class="d-flex align-items-center">
-                <i class="fas fa-rocket me-3" style="color: #ff0000; font-size: 1.2rem;"></i>
+                <svg class="icon me-3" aria-hidden="true" focusable="false" style="color: #ff0000; font-size: 1.2rem;">
+                  <use href="#icon-rocket"></use>
+                </svg>
                 <span style="color: var(--text-light);">Product Updates</span>
               </div>
             </div>
             <div class="col-md-6 mb-3">
               <div class="d-flex align-items-center">
-                <i class="fas fa-users me-3" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                <svg class="icon me-3" aria-hidden="true" focusable="false" style="color: var(--accent-color); font-size: 1.2rem;">
+                  <use href="#icon-users"></use>
+                </svg>
                 <span style="color: var(--text-light);">Tech Enthusiasts</span>
               </div>
             </div>
@@ -893,7 +1277,10 @@
 
           <div class="d-flex gap-3 flex-wrap">
             <a href="https://www.youtube.com/@athena_live" target="_blank" class="btn btn-lg" style="background-color: #ff0000; border-color: #ff0000; color: white;">
-              <i class="fab fa-youtube me-2"></i>Subscribe Now
+              <svg class="icon me-2" aria-hidden="true" focusable="false">
+                <use href="#icon-youtube"></use>
+              </svg>
+              Subscribe Now
             </a>
           </div>
         </div>
@@ -931,10 +1318,16 @@
                 <div class="d-flex gap-3 flex-wrap">
                   <a href="#contact" class="btn btn-primary">Work With Us</a>
                   <a href="https://www.youtube.com/@athena_live" target="_blank" class="btn btn-outline-light">
-                    <i class="fab fa-youtube me-2"></i>YouTube Channel
+                    <svg class="icon me-2" aria-hidden="true" focusable="false">
+                      <use href="#icon-youtube"></use>
+                    </svg>
+                    YouTube Channel
                   </a>
                   <a href="https://x.com/_athenalive" target="_blank" class="btn btn-outline-light">
-                    <i class="fab fa-twitter me-2"></i>Follow Us
+                    <svg class="icon me-2" aria-hidden="true" focusable="false">
+                      <use href="#icon-x"></use>
+                    </svg>
+                    Follow Us
                   </a>
                 </div>
               </div>
@@ -989,7 +1382,9 @@
               <div class="col-md-6">
                 <div class="contact-info">
                   <div class="contact-icon">
-                    <i class="fas fa-envelope"></i>
+                    <svg class="icon" aria-hidden="true" focusable="false">
+                      <use href="#icon-envelope"></use>
+                    </svg>
                   </div>
                   <div>
                     <h5 style="color: var(--text-light); margin-bottom: 0.5rem;">Email Us</h5>
@@ -999,7 +1394,9 @@
 
                 <div class="contact-info">
                   <div class="contact-icon">
-                    <i class="fab fa-twitter"></i>
+                    <svg class="icon" aria-hidden="true" focusable="false">
+                      <use href="#icon-x"></use>
+                    </svg>
                   </div>
                   <div>
                     <h5 style="color: var(--text-light); margin-bottom: 0.5rem;">Follow Us</h5>
@@ -1009,7 +1406,9 @@
 
                 <div class="contact-info">
                   <div class="contact-icon">
-                    <i class="fas fa-clock"></i>
+                    <svg class="icon" aria-hidden="true" focusable="false">
+                      <use href="#icon-clock"></use>
+                    </svg>
                   </div>
                   <div>
                     <h5 style="color: var(--text-light); margin-bottom: 0.5rem;">Response Time</h5>
@@ -1025,7 +1424,10 @@
                   we're here to help bring your vision to life.
                 </p>
                 <a href="mailto:info@athena.live?subject=Project Inquiry" class="btn btn-primary w-100">
-                  <i class="fas fa-paper-plane me-2"></i>Send Project Inquiry
+                  <svg class="icon me-2" aria-hidden="true" focusable="false">
+                    <use href="#icon-paper-plane"></use>
+                  </svg>
+                  Send Project Inquiry
                 </a>
               </div>
             </div>
@@ -1040,23 +1442,35 @@
     <div class="container">
       <div class="social-links">
         <a href="https://www.youtube.com/@athena_live" target="_blank" title="YouTube Channel">
-          <i class="fab fa-youtube"></i>
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="#icon-youtube"></use>
+          </svg>
         </a>
 
         <a href="https://chatgpt.com/g/g-688da8975c0081919cd2d8ea356ceaf4-athena" target="_blank" title="Athena GPT">
-          <i class="fas fa-robot"></i>
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="#icon-robot"></use>
+          </svg>
         </a>
-        <a href="https://x.com/_athenalive" target="_blank" title="Twitter">
-          <i class="fab fa-twitter"></i>
+        <a href="https://x.com/_athenalive" target="_blank" title="X (Twitter)">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="#icon-x"></use>
+          </svg>
         </a>
         <a href="mailto:info@athena.live" title="Email">
-          <i class="fas fa-envelope"></i>
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="#icon-envelope"></use>
+          </svg>
         </a>
         <a href="#" title="LinkedIn">
-          <i class="fab fa-linkedin"></i>
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="#icon-linkedin"></use>
+          </svg>
         </a>
         <a href="https://github.com/athena-live" target="_blank" title="GitHub">
-          <i class="fab fa-github"></i>
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="#icon-github"></use>
+          </svg>
         </a>
       </div>
 
@@ -1123,40 +1537,42 @@
     </div>
   </footer>
 
-  <!-- Bootstrap JS -->
-  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Custom JavaScript -->
   <script>
     // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Ensure mobile menu works properly
-    document.addEventListener('DOMContentLoaded', function() {
-      // Check if custom hamburger icon is working, if not show fallback
-      const togglerIcon = document.querySelector('.navbar-toggler-icon');
-      const fallbackIcon = document.querySelector('.navbar-toggler-icon i');
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
 
-      // Show fallback icon if CSS hamburger doesn't work
-      if (window.getComputedStyle(togglerIcon, '::before').content === 'none') {
-        if (fallbackIcon) {
-          fallbackIcon.style.display = 'block';
-          togglerIcon.style.background = 'transparent';
+    if (navbarToggler && navbarCollapse) {
+      navbarToggler.addEventListener('click', function() {
+        const isOpen = navbarCollapse.classList.toggle('is-open');
+        navbarToggler.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    }
+
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    dropdownToggles.forEach(toggle => {
+      toggle.addEventListener('click', function(event) {
+        event.preventDefault();
+        const dropdown = toggle.closest('.dropdown');
+        const isOpen = dropdown.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    });
+
+    document.addEventListener('click', function(event) {
+      document.querySelectorAll('.dropdown.is-open').forEach(dropdown => {
+        if (!dropdown.contains(event.target)) {
+          dropdown.classList.remove('is-open');
+          const toggle = dropdown.querySelector('.dropdown-toggle');
+          if (toggle) {
+            toggle.setAttribute('aria-expanded', 'false');
+          }
         }
-      }
-
-      // Ensure toggler is visible on mobile
-      function checkMobileView() {
-        const toggler = document.querySelector('.navbar-toggler');
-        if (window.innerWidth <= 991) {
-          toggler.style.display = 'block';
-        } else {
-          toggler.style.display = 'none';
-        }
-      }
-
-      checkMobileView();
-      window.addEventListener('resize', checkMobileView);
+      });
     });
 
 
@@ -1170,8 +1586,11 @@
           // Close mobile menu if open
           const navbarCollapse = document.querySelector('.navbar-collapse');
           const navbarToggler = document.querySelector('.navbar-toggler');
-          if (navbarCollapse.classList.contains('show')) {
-            navbarToggler.click();
+          if (navbarCollapse && navbarCollapse.classList.contains('is-open')) {
+            navbarCollapse.classList.remove('is-open');
+            if (navbarToggler) {
+              navbarToggler.setAttribute('aria-expanded', 'false');
+            }
           }
 
           const offsetTop = target.offsetTop - 80; // Account for fixed navbar
