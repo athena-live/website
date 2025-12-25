@@ -113,7 +113,6 @@ Guidelines:
 - 🐙 GitHub Org: https://github.com/athena-live
 - 🐦 X (Twitter): https://x.com/_athenalive
 - 📺 YouTube: https://www.youtube.com/@athena_live
-- 👽 Reddit: https://www.reddit.com/r/athenalive/
 
 ## Philosophy
 
