@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow">
+  <title>Athena.live | About</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    :root {
+      --primary-color: #0b2d5b;
+      --secondary-color: #061a33;
+      --accent-color: #3f7fc4;
+      --dark-bg: #050a14;
+      --darker-bg: #02050b;
+      --text-light: #e2e8f0;
+      --text-muted: #8ea2bf;
+      --border-color: #1b2b42;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    section[id] {
+      scroll-margin-top: 90px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: -0.75rem;
+      margin-right: -0.75rem;
+    }
+
+    .row > [class*="col-"] {
+      width: 100%;
+      padding: 0 0.75rem;
+    }
+
+    .d-flex {
+      display: flex !important;
+    }
+
+    .flex-wrap {
+      flex-wrap: wrap !important;
+    }
+
+    .align-items-center {
+      align-items: center !important;
+    }
+
+    .justify-content-center {
+      justify-content: center !important;
+    }
+
+    .text-center {
+      text-align: center !important;
+    }
+
+    .gap-3 {
+      gap: 1rem !important;
+    }
+
+    .mb-0 {
+      margin-bottom: 0 !important;
+    }
+
+    .mb-2 {
+      margin-bottom: 0.5rem !important;
+    }
+
+    .mb-3 {
+      margin-bottom: 1rem !important;
+    }
+
+    .mb-4 {
+      margin-bottom: 1.5rem !important;
+    }
+
+    .mb-5 {
+      margin-bottom: 3rem !important;
+    }
+
+    .mt-4 {
+      margin-top: 1.5rem !important;
+    }
+
+    .p-3 {
+      padding: 1rem !important;
+    }
+
+    .p-4 {
+      padding: 1.5rem !important;
+    }
+
+    .p-5 {
+      padding: 3rem !important;
+    }
+
+    .lead {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-lg {
+      padding: 0.85rem 1.75rem !important;
+      font-size: 1.1rem;
+    }
+
+    @keyframes star-drift {
+      0% {
+        background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+      }
+      100% {
+        background-position: 200px 300px, -150px 200px, 180px -220px, -120px -180px, 140px -150px;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: flex-start;
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 0 4rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23334155" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.1;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.8) 50%, transparent 60%),
+        radial-gradient(1.5px 1.5px at 70% 40%, rgba(255,255,255,0.7) 50%, transparent 60%),
+        radial-gradient(1.8px 1.8px at 40% 70%, rgba(255,255,255,0.75) 50%, transparent 60%),
+        radial-gradient(1px 1px at 80% 80%, rgba(255,255,255,0.6) 50%, transparent 60%),
+        radial-gradient(1.3px 1.3px at 55% 20%, rgba(255,255,255,0.65) 50%, transparent 60%);
+      background-repeat: repeat;
+      animation: star-drift 20s linear infinite;
+      opacity: 0.6;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 760px;
+    }
+
+    .hero-panel {
+      background: linear-gradient(160deg, rgba(11, 45, 91, 0.35) 0%, rgba(3, 10, 20, 0.7) 100%);
+      border: 1px solid rgba(63, 127, 196, 0.35);
+      border-radius: 1.25rem;
+      padding: 2rem;
+      box-shadow: 0 30px 60px rgba(3, 10, 20, 0.45);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-panel-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .hero-panel h2 {
+      font-size: 1.75rem;
+      margin: 0.75rem 0 1.25rem;
+    }
+
+    .hero-panel-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .hero-panel-list li {
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      background: rgba(5, 10, 20, 0.6);
+      border: 1px solid rgba(27, 43, 66, 0.7);
+      color: var(--text-light);
+    }
+
+    .hero-panel-note {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      color: var(--text-light);
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-color) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero .lead {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: #f8f6ef;
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      color: #f8f6ef;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-outline-light {
+      border-color: var(--border-color);
+      color: var(--text-light);
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-light:hover {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Sections */
+    .section {
+      padding: 4.5rem 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--text-light);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .story-grid {
+      display: grid;
+      gap: 1.75rem;
+    }
+
+    .info-card {
+      background: linear-gradient(135deg, rgba(27, 43, 66, 0.18) 0%, rgba(5, 10, 20, 0.18) 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 2rem;
+      height: 100%;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .info-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-color);
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
+    }
+
+    .info-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-light);
+    }
+
+    .info-card p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem;
+    }
+
+    .feature-list li {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      color: var(--accent-color);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    @media (min-width: 768px) {
+      .col-md-6 {
+        width: 50%;
+      }
+
+      .text-md-start {
+        text-align: left !important;
+      }
+
+      .text-md-end {
+        text-align: right !important;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .col-lg-6 {
+        width: 50%;
+      }
+
+      .col-lg-8 {
+        width: 66.6667%;
+      }
+
+      .col-lg-10 {
+        width: 83.3333%;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      }
+
+      .story-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .info-card.is-wide {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .hero-panel {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="site-shell">
+      <a class="navbar-brand" href="index.html#home">Athena</a>
+      <button class="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="athena-gpt.html">
+              <svg class="icon me-1" aria-hidden="true" focusable="false">
+                <use href="icons.svg#icon-robot"></use>
+              </svg>
+              Athena GPT
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="communityDropdown" role="button" aria-expanded="false">
+              <svg class="icon me-1" aria-hidden="true" focusable="false">
+                <use href="icons.svg#icon-users"></use>
+              </svg>
+              Community
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="communityDropdown">
+              <li>
+                <a class="dropdown-item" href="https://www.youtube.com/@athena_live" target="_blank" rel="noopener">
+                  <svg class="icon me-2" aria-hidden="true" focusable="false">
+                    <use href="icons.svg#icon-youtube"></use>
+                  </svg>
+                  YouTube
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+          <div class="hero-badge">
+            <svg class="icon icon-fill" aria-hidden="true" focusable="false">
+              <use href="icons.svg#icon-dot"></use>
+            </svg>
+            About Athena.live
+          </div>
+            <h1>Live support, live intelligence, live presence.</h1>
+            <p class="lead">
+              Athena.live is not software you install and hope for the best. It is intelligent support that is live -
+              present, responsive, and working alongside you in real time.
+            </p>
+            <div class="d-flex flex-wrap gap-3">
+              <a href="index.html#contact" class="btn btn-primary btn-lg">Talk With Us</a>
+              <a href="index.html#home" class="btn btn-outline-light btn-lg">Back to Home</a>
+            </div>
+          </div>
+          <aside class="hero-panel">
+            <div class="hero-panel-eyebrow">At a glance</div>
+            <h2>What Live promises</h2>
+            <ul class="hero-panel-list">
+              <li>Live support, not delayed tickets</li>
+              <li>Real-time guidance, not canned responses</li>
+              <li>Expert-on-call intelligence</li>
+            </ul>
+            <div class="hero-panel-note">Always available. Always thinking. Always with you.</div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">The Athena.live Story</h2>
+        <p class="section-subtitle">
+          The word "Live" is not branding flair. It is a promise. When people see Live, they expect one thing
+          instinctively: "I can get real help, right now." That expectation is exactly what Athena.live is built
+          to deliver.
+        </p>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="story-grid">
+              <div class="info-card is-wide">
+              <h3>What "Live" Really Means</h3>
+              <p>Live means presence.</p>
+              <p>
+                Athena.live exists in the moment - available 24/7, responsive when decisions matter, and engaged when
+                problems cannot wait.
+              </p>
+              <p>It reflects:</p>
+              <ul class="feature-list">
+                <li>Live support, not delayed tickets</li>
+                <li>Real-time guidance, not canned responses</li>
+                <li>Expert-on-call intelligence</li>
+                <li>Immediate problem-solving</li>
+                <li>Strategic thinking, not reactive troubleshooting</li>
+              </ul>
+              <p>Think of Athena.live as:</p>
+              <ul class="feature-list">
+                <li>A live concierge for your business and systems</li>
+                <li>An expert-on-call, always available</li>
+                <li>Smart, thoughtful guidance exactly when you need it</li>
+              </ul>
+              <p>
+                Not just answering questions - helping you decide, act, and move forward.
+              </p>
+              <p>
+                Our support is not an afterthought. It is our greatest asset, and it is why Live is part of our name.
+              </p>
+              </div>
+
+              <div class="info-card">
+              <h3>Always With You - Not Just Available</h3>
+              <p>Athena.live does not disappear after deployment. We stay right there with you:</p>
+              <ul class="feature-list">
+                <li>During growth</li>
+                <li>During uncertainty</li>
+                <li>During breakdowns</li>
+                <li>During critical decisions</li>
+              </ul>
+              <p>Live means continuous presence, not periodic assistance.</p>
+              <p>You are never handed off. You are never left waiting. You are never navigating complexity alone.</p>
+              </div>
+
+              <div class="info-card">
+              <h3>Built on 20+ Years of Systems Thinking</h3>
+              <p>
+                Athena.live did not appear overnight. Its roots trace back to the early 2000s, under Athena Systems,
+                where we spent over two decades building, deploying, and maintaining complex systems across industries.
+              </p>
+              <p>For years, we built:</p>
+              <ul class="feature-list">
+                <li>Infrastructure</li>
+                <li>Platforms</li>
+                <li>Automation</li>
+                <li>Enterprise-grade systems</li>
+              </ul>
+              <p>
+                But the world changed. Software stopped being static. Support stopped being optional. Speed,
+                adaptability, and intelligence became essential.
+              </p>
+              <p>So we evolved.</p>
+              <p>
+                Today, Athena.live no longer focuses on building systems for you. We build live, autonomous software
+                that operates with you.
+              </p>
+              <p>Software that:</p>
+              <ul class="feature-list">
+                <li>Learns</li>
+                <li>Adapts</li>
+                <li>Executes</li>
+                <li>Supports decisions in real time</li>
+              </ul>
+              </div>
+
+              <div class="info-card">
+              <h3>From Systems to Living Software</h3>
+              <p>Athena.live represents a shift:</p>
+              <ul class="feature-list">
+                <li>From tools to presence</li>
+                <li>From software to partnership</li>
+                <li>From automation to autonomous intelligence</li>
+              </ul>
+              <p>Our platform is designed to:</p>
+              <ul class="feature-list">
+                <li>Operate continuously</li>
+                <li>Support humans directly</li>
+                <li>Reduce friction, delay, and uncertainty</li>
+                <li>Act when action is required</li>
+              </ul>
+              <p>This is not passive AI. This is live, engaged, autonomous software.</p>
+              </div>
+
+              <div class="info-card">
+              <h3>Influence Without Force</h3>
+              <p>Athena.live is built on a simple belief:</p>
+              <p><strong>The most powerful leadership is chosen, not imposed.</strong></p>
+              <p>We do not aim to control through force, noise, or disruption. We shape outcomes through:</p>
+              <ul class="feature-list">
+                <li>Clear ideas</li>
+                <li>Trusted systems</li>
+                <li>Reliable presence</li>
+                <li>Thoughtful guidance</li>
+              </ul>
+              <p>When people trust you, they follow you.</p>
+              <p>
+                That is what Athena.live enables - peaceful influence, clarity, and control over your domain.
+              </p>
+              </div>
+
+              <div class="info-card is-wide">
+              <h3>Athena.live</h3>
+              <p>Live support. Live intelligence. Live presence.</p>
+              <p>Always available. Always thinking. Always with you.</p>
+              <div class="d-flex flex-wrap gap-3 mt-4">
+                <a href="index.html#contact" class="btn btn-primary">Work With Us</a>
+                <a href="index.html#home" class="btn btn-outline-light">Explore Athena</a>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="site-shell">
+      <div class="social-links">
+        <a href="https://www.youtube.com/@athena_live" target="_blank" title="YouTube">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-youtube"></use>
+          </svg>
+        </a>
+        <a href="https://chatgpt.com/g/g-688da8975c0081919cd2d8ea356ceaf4-athena" target="_blank" title="Athena GPT">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-robot"></use>
+          </svg>
+        </a>
+        <a href="https://x.com/_athenalive" target="_blank" title="X (Twitter)">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-x"></use>
+          </svg>
+        </a>
+        <a href="mailto:info@athena.live" title="Email">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-envelope"></use>
+          </svg>
+        </a>
+        <a href="#" title="LinkedIn">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-linkedin"></use>
+          </svg>
+        </a>
+        <a href="https://github.com/athena-live" target="_blank" title="GitHub">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-github"></use>
+          </svg>
+        </a>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 text-md-start text-center">
+          <p>&copy; <span id="year"></span> Athena Technologies. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end text-center">
+          <p>
+            Powered by Innovation &amp; Intelligence |
+            <a class="legal-link" href="terms.html">Terms of Service</a> |
+            <a class="legal-link" href="privacy.html">Privacy Policy</a> |
+            <a class="legal-link" href="about.html">About Athena.live</a> |
+            <a class="legal-link" href="athena-live-profile.html">Athena Live Profile</a> |
+            <a class="legal-link" href="athena-live-agent.html">Athena Live Agent</a> |
+            <a class="legal-link" href="athena-graphs.html">Athena Graphs</a> |
+            <a class="legal-link" href="https://athena.live/robots.txt" target="_blank">Robots.txt</a> |
+            <a class="legal-link" href="https://athena.live/sitemap.xml" target="_blank">Sitemap</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="shared.js" defer></script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MW9Z4L9WTY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MW9Z4L9WTY');
+  </script>
+</body>
+</html>

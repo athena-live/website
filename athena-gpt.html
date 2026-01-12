@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <title>Meet Athena GPT</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    :root {
+      --primary-color: #0b2d5b;
+      --secondary-color: #061a33;
+      --accent-color: #3f7fc4;
+      --dark-bg: #050a14;
+      --darker-bg: #02050b;
+      --text-light: #e2e8f0;
+      --text-muted: #8ea2bf;
+      --border-color: #1b2b42;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4.5rem 1.5rem 3rem;
+      display: grid;
+      gap: 2rem;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 780px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.6rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+      color: #fff;
+      box-shadow: 0 15px 30px rgba(11, 45, 91, 0.25);
+    }
+
+    .btn-outline {
+      border-color: rgba(142, 162, 191, 0.4);
+      color: var(--text-light);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+      display: grid;
+      gap: 2rem;
+    }
+
+    .card {
+      background: rgba(5, 10, 20, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: 1.25rem;
+      padding: 2rem;
+      box-shadow: 0 20px 40px rgba(2, 5, 11, 0.35);
+    }
+
+    .card h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .list {
+      display: grid;
+      gap: 0.75rem;
+      color: var(--text-light);
+    }
+
+    .list li {
+      list-style: none;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      background: rgba(27, 43, 66, 0.25);
+      border: 1px solid rgba(142, 162, 191, 0.2);
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        padding-top: 3rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="site-shell">
+      <a class="navbar-brand" href="index.html#home">Athena</a>
+      <button class="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="athena-gpt.html">
+              <svg class="icon me-1" aria-hidden="true" focusable="false">
+                <use href="icons.svg#icon-robot"></use>
+              </svg>
+              Athena GPT
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="communityDropdown" role="button" aria-expanded="false">
+              <svg class="icon me-1" aria-hidden="true" focusable="false">
+                <use href="icons.svg#icon-users"></use>
+              </svg>
+              Community
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="communityDropdown">
+              <li>
+                <a class="dropdown-item" href="https://www.youtube.com/@athena_live" target="_blank" rel="noopener">
+                  <svg class="icon me-2" aria-hidden="true" focusable="false">
+                    <use href="icons.svg#icon-youtube"></use>
+                  </svg>
+                  YouTube
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page">
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Meet Athena GPT</div>
+          <h1>Meet Athena GPT</h1>
+          <p>
+            Athena GPT is the intelligence that powers everything we build. It runs our products, generates content,
+            assists users, analyzes data, and continuously improves how Athena operates across the platform. From
+            automation to insight, Athena GPT is designed to think in systems, act with purpose, and scale with clarity.
+          </p>
+          <p>
+            This isn’t a chatbot bolted onto software. Athena GPT is embedded at the core.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://chatgpt.com/g/g-688da8975c0081919cd2d8ea356ceaf4-athena" target="_blank" rel="noopener">Launch Athena GPT</a>
+            <a class="btn btn-outline" href="index.html">Explore Athena.live</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="content">
+        <div class="card">
+          <h2>What Athena GPT Does</h2>
+          <ul class="list">
+            <li>Operates and coordinates Athena products</li>
+            <li>Generates and assists with content at scale</li>
+            <li>Powers agents, workflows, and automation</li>
+            <li>Learns from structure, not noise</li>
+            <li>Adapts as our platform grows</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Built for Builders</h2>
+          <p>
+            Athena GPT is designed to work alongside humans, not replace them. It reduces friction, accelerates
+            development, and turns complex ideas into executable systems.
+          </p>
+          <p>
+            As Athena evolves, Athena GPT evolves with it. This is the mind behind the platform.
+          </p>
+        </div>
+      </section>
+    </main>
+
+  </div>
+
+  <footer class="footer">
+    <div class="site-shell">
+      <div class="social-links">
+        <a href="https://www.youtube.com/@athena_live" target="_blank" title="YouTube">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-youtube"></use>
+          </svg>
+        </a>
+        <a href="https://chatgpt.com/g/g-688da8975c0081919cd2d8ea356ceaf4-athena" target="_blank" title="Athena GPT">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-robot"></use>
+          </svg>
+        </a>
+        <a href="https://x.com/_athenalive" target="_blank" title="X (Twitter)">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-x"></use>
+          </svg>
+        </a>
+        <a href="mailto:info@athena.live" title="Email">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-envelope"></use>
+          </svg>
+        </a>
+        <a href="#" title="LinkedIn">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-linkedin"></use>
+          </svg>
+        </a>
+        <a href="https://github.com/athena-live" target="_blank" title="GitHub">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-github"></use>
+          </svg>
+        </a>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 text-md-start text-center">
+          <p>&copy; <span id="year"></span> Athena Technologies. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end text-center">
+          <p>
+            Powered by Innovation &amp; Intelligence |
+            <a class="legal-link" href="terms.html">Terms of Service</a> |
+            <a class="legal-link" href="privacy.html">Privacy Policy</a> |
+            <a class="legal-link" href="about.html">About Athena.live</a> |
+            <a class="legal-link" href="athena-live-profile.html">Athena Live Profile</a> |
+            <a class="legal-link" href="athena-live-agent.html">Athena Live Agent</a> |
+            <a class="legal-link" href="athena-graphs.html">Athena Graphs</a> |
+            <a class="legal-link" href="https://athena.live/robots.txt" target="_blank">Robots.txt</a> |
+            <a class="legal-link" href="https://athena.live/sitemap.xml" target="_blank">Sitemap</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="shared.js" defer></script>
+</body>
+</html>

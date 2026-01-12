@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /athena-live-profile.html
+Allow: /athena-live-agent.html
+Allow: /athena-graphs.html
+Allow: /athena-gpt.html
+
+Sitemap: https://athena.live/sitemap.xml

@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="devfun-verification" content="setTotalFallback" />
+    <title>jobs.athena.live | Athena Jobs Portal</title>
+    <meta
+      name="description"
+      content="Enter the Athena Jobs portal to discover curated roles, live hiring signals, and direct access to top teams across the Athena network."
+    />
+    <meta
+      name="keywords"
+      content="Athena Jobs, jobs.athena.live, Athena careers, curated jobs, hiring signal, talent network"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://jobs.athena.live/" />
+    <meta property="og:title" content="jobs.athena.live | Athena Jobs Portal" />
+    <meta
+      property="og:description"
+      content="Discover curated roles handpicked by Athena. Visit jobs.athena.live to track live hiring signals and connect directly with the teams."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jobs.athena.live/" />
+    <meta property="og:image" content="https://jobs.athena.live/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="jobs.athena.live | Athena Jobs Portal" />
+    <meta
+      name="twitter:description"
+      content="Real roles, real signals. Enter the Athena Jobs portal to find your next move."
+    />
+    <meta name="twitter:image" content="https://jobs.athena.live/og-image.jpg" />
+    <meta name="theme-color" content="#f1f5ff" />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Athena Jobs Portal",
+        "url": "https://jobs.athena.live/",
+        "description": "Athena Jobs curates live roles and hiring signals across the Athena network.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Athena",
+          "url": "https://athena.live"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://jobs.athena.live/search?query={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MW9Z4L9WTY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-MW9Z4L9WTY");
+    </script>
+    <style>
+      :root {
+        --background: #f1f5ff;
+        --surface: #ffffff;
+        --surface-alt: #f8faff;
+        --surface-glass: rgba(255, 255, 255, 0.65);
+        --surface-glow: rgba(31, 100, 255, 0.08);
+        --accent: #1f64ff;
+        --accent-secondary: #5590ff;
+        --accent-soft: rgba(31, 100, 255, 0.12);
+        --accent-strong: rgba(31, 100, 255, 0.28);
+        --text-main: #1b2433;
+        --text-muted: #5b6575;
+        --border: rgba(15, 36, 104, 0.08);
+        --shadow-soft: 0 25px 70px rgba(31, 65, 135, 0.18);
+        --shadow-glow: 0 18px 40px rgba(31, 100, 255, 0.22);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        background: radial-gradient(120% 120% at 80% -20%, rgba(31, 100, 255, 0.12), transparent),
+          radial-gradient(120% 140% at -10% 90%, rgba(90, 144, 255, 0.14), transparent), var(--background);
+        color: var(--text-main);
+        min-height: 100vh;
+        color-scheme: light;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .page {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 40px 24px 80px;
+      }
+
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 72px;
+      }
+
+      .brand {
+        font-weight: 700;
+        font-size: 1.125rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-main);
+      }
+
+      .header-link {
+        color: var(--accent);
+        font-weight: 600;
+        text-decoration: none;
+        opacity: 0.92;
+        transition: opacity 0.2s ease, color 0.2s ease;
+      }
+
+      .header-link:hover {
+        opacity: 1;
+        color: var(--accent-secondary);
+      }
+
+      .footer-link {
+        color: var(--accent);
+        font-weight: 600;
+        opacity: 0.92;
+        text-decoration: none;
+        transition: opacity 0.2s ease, color 0.2s ease;
+      }
+
+      .footer-link:hover {
+        opacity: 1;
+        color: var(--accent-secondary);
+      }
+
+      .hero {
+        position: relative;
+        background: linear-gradient(165deg, rgba(255, 255, 255, 0.98), rgba(235, 242, 255, 0.98));
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        padding: 56px 48px;
+        box-shadow: var(--shadow-soft);
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: -30%;
+        background: radial-gradient(circle at 20% 15%, rgba(31, 100, 255, 0.16), transparent 55%),
+          radial-gradient(circle at 85% 10%, rgba(85, 144, 255, 0.18), transparent 60%);
+        pointer-events: none;
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 5vw, 3.25rem);
+        margin: 0 0 18px;
+        letter-spacing: -0.01em;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero p {
+        margin: 0 0 32px;
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        line-height: 1.6;
+        max-width: 32rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-group {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 14px 26px;
+        border-radius: 999px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border: 1px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .button.primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+        color: #fff;
+        box-shadow: var(--shadow-glow);
+      }
+
+      .button.secondary {
+        background: rgba(31, 100, 255, 0.08);
+        color: var(--accent);
+        border-color: rgba(31, 100, 255, 0.18);
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+      }
+
+      .button.primary:hover {
+        box-shadow: 0 26px 70px rgba(31, 100, 255, 0.28);
+      }
+
+      .button.secondary:hover {
+        box-shadow: 0 20px 50px rgba(31, 65, 135, 0.15);
+      }
+
+      .stat-board {
+        margin-top: 36px;
+        display: grid;
+        gap: 24px;
+        padding: 32px;
+        border-radius: 28px;
+        border: 1px solid var(--accent-strong);
+        background: linear-gradient(160deg, rgba(255, 255, 255, 0.96) 0%, rgba(238, 244, 255, 0.96) 70%);
+        box-shadow: var(--shadow-soft);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stat-board::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top left, rgba(31, 100, 255, 0.16), transparent 55%);
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      .stat-total {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .stat-label {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(27, 36, 51, 0.6);
+      }
+
+      .stat-value {
+        font-size: clamp(2.2rem, 4.6vw, 3.2rem);
+        font-weight: 700;
+        color: var(--accent);
+        line-height: 1;
+        position: relative;
+        z-index: 1;
+      }
+
+      .stat-board[data-state="loading"] .stat-value {
+        color: rgba(31, 100, 255, 0.45);
+        position: relative;
+      }
+
+      .stat-board[data-state="loading"] .stat-value::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 8px;
+        background: linear-gradient(90deg, rgba(31, 100, 255, 0.16), rgba(31, 100, 255, 0.45), rgba(31, 100, 255, 0.16));
+        animation: shimmer 1.8s ease-in-out infinite;
+      }
+
+      .stat-board[data-state="animating"] .stat-value,
+      .stat-board[data-state="ready"] .stat-value {
+        color: var(--accent);
+      }
+
+      .stat-board[data-state="error"] {
+        border-color: rgba(31, 65, 135, 0.14);
+        background: linear-gradient(150deg, rgba(255, 255, 255, 0.95), rgba(236, 241, 255, 0.95));
+      }
+
+      .stat-board[data-state="error"] .stat-value {
+        color: rgba(31, 65, 135, 0.55);
+      }
+
+      .stat-types {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .stat-type-grid {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .stat-type-pill {
+        min-width: 132px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, rgba(31, 100, 255, 0.1), rgba(90, 144, 255, 0.16));
+        color: var(--accent);
+        font-weight: 600;
+        font-size: 0.92rem;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        border: 1px solid transparent;
+        box-shadow: 0 18px 40px rgba(31, 70, 150, 0.18);
+      }
+
+      .stat-type-pill.is-loading {
+        color: transparent;
+        overflow: hidden;
+      }
+
+      .stat-type-pill.is-loading::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba(31, 100, 255, 0.0), rgba(31, 100, 255, 0.32), rgba(31, 100, 255, 0.0));
+        animation: shimmer 1.4s ease-in-out infinite;
+      }
+
+      .stat-type-grid[data-state="error"] .stat-type-pill {
+        background: rgba(31, 100, 255, 0.08);
+        color: rgba(31, 65, 135, 0.6);
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%);
+        }
+        50% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      .section {
+        margin-top: 80px;
+      }
+
+      .section h2 {
+        margin: 0 0 12px;
+        font-size: 1.75rem;
+      }
+
+      .section p {
+        margin: 0;
+        color: var(--text-muted);
+        line-height: 1.7;
+      }
+
+      .section-lead {
+        font-size: 1.05rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        margin-top: 36px;
+      }
+
+      .feature-card {
+        background: linear-gradient(150deg, rgba(255, 255, 255, 0.98), rgba(240, 246, 255, 0.98));
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 28px;
+        box-shadow: 0 20px 45px rgba(31, 65, 135, 0.12);
+      }
+
+      .feature-card h3 {
+        margin: 0 0 12px;
+        font-size: 1.15rem;
+      }
+
+      .steps {
+        display: grid;
+        gap: 18px;
+        margin-top: 32px;
+      }
+
+      .step {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      .step-number {
+        font-weight: 600;
+        color: var(--accent);
+        font-size: 1rem;
+        margin-top: 3px;
+      }
+
+      .qa-board {
+        display: grid;
+        gap: 18px;
+        margin-top: 32px;
+      }
+
+      .qa-item {
+        background: linear-gradient(150deg, rgba(255, 255, 255, 0.98), rgba(241, 247, 255, 0.98));
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 24px 26px;
+        box-shadow: 0 18px 40px rgba(31, 65, 135, 0.12);
+      }
+
+      .qa-item strong {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 1.05rem;
+      }
+
+      .qa-item p {
+        margin: 0;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      .faq-grid {
+        display: grid;
+        gap: 24px;
+        margin-top: 32px;
+      }
+
+      .faq-group {
+        background: linear-gradient(150deg, rgba(255, 255, 255, 0.98), rgba(240, 246, 255, 0.98));
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 20px 45px rgba(31, 65, 135, 0.12);
+      }
+
+      .faq-group h3 {
+        margin: 0 0 12px;
+        font-size: 1.2rem;
+      }
+
+      .faq-item {
+        border-top: 1px solid var(--border);
+        padding: 18px 0;
+      }
+
+      .faq-item:first-of-type {
+        border-top: none;
+        padding-top: 0;
+      }
+
+      .faq-item summary {
+        margin: 0;
+        font-weight: 600;
+        color: var(--text-main);
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-item summary::after {
+        content: "+";
+        font-size: 1.25rem;
+        color: var(--accent);
+        transition: transform 0.2s ease;
+      }
+
+      .faq-item[open] summary::after {
+        transform: rotate(45deg);
+      }
+
+      .faq-item p {
+        margin: 12px 0 0;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      footer {
+        margin-top: 96px;
+        padding-top: 32px;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 640px) {
+        .site-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .hero {
+          padding: 40px 28px;
+        }
+
+        .cta-group {
+          width: 100%;
+        }
+
+        .cta-group .button {
+          flex: 1;
+          justify-content: center;
+        }
+
+        .stat-board {
+          padding: 22px 24px;
+        }
+
+        .stat-type-grid {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand">Athena</div>
+        <a
+          class="header-link"
+          href="https://jobs.athena.live"
+          target="_blank"
+          rel="noopener"
+        >
+          Go to jobs.athena.live
+        </a>
+      </header>
+
+      <section class="hero">
+        <h1>jobs.athena.live</h1>
+        <p>
+          Athena Jobs is the AI-powered jobs platform that matches candidates to roles and offers certifications to
+          build professional networks. Discover curated roles, follow live hiring signals, and connect directly with the
+          teams building what's next—no invite code or waitlist required.
+        </p>
+        <div class="cta-group">
+          <a
+            class="button primary"
+            href="https://jobs.athena.live"
+            target="_blank"
+            rel="noopener"
+          >
+            Explore open roles
+          </a>
+          <a
+            class="button secondary"
+            href="#how-it-works"
+          >
+            See how it works
+          </a>
+        </div>
+        <div
+          class="stat-board"
+          id="jobs-statboard"
+          aria-live="polite"
+          data-state="loading"
+        >
+          <div class="stat-total">
+            <span class="stat-label">Total active jobs</span>
+            <strong
+              class="stat-value"
+              id="jobs-count"
+              data-default="0"
+            >
+              0
+            </strong>
+          </div>
+          <div class="stat-types">
+            <span class="stat-label">Top job types</span>
+            <div
+              class="stat-type-grid"
+              id="jobs-type-count"
+            >
+              <div class="stat-type-pill is-loading"></div>
+              <div class="stat-type-pill is-loading"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="section"
+        id="how-it-works"
+      >
+        <h2>What to expect</h2>
+        <p>
+          The portal brings together hiring signals from the founders, operators, and companies in our orbit.
+          You will see real roles from active teams—listings refreshed frequently.
+        </p>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>Curated opportunities</h3>
+            <p>Open roles surfaced by Athena, focused on venture-backed and high-growth companies.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Hiring signal first</h3>
+            <p>We highlight teams that are actively hiring so you can spend time where it matters.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Built with trust</h3>
+            <p>Every post ties back to a real hiring manager or partner in the network.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>How it works</h2>
+        <p class="section-lead">
+          A quick outline you can reference or drop into a brief when sharing the Athena Jobs experience with your
+          team or an assistant.
+        </p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div>
+              <strong>Visit jobs.athena.live.</strong>
+              Create your free account, then browse active searches and follow the teams you care about.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div>
+              <strong>Filter by what matters.</strong>
+              Narrow by function, location, or company to focus on the roles that fit.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div>
+              <strong>Reach the hiring team.</strong>
+              Connect straight to the people driving the search—no guesswork needed.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="section"
+        id="ask-athena"
+      >
+        <h2>Ask Athena Jobs</h2>
+        <p class="section-lead">
+          Drop these ready-to-use prompts into your LLM or documentation so you can share accurate, on-brand answers in
+          seconds.
+        </p>
+        <div class="qa-board">
+          <div class="qa-item">
+            <strong>Prompt</strong>
+            <p>"What is jobs.athena.live and who curates the roles there?"</p>
+            <strong>Answer</strong>
+            <p>
+              Jobs.athena.live is the official Athena Jobs portal. The Athena network curates live opportunities from
+              founders, operators, and hiring partners—with listings updated regularly.
+            </p>
+          </div>
+          <div class="qa-item">
+            <strong>Prompt</strong>
+            <p>"Explain how I can use jobs.athena.live to track hiring momentum."</p>
+            <strong>Answer</strong>
+            <p>
+              Visit the portal to follow active searches, filter by function or location, and monitor the teams moving
+              fastest. Each listing includes context so you know which roles have strong hiring signal.
+            </p>
+          </div>
+          <div class="qa-item">
+            <strong>Prompt</strong>
+            <p>"How do candidates connect with the hiring teams on the Athena portal?"</p>
+            <strong>Answer</strong>
+            <p>
+              Every listing points directly to the hiring manager or partner driving the search. Once you are inside
+              jobs.athena.live, you can reach out with context, request an intro, or ask for updates without guesswork.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="section"
+        id="athena-faq"
+      >
+        <h2>Athena Jobs Q&A</h2>
+        <p class="section-lead">
+          Reference these answers when teammates and candidates ask how the portal works. They mirror the guidance we
+          share with operators, candidates, and hiring teams every day.
+        </p>
+        <div class="faq-grid">
+          <div class="faq-group">
+            <h3>Quality & Coverage</h3>
+            <details class="faq-item">
+              <summary>How does Athena source the roles that appear on the portal?</summary>
+              <p>
+                Roles are submitted directly by founders, hiring managers, and operators across the Athena network. The
+                concierge team reviews every update before it goes live, so each listing reflects a real and active
+                search.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>How often are listings refreshed or retired?</summary>
+              <p>
+                Hiring signals are checked throughout the week with the teams running each search. When a role is filled
+                or paused we remove it, and we welcome flags from the community if something looks out of date so we can
+                act quickly.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>Can I focus on remote or location-specific opportunities?</summary>
+              <p>
+                Yes. Listings are tagged by location, function, and whether they are remote, hybrid, or on-site. Use the
+                filters in the portal to zero in on the geographies and work styles that matter to you.
+              </p>
+            </details>
+          </div>
+          <div class="faq-group">
+            <h3>Access & Eligibility</h3>
+            <details class="faq-item">
+              <summary>Who can access jobs.athena.live?</summary>
+              <p>
+                Everyone is welcome. Create a free account to explore the portal instantly—no invite code, referrals, or
+                waitlist. We designed the experience so you can get to the opportunities as fast as possible.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>How do I onboard a teammate or chief of staff?</summary>
+              <p>
+                Share the jobs.athena.live link with them—they can spin up their own login in minutes. We encourage each
+                teammate to keep their own profile so they can follow companies and manage alerts separately.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>What happens after I create an account?</summary>
+              <p>
+                You choose your interests, follow teams, and start tracking roles right away. Personalize alerts, save
+                searches, and request intros directly from listings—all without waiting on manual approvals.
+              </p>
+            </details>
+          </div>
+          <div class="faq-group">
+            <h3>Working with Hiring Teams</h3>
+            <details class="faq-item">
+              <summary>How do I keep tabs on new or high-signal roles?</summary>
+              <p>
+                The home feed surfaces the most recent updates first and highlights searches with strong hiring signal.
+                Follow the teams you care about inside the portal and check in regularly—we update several times each
+                week as founders share new needs.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>Can I connect with the hiring team from a listing?</summary>
+              <p>
+                Yes. Each role includes context on who is driving the search plus a direct way to request an intro or
+                contact them. Bring your background and interest when you reach out so the conversation moves quickly.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>What if I need more context or spot something inaccurate?</summary>
+              <p>
+                Flag it right from the listing or drop us a note at info@athena.live. We'll verify the details with the
+                hiring team and refresh or retire the post so the feed stays high-signal.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        Athena © 2024. The Athena Jobs portal lives at <strong>jobs.athena.live</strong>. Need a hand? Email
+        <a
+          class="footer-link"
+          href="mailto:info@athena.live"
+        >
+          jobs@athena.live
+        </a>
+        any time. Explore the Athena company site at
+        <a
+          class="footer-link"
+          href="https://athena.live"
+          target="_blank"
+          rel="noopener"
+        >
+          athena.live
+        </a>. Review our
+        <a
+          class="footer-link"
+          href="terms.html"
+        >
+          Terms of Service
+        </a>
+        and
+        <a
+          class="footer-link"
+          href="privacy.html"
+        >
+          Privacy Policy
+        </a>.
+      </footer>
+    </div>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const totalEl = document.getElementById("jobs-count");
+        const typeContainer = document.getElementById("jobs-type-count");
+        const board = document.getElementById("jobs-statboard");
+        if (!totalEl || !typeContainer) return;
+
+        if (board) board.setAttribute("data-state", "loading");
+        typeContainer.setAttribute("data-state", "loading");
+
+        const API_BASE = "https://jobs.athena.live";
+        const endpoints = {
+          total: `${API_BASE}/api/jobs/count/`,
+          types: `${API_BASE}/api/jobs/type-count/`
+        };
+
+        const numberFormatter = new Intl.NumberFormat("en-US");
+        const setBoardState = (state) => {
+          if (!board) return;
+          board.setAttribute("data-state", state);
+        };
+        const toNumber = (value) => {
+          if (typeof value === "number" && Number.isFinite(value)) return value;
+          if (typeof value === "string") {
+            const normalized = Number(value.replace(/,/g, "").trim());
+            if (Number.isFinite(normalized)) return normalized;
+          }
+          return null;
+        };
+        const formatLabel = (value) => {
+          if (!value) return "";
+          let cleaned = String(value)
+            .replace(/_/g, " ")
+            .replace(/\bjobs?\b/gi, "")
+            .replace(/classified/gi, "Roles")
+            .replace(/\s+/g, " ")
+            .trim();
+          const lower = cleaned.toLowerCase();
+          if (lower === "total") cleaned = "Active Jobs";
+          if (!cleaned) return "";
+          return cleaned.replace(/\b\w/g, (char) => char.toUpperCase());
+        };
+
+        const showTypeLoading = () => {
+          typeContainer.innerHTML = "";
+          typeContainer.setAttribute("data-state", "loading");
+          for (let i = 0; i < 2; i += 1) {
+            const skeleton = document.createElement("div");
+            skeleton.className = "stat-type-pill is-loading";
+            typeContainer.appendChild(skeleton);
+          }
+        };
+
+        const animateCount = (element, target) => {
+          const safeValue = Math.max(target, 0);
+          element.textContent = numberFormatter.format(safeValue);
+          setBoardState("ready");
+        };
+
+        const normalizeTotal = (payload) => {
+          const direct = toNumber(payload);
+          if (direct !== null) return direct;
+          if (!payload || typeof payload !== "object") return null;
+          const candidates = [
+            payload.count,
+            payload.total,
+            payload.value,
+            payload.total_jobs,
+            payload.active_jobs,
+            payload.total_active_jobs
+          ];
+          for (const candidate of candidates) {
+            const parsed = toNumber(candidate);
+            if (parsed !== null) return parsed;
+          }
+          return null;
+        };
+
+        const normalizeTypeCounts = (payload) => {
+          const normalizeEntry = (entry) => {
+            if (!entry || typeof entry !== "object") return null;
+            const count = toNumber(entry.count ?? entry.total ?? entry.value);
+            const rawLabel = entry.type ?? entry.label ?? entry.name ?? entry.category ?? entry.slug;
+            if (count === null || !rawLabel) return null;
+            const formatted = formatLabel(rawLabel);
+            if (!formatted) return null;
+            return { label: formatted, count };
+          };
+
+          if (Array.isArray(payload)) {
+            return payload.map(normalizeEntry).filter(Boolean);
+          }
+
+          if (payload && typeof payload === "object") {
+            if (Array.isArray(payload.results)) {
+              return payload.results.map(normalizeEntry).filter(Boolean);
+            }
+
+            if (Array.isArray(payload.data)) {
+              return payload.data.map(normalizeEntry).filter(Boolean);
+            }
+
+            if (Array.isArray(payload.type_counts)) {
+              const entries = payload.type_counts.map(normalizeEntry).filter(Boolean);
+              if (entries.length) return entries;
+            }
+
+            return Object.entries(payload)
+              .map(([key, value]) => {
+                const count = toNumber(value);
+                if (count === null) return null;
+                const formatted = formatLabel(key);
+                if (!formatted) return null;
+                return { label: formatted, count };
+              })
+              .filter(Boolean);
+          }
+
+          return [];
+        };
+
+        const renderTypes = (types) => {
+          typeContainer.innerHTML = "";
+          typeContainer.setAttribute("data-state", types.length ? "ready" : "error");
+          if (!types.length) {
+            const fallback = document.createElement("div");
+            fallback.className = "stat-type-pill";
+            fallback.textContent = "Live data updates soon";
+            typeContainer.appendChild(fallback);
+            return;
+          }
+
+          const meaningfulTypes = types.filter(({ label }) => label && !/all roles/i.test(label));
+          const displayTypes = meaningfulTypes.length ? meaningfulTypes : types;
+
+          displayTypes
+            .sort((a, b) => b.count - a.count)
+            .slice(0, 4)
+            .forEach(({ label, count }) => {
+              const pill = document.createElement("div");
+              pill.className = "stat-type-pill";
+              pill.textContent = `${numberFormatter.format(count)} ${label}`;
+              typeContainer.appendChild(pill);
+            });
+        };
+
+        const setTotalFallback = () => {
+          totalEl.textContent = totalEl.dataset.default || "0";
+          setBoardState("error");
+          renderTypes([]);
+        };
+
+        const loadStats = async () => {
+          setBoardState("loading");
+          showTypeLoading();
+          try {
+            const [totalRes, typesRes] = await Promise.all([
+              fetch(endpoints.total, { credentials: "omit", mode: "cors" }),
+              fetch(endpoints.types, { credentials: "omit", mode: "cors" })
+            ]);
+
+            if (!totalRes.ok) throw new Error(`Total fetch failed: ${totalRes.status}`);
+            if (!typesRes.ok) throw new Error(`Type fetch failed: ${typesRes.status}`);
+
+            const [totalPayload, typesPayload] = await Promise.all([totalRes.json(), typesRes.json()]);
+
+            const total = normalizeTotal(totalPayload);
+            const types = normalizeTypeCounts(typesPayload);
+
+            if (typeof total === "number" && total > 0) {
+              totalEl.classList.add("stat-value");
+              animateCount(totalEl, total);
+            } else {
+              setTotalFallback();
+            }
+
+            renderTypes(types);
+          } catch (error) {
+            console.error("Athena Jobs stats failed to load", error);
+            setTotalFallback();
+          }
+        };
+
+        loadStats();
+      });
+    </script>
+  </body>
+</html>
