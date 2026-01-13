@@ -25,6 +25,12 @@
     <path d="M5 5l14 14"></path>
     <path d="M19 5L5 19"></path>
   </symbol>
+  <symbol id="icon-substack" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 4h16"></path>
+    <path d="M4 8h16"></path>
+    <path d="M4 14h16"></path>
+    <path d="M4 18h16"></path>
+  </symbol>
   <symbol id="icon-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <rect x="4" y="4" width="16" height="16" rx="2"></rect>
     <circle cx="8" cy="8" r="1"></circle>
