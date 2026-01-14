@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow">
+  <title>Athena Customer Data Platform</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    :root {
+      --primary-color: #0b2d5b;
+      --secondary-color: #061a33;
+      --accent-color: #3f7fc4;
+      --dark-bg: #050a14;
+      --darker-bg: #02050b;
+      --text-light: #e2e8f0;
+      --text-muted: #8ea2bf;
+      --border-color: #1b2b42;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(180deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .page-hero {
+      padding: 5.5rem 0 3.5rem;
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(63, 127, 196, 0.16), transparent 55%),
+        radial-gradient(circle at 85% 15%, rgba(11, 45, 91, 0.4), transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .page-title {
+      font-size: clamp(2.3rem, 3.5vw, 3.4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-light);
+    }
+
+    .page-subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+      color: #f8f6ef;
+      box-shadow: 0 15px 30px rgba(63, 127, 196, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(63, 127, 196, 0.3);
+    }
+
+    .btn-outline {
+      border-color: var(--border-color);
+      color: var(--text-light);
+      background: rgba(5, 10, 20, 0.6);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+
+    .section {
+      padding: 3.5rem 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-light);
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      max-width: 720px;
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .card {
+      background: rgba(5, 10, 20, 0.7);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 12px 28px rgba(2, 5, 11, 0.35);
+    }
+
+    .card h3 {
+      margin-bottom: 0.75rem;
+      color: var(--text-light);
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 1.25rem;
+      color: var(--text-muted);
+    }
+
+    .list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .panel {
+      background: rgba(2, 5, 11, 0.65);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 2rem;
+    }
+
+    .footer {
+      background-color: var(--darker-bg);
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 0 2rem;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .social-links {
+      margin-bottom: 2rem;
+    }
+
+    .social-links a {
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      margin: 0 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--accent-color);
+    }
+
+    .footer a.legal-link {
+      color: var(--text-muted);
+      font-weight: 600;
+      text-decoration: none;
+      margin-left: 0.35rem;
+    }
+
+    .footer a.legal-link:hover {
+      color: var(--accent-color);
+    }
+
+    @media (min-width: 768px) {
+      .col-md-6 {
+        width: 50%;
+      }
+
+      .text-md-start {
+        text-align: left !important;
+      }
+
+      .text-md-end {
+        text-align: right !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="site-shell">
+      <a class="navbar-brand" href="index.html#home">Athena</a>
+      <button class="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"></li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="athena-gpt.html">
+              <svg class="icon me-1" aria-hidden="true" focusable="false">
+                <use href="icons.svg#icon-robot"></use>
+              </svg>
+              Athena GPT
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="communityDropdown" role="button" aria-expanded="false">
+              <svg class="icon me-1" aria-hidden="true" focusable="false">
+                <use href="icons.svg#icon-users"></use>
+              </svg>
+              Community
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="communityDropdown">
+              <li>
+                <a class="dropdown-item" href="https://www.youtube.com/@athena_live" target="_blank" rel="noopener">
+                  <svg class="icon me-2" aria-hidden="true" focusable="false">
+                    <use href="icons.svg#icon-youtube"></use>
+                  </svg>
+                  YouTube
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="page-hero">
+      <div class="site-shell">
+        <div class="page-hero-content">
+          <h1 class="page-title">Athena Customer Data Platform</h1>
+          <p class="page-subtitle">
+            Unify, enrich, and activate customer data across every touchpoint. Athena CDP is a
+            centralized intelligence layer that turns behavioral signals into real-time segments,
+            actionable insights, and personalized experiences.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://data.athena.live" target="_blank" rel="noopener">
+              Launch the CDP App
+            </a>
+            <a class="btn btn-outline" href="index.html#contact">Talk to the Athena team</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="site-shell">
+        <h2 class="section-title">What the Platform Does</h2>
+        <p class="section-subtitle">
+          Athena CDP connects data streams from product, marketing, and operations to build a
+          full-funnel customer narrative. Every identity, event, and attribute is normalized so teams
+          can act with confidence.
+        </p>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>Unified Profiles</h3>
+            <p>Merge behavioral, transactional, and engagement data into a single customer view.</p>
+          </div>
+          <div class="card">
+            <h3>Real-Time Segmentation</h3>
+            <p>Build dynamic cohorts based on live signals, campaign history, and intent scoring.</p>
+          </div>
+          <div class="card">
+            <h3>Activation Pipelines</h3>
+            <p>Deliver audiences, alerts, and playbooks to every downstream tool in minutes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="site-shell">
+        <div class="panel">
+          <h2 class="section-title">Core Capabilities</h2>
+          <div class="grid grid-3">
+            <div>
+              <ul class="list">
+                <li>Identity resolution across devices and channels</li>
+                <li>Event streaming and schema governance</li>
+                <li>Customer health scoring and lifecycle analysis</li>
+              </ul>
+            </div>
+            <div>
+              <ul class="list">
+                <li>Audience orchestration with rule-based automation</li>
+                <li>Enrichment with first- and third-party sources</li>
+                <li>Data quality monitoring and alerts</li>
+              </ul>
+            </div>
+            <div>
+              <ul class="list">
+                <li>Revenue attribution and funnel insights</li>
+                <li>Consent and privacy-aware governance</li>
+                <li>Secure workspace collaboration</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="site-shell">
+        <h2 class="section-title">Designed for Teams That Move Fast</h2>
+        <p class="section-subtitle">
+          Whether you are launching a new product line or scaling enterprise operations, Athena CDP
+          makes data accessible to every team without sacrificing security.
+        </p>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>Marketing Leaders</h3>
+            <p>Coordinate campaigns, experiment faster, and measure lift with dependable audiences.</p>
+          </div>
+          <div class="card">
+            <h3>Product Teams</h3>
+            <p>Map user journeys, remove friction, and personalize onboarding with live usage data.</p>
+          </div>
+          <div class="card">
+            <h3>Operations &amp; Analytics</h3>
+            <p>Automate data pipelines, enforce standards, and unlock clean reporting.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="site-shell">
+        <div class="panel">
+          <h2 class="section-title">Get Started on Athena CDP</h2>
+          <p class="section-subtitle">
+            Access the platform at <a href="https://data.athena.live" target="_blank" rel="noopener">data.athena.live</a>
+            to explore unified profiles, segment builders, and activation flows.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://data.athena.live" target="_blank" rel="noopener">
+              Open data.athena.live
+            </a>
+            <a class="btn btn-outline" href="mailto:info@athena.live">Request a walkthrough</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="site-shell">
+      <div class="social-links">
+        <a href="https://www.youtube.com/@athena_live" target="_blank" title="YouTube">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-youtube"></use>
+          </svg>
+        </a>
+        <a href="https://chatgpt.com/g/g-688da8975c0081919cd2d8ea356ceaf4-athena" target="_blank" title="Athena GPT">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-robot"></use>
+          </svg>
+        </a>
+        <a href="https://x.com/_athenalive" target="_blank" title="X (Twitter)">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-x"></use>
+          </svg>
+        </a>
+        <a href="https://substack.com/@athenalive" target="_blank" rel="noopener" title="Substack">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-substack"></use>
+          </svg>
+        </a>
+        <a href="mailto:info@athena.live" title="Email">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-envelope"></use>
+          </svg>
+        </a>
+        <a href="#" title="LinkedIn">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-linkedin"></use>
+          </svg>
+        </a>
+        <a href="https://github.com/athena-live" target="_blank" title="GitHub">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="icons.svg#icon-github"></use>
+          </svg>
+        </a>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 text-md-start text-center">
+          <p>&copy; <span id="year"></span> Athena Live LLC. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end text-center">
+          <p>
+            Powered by Innovation &amp; Intelligence |
+            <a class="legal-link" href="terms.html">Terms of Service</a> |
+            <a class="legal-link" href="privacy.html">Privacy Policy</a> |
+            <a class="legal-link" href="about.html">About Athena.live</a> |
+            <a class="legal-link" href="athena-live-profile.html">Athena Live Profile</a> |
+            <a class="legal-link" href="athena-live-agent.html">Athena Live Agent</a> |
+            <a class="legal-link" href="athena-graphs.html">Athena Graphs</a> |
+            <a class="legal-link" href="athena-live-news.html">Athena Live News</a> |
+            <a class="legal-link" href="https://athena.live/robots.txt" target="_blank">Robots.txt</a> |
+            <a class="legal-link" href="https://athena.live/sitemap.xml" target="_blank">Sitemap</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="shared.js" defer></script>
+</body>
+</html>
