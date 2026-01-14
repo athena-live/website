@@ -456,15 +456,6 @@
       }
     }
 
-    @keyframes star-drift {
-      0% {
-        background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
-      }
-      100% {
-        background-position: 200px 300px, -150px 200px, 180px -220px, -120px -180px, 140px -150px;
-      }
-    }
-
     /* Hero Section */
     .hero {
       min-height: 100vh;
@@ -482,23 +473,25 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23334155" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-      opacity: 0.1;
+      background-image:
+        url('images/athena-live-v2.jpg'),
+        url('images/athena-live-v3.jpg'),
+        url('images/athena-live-v4.jpg');
+      background-size: 60%, 45%, 50%;
+      background-position: 8% 15%, 85% 20%, 55% 80%;
+      background-repeat: no-repeat;
+      opacity: 0.22;
+      filter: saturate(1.1) brightness(0.8);
     }
 
     .hero::after {
       content: '';
       position: absolute;
       inset: 0;
-      background-image:
-        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.8) 50%, transparent 60%),
-        radial-gradient(1.5px 1.5px at 70% 40%, rgba(255,255,255,0.7) 50%, transparent 60%),
-        radial-gradient(1.8px 1.8px at 40% 70%, rgba(255,255,255,0.75) 50%, transparent 60%),
-        radial-gradient(1px 1px at 80% 80%, rgba(255,255,255,0.6) 50%, transparent 60%),
-        radial-gradient(1.3px 1.3px at 55% 20%, rgba(255,255,255,0.65) 50%, transparent 60%);
-      background-repeat: repeat;
-      animation: star-drift 20s linear infinite;
-      opacity: 0.6;
+      background:
+        linear-gradient(135deg, rgba(2, 5, 11, 0.92) 0%, rgba(5, 10, 20, 0.75) 55%, rgba(11, 45, 91, 0.6) 100%),
+        radial-gradient(circle at 20% 30%, rgba(63, 127, 196, 0.18), transparent 55%);
+      opacity: 1;
       z-index: 1;
       pointer-events: none;
     }
@@ -614,41 +607,6 @@
       font-size: 1.1rem;
       max-width: 600px;
       margin: 0 auto 4rem;
-    }
-
-    .image-showcase {
-      padding-top: 4.5rem;
-    }
-
-    .image-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .image-tile {
-      border-radius: 1rem;
-      overflow: hidden;
-      border: 1px solid var(--border-color);
-      background: rgba(2, 5, 11, 0.6);
-      box-shadow: 0 20px 40px rgba(2, 10, 20, 0.3);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .image-tile img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      aspect-ratio: 4 / 3;
-    }
-
-    .image-tile .caption {
-      padding: 0.85rem 1.1rem;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      background: rgba(2, 5, 11, 0.8);
     }
 
     /* Service Cards */
@@ -1047,27 +1005,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section image-showcase">
-    <div class="container">
-      <h2 class="section-title">Athena Live</h2>
-      <p class="section-subtitle">A glimpse into our live community experiences.</p>
-      <div class="image-grid">
-        <figure class="image-tile">
-          <img src="images/athena-live-v2.jpg" alt="Athena Live community gathering" loading="lazy" />
-          <figcaption class="caption">Live sessions built around collaboration and curiosity.</figcaption>
-        </figure>
-        <figure class="image-tile">
-          <img src="images/athena-live-v3.jpg" alt="Athena Live discussion stage" loading="lazy" />
-          <figcaption class="caption">Conversations that turn ideas into momentum.</figcaption>
-        </figure>
-        <figure class="image-tile">
-          <img src="images/athena-live-v4.jpg" alt="Athena Live audience experience" loading="lazy" />
-          <figcaption class="caption">Community energy that powers every Athena event.</figcaption>
-        </figure>
       </div>
     </div>
   </section>
