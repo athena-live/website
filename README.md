@@ -133,3 +133,7 @@ I can instantly generate:
 - SEO meta tags for index.html
 
 Say the word and I'll ship it.
+
+
+Bing Search Index now 
+https://bing.com/indexnow?url=https://athena.live/index.html&key=5967d46fbcd5429b865cea31de382507&keyLocation=http://athena.live/5967d46fbcd5429b865cea31de382507.txt
