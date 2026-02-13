@@ -4,19 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="robots" content="index, follow">
-  <title>Athena Live Profile - Q&amp;A Definition</title>
+  <title>Armen Merikyan — Founder, Athena Live</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="shared.css" />
   <style>
     :root {
-      --primary-color: #0b2d5b;
-      --secondary-color: #061a33;
-      --accent-color: #3f7fc4;
-      --dark-bg: #050a14;
-      --darker-bg: #02050b;
-      --text-light: #e2e8f0;
-      --text-muted: #8ea2bf;
-      --border-color: #1b2b42;
+      --ink: #0e1a26;
+      --night: #05070d;
+      --blue-void: #0b1426;
+      --glow: #87b4ff;
+      --ember: #f6c37a;
+      --mist: #c7d2e6;
+      --frost: #e8eefb;
+      --card: rgba(12, 20, 36, 0.78);
+      --border: rgba(135, 180, 255, 0.22);
     }
 
     * {
@@ -24,62 +28,158 @@
     }
 
     body {
-      background: linear-gradient(180deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
-      color: var(--text-light);
-      line-height: 1.6;
+      background: radial-gradient(circle at 10% 10%, rgba(135, 180, 255, 0.12), transparent 45%),
+        radial-gradient(circle at 90% 20%, rgba(246, 195, 122, 0.16), transparent 50%),
+        linear-gradient(180deg, var(--night) 0%, var(--blue-void) 55%, #04060b 100%);
+      color: var(--frost);
+      font-family: "Manrope", sans-serif;
+      line-height: 1.7;
     }
 
-    .page-hero {
-      padding: 5rem 0 3rem;
-      border-bottom: 1px solid var(--border-color);
+    .hero {
+      padding: 6.5rem 0 3.5rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    .page-title {
-      font-size: clamp(2rem, 3vw, 3rem);
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      color: var(--text-light);
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(135, 180, 255, 0.18), transparent 70%);
+      filter: blur(2px);
+      z-index: 0;
     }
 
-    .page-subtitle {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      max-width: 720px;
+    .hero-content {
+      position: relative;
+      z-index: 1;
     }
 
-    .qa-section {
-      padding: 3rem 0 5rem;
-    }
-
-    .qa-card {
-      background: rgba(5, 10, 20, 0.7);
-      border: 1px solid var(--border-color);
-      border-radius: 0.75rem;
-      padding: 1.5rem 1.75rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 10px 30px rgba(2, 5, 11, 0.4);
-    }
-
-    .qa-question {
-      color: var(--accent-color);
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      font-size: 0.75rem;
+      color: var(--ember);
       font-weight: 600;
-      margin-bottom: 0.5rem;
     }
 
-    .qa-answer {
-      color: var(--text-light);
-      margin: 0;
+    .hero-title {
+      font-family: "DM Serif Display", serif;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      margin: 0.5rem 0 1rem;
+      color: var(--frost);
     }
 
-    .qa-answer ul {
-      margin: 0.75rem 0 0 1.25rem;
-      color: var(--text-muted);
+    .hero-subtitle {
+      color: var(--mist);
+      font-size: 1.1rem;
+      max-width: 640px;
     }
 
-    .qa-answer li {
-      margin-bottom: 0.35rem;
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      margin-top: 2rem;
+      color: var(--mist);
+      font-size: 0.95rem;
     }
 
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1.2rem;
+      padding: 2rem;
+      box-shadow: 0 25px 60px rgba(3, 6, 13, 0.45);
+    }
+
+    .section {
+      padding: 3.5rem 0;
+    }
+
+    .section-title {
+      font-family: "DM Serif Display", serif;
+      font-size: 2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .callout {
+      border-left: 3px solid var(--glow);
+      padding-left: 1.5rem;
+      color: var(--mist);
+      font-size: 1.05rem;
+    }
+
+    .pill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .pill {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.4rem 1rem;
+      color: var(--mist);
+      font-size: 0.9rem;
+      background: rgba(10, 20, 36, 0.6);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      background: rgba(8, 14, 26, 0.75);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+
+    .timeline-role {
+      font-weight: 700;
+      color: var(--frost);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-meta {
+      color: var(--mist);
+      font-size: 0.95rem;
+    }
+
+    .list-tight {
+      margin-top: 0.75rem;
+      color: var(--mist);
+    }
+
+    .footer-note {
+      padding: 2.5rem 0 4rem;
+      color: var(--mist);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 991px) {
+      .hero {
+        padding-top: 5.5rem;
+      }
+
+      .hero-meta {
+        gap: 0.5rem 1.25rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -136,171 +236,148 @@
     </div>
   </nav>
 
-  <header class="page-hero">
-    <div class="container">
-      <h1 class="page-title">Athena Live Profile</h1>
-      <p class="page-subtitle">A professional identity page built for credibility, clarity, and confident connection.</p>
+  <header class="hero">
+    <div class="container hero-content">
+      <p class="eyebrow">Founder Profile</p>
+      <h1 class="hero-title">Armen Merikyan</h1>
+      <p class="hero-subtitle">Building agentic solutions and AI systems that turn strategy into working software. Founder and Technical Managing Member of Athena Live, focused on intelligent systems that automate operations and scale decision-making.</p>
+      <div class="hero-meta">
+        <span>Los Angeles Metropolitan Area</span>
+        <span>armenmerikyan@gmail.com</span>
+        <span>(570) 892-LIVE</span>
+        <span>LinkedIn: armen-merikyan-am</span>
+      </div>
     </div>
   </header>
 
-  <section class="qa-section">
+  <section class="section">
     <div class="container">
-      <div class="qa-card">
-        <div class="qa-question">Q: What is Athena Live Profile?</div>
-        <p class="qa-answer">A: Athena Live Profile is a professional profile page that presents an individual’s resume, work history, contact information, and links in a single, clean, structured format.</p>
+      <div class="hero-card">
+        <h2 class="section-title">Summary</h2>
+        <p>Started building systems at 19 in the late 90s and built a first machine learning application in 2011 (Geo Behavior). Armen is passionate about intelligent systems that learn continuously, adapt through feedback, and drive real-world decisions. The Athena Systems philosophy began in 2002 and evolves today as Athena Live.</p>
+        <p class="callout">“Question everything. Fight like a samurai. Be your own. Dream huge. Charm when you can, cut when you must.”</p>
       </div>
-
-      <div class="qa-card">
-        <div class="qa-question">Q: What problem does Athena Live Profile solve?</div>
-        <p class="qa-answer">A: It provides a clear, professional way for a person to share their identity, experience, and contact details online without complexity or distraction.</p>
-      </div>
-
-      <div class="qa-card">
-        <div class="qa-question">Q: Who is Athena Live Profile for?</div>
-        <p class="qa-answer">A: It is for professionals, founders, engineers, consultants, creators, and operators who need a credible, well-presented profile page.</p>
-      </div>
-
-      <div class="qa-card">
-        <div class="qa-question">Q: What information does an Athena Live Profile contain?</div>
-        <div class="qa-answer">
-          A: An Athena Live Profile can include:
-          <ul>
-            <li>Name and professional title</li>
-            <li>Short bio or executive summary</li>
-            <li>Resume and work history</li>
-            <li>Skills, education, and certifications</li>
-            <li>Contact information</li>
-            <li>Links to social media, GitHub, websites, or portfolios</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="qa-card">
-        <div class="qa-question">Q: Is Athena Live Profile a resume?</div>
-        <p class="qa-answer">A: It includes a resume, but it is more than a resume. It is a full professional profile page that can function as a digital resume, personal landing page, or identity hub.</p>
-      </div>
-
-      <div class="qa-card">
-        <div class="qa-question">Q: Can someone download a resume from Athena Live Profile?</div>
-        <p class="qa-answer">A: Yes. The profile can include a downloadable resume (PDF).</p>
-      </div>
-
-      <div class="qa-card">
-        <div class="qa-question">Q: How do people contact the profile owner?</div>
-        <p class="qa-answer">A: Through visible contact details and/or a contact form, depending on the user’s preferences.</p>
-      </div>
-
-      <div class="qa-card">
-        <div class="qa-question">Q: Can users control what is visible on their profile?</div>
-        <p class="qa-answer">A: Yes. Sections can be shown or hidden based on privacy and presentation preferences.</p>
-      </div>
-
-      <div class="qa-card">
-        <div class="qa-question">Q: Does Athena Live Profile support links to external platforms?</div>
-        <p class="qa-answer">A: Yes. Users can link to social media accounts, developer platforms, personal websites, and other relevant services.</p>
-      </div>
-
-      <div class="qa-card">
-        <div class="qa-question">Q: Does Athena Live Profile support custom domains?</div>
-        <p class="qa-answer">A: Yes. Profiles can use an Athena subdomain (e.g., name.athena.live) or a custom domain.</p>
-      </div>
-
-      <div class="qa-card">
-        <div class="qa-question">Q: How would Athena Live Profile typically be used?</div>
-        <div class="qa-answer">
-          A: Common use cases include:
-          <ul>
-            <li>Sharing a professional profile with employers or clients</li>
-            <li>Acting as a public-facing personal page</li>
-            <li>Centralizing professional information and links</li>
-            <li>Serving as an identity page within Athena Systems</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="qa-card">
-        <div class="qa-question">Q: How should Athena Live Profile be categorized as a product?</div>
-        <p class="qa-answer">A: It is a professional identity and profile product within the Athena Systems ecosystem.</p>
-      </div>
-
-      <div class="qa-card">
-        <div class="qa-question">Q: What design philosophy does Athena Live Profile follow?</div>
-        <p class="qa-answer">A: Minimal, professional, and focused—optimized for clarity, credibility, and ease of understanding.</p>
-      </div>
-
-      <div class="qa-card">
-        <div class="qa-question">Q: What is the core purpose of Athena Live Profile in one sentence?</div>
-        <p class="qa-answer">A: Athena Live Profile provides a structured, professional way to present who someone is, what they do, and how to contact them.</p>
-      </div>
-
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="site-shell">
-      <div class="social-links">
-        <a href="https://www.youtube.com/@athena_live" target="_blank" title="YouTube">
-          <svg class="icon" aria-hidden="true" focusable="false">
-            <use href="icons.svg#icon-youtube"></use>
-          </svg>
-        </a>
-        <a href="https://chatgpt.com/g/g-69697ed9b42481918419bdd2b5deff6d-athena" target="_blank" title="Athena GPT">
-          <svg class="icon" aria-hidden="true" focusable="false">
-            <use href="icons.svg#icon-robot"></use>
-          </svg>
-        </a>
-        <a href="https://x.com/_athenalive" target="_blank" title="X (Twitter)">
-          <svg class="icon" aria-hidden="true" focusable="false">
-            <use href="icons.svg#icon-x"></use>
-          </svg>
-        </a>
-        <a href="https://substack.com/@athenalive" target="_blank" rel="noopener" title="Substack">
-          <svg class="icon" aria-hidden="true" focusable="false">
-            <use href="icons.svg#icon-substack"></use>
-          </svg>
-        </a>
-        <a href="mailto:info@athena.live" title="Email">
-          <svg class="icon" aria-hidden="true" focusable="false">
-            <use href="icons.svg#icon-envelope"></use>
-          </svg>
-        </a>
-        <a href="https://www.linkedin.com/company/athena-live" target="_blank" rel="noopener" title="LinkedIn">
-          <svg class="icon" aria-hidden="true" focusable="false">
-            <use href="icons.svg#icon-linkedin"></use>
-          </svg>
-        </a>
-        <a href="https://github.com/athena-live" target="_blank" title="GitHub">
-          <svg class="icon" aria-hidden="true" focusable="false">
-            <use href="icons.svg#icon-github"></use>
-          </svg>
-        </a>
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Athena Live Focus</h2>
+      <p>Armen builds AI-powered platforms that automate operations, integrate with existing infrastructure, turn data into decision advantage, and give small and mid-sized businesses enterprise-level capability.</p>
+      <div class="pill-grid">
+        <span class="pill">AI agents and ChatGPT applications</span>
+        <span class="pill">Automation platforms</span>
+        <span class="pill">Enterprise integration</span>
+        <span class="pill">Cloud and DevOps</span>
+        <span class="pill">Platform engineering</span>
       </div>
+    </div>
+  </section>
 
-      <div class="row">
-        <div class="col-md-6 text-md-start text-center">
-          <p>&copy; <span id="year"></span> Athena Live LLC. All rights reserved.</p>
-        </div>
-        <div class="col-md-6 text-md-end text-center">
-          <p>
-            Powered by Innovation &amp; Intelligence | Legal and Privacy:
-            <a class="legal-link" href="terms.html">Terms of Service</a> |
-            <a class="legal-link" href="privacy.html">Privacy Policy</a> |
-            <a class="legal-link" href="cookie-policy.html">Cookie Policy</a> |
-            <a class="legal-link" href="about.html">About Athena.live</a> |
-            <a class="legal-link" href="athena-live-profile.html">Athena Live Profile</a> |
-            <a class="legal-link" href="athena-live-agent.html">Athena Live Agent</a> |
-            <a class="legal-link" href="openclaw-bots.html">OpenClaw Bots</a> |
-            <a class="legal-link" href="athena-graphs.html">Athena Graphs</a> |
-            <a class="legal-link" href="athena-live-news.html">Athena Live News</a> |
-            <a class="legal-link" href="https://athena.live/robots.txt" target="_blank">Robots.txt</a> |
-            <a class="legal-link" href="https://athena.live/sitemap.xml" target="_blank">Sitemap</a>
-          </p>
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Athena Live — Founder (Dec 2019 to Present)</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-role">Technical Managing Member</div>
+          <div class="timeline-meta">Full lifecycle ownership across architecture, development, deployment, and continuous optimization.</div>
+          <ul class="list-tight">
+            <li>Defines product vision and technical architecture for AI-driven applications.</li>
+            <li>Builds end-to-end systems across frontend, backend, APIs, databases, and cloud.</li>
+            <li>Leads integrations with CRMs, analytics tools, and enterprise platforms.</li>
+            <li>Deploys ChatGPT-based applications with custom tools and data pipelines.</li>
+            <li>Designs analytics dashboards and decision-support systems.</li>
+          </ul>
         </div>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <script src="shared.js" defer></script>
-  <script src="cookie-consent.js" defer></script>
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Career Highlights</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-role">Senior System Engineer — The Walt Disney Studios</div>
+          <div class="timeline-meta">Dec 2018 to Mar 2019 · Data science infrastructure and platform reliability.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Platform Engineer — Intuit</div>
+          <div class="timeline-meta">Mar 2018 to Aug 2018 · CI/CD pipelines, Kubernetes, and DevOps platform engineering.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Senior Enterprise Solutions Architect — Honda of America Mfg., Inc.</div>
+          <div class="timeline-meta">Dec 2016 to Oct 2017 · Enterprise architecture and integration systems.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Solutions Architect — Belmont Informatics Group Inc.</div>
+          <div class="timeline-meta">Sep 2014 to Sep 2016 · Architecture and delivery for multiple clients.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Application Performance Architect — The Walt Disney Company</div>
+          <div class="timeline-meta">Sep 2012 to Sep 2014 · Performance, reliability, and enterprise platforms.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Lead Application Architect — Southern California Edison</div>
+          <div class="timeline-meta">Mar 2011 to Jun 2012 · SOA platform design and governance.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Datacenter Migration Architect — Warner Bros. Entertainment</div>
+          <div class="timeline-meta">Oct 2010 to Mar 2011 · Integration and migration systems.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Senior Application Developer — Farmers Insurance Group of Companies</div>
+          <div class="timeline-meta">Nov 2008 to Oct 2010 · Enterprise application development.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Integration Developer — Toyota North America</div>
+          <div class="timeline-meta">Nov 2006 to Nov 2008 · Enterprise integration center of excellence.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Application Developer — Capgemini Consulting</div>
+          <div class="timeline-meta">Nov 2004 to Nov 2006 · Enterprise application delivery.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Co-Founder — Athena Systems LLC</div>
+          <div class="timeline-meta">Jun 2002 to May 2004 · SaaS order-to-cash platform for legal document services.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Business Analyst — EY</div>
+          <div class="timeline-meta">Jun 2000 to May 2002 · Insurance domain requirements and systems.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="hero-card">
+        <h2 class="section-title">Core Skills</h2>
+        <div class="pill-grid">
+          <span class="pill">Enterprise integration (IBM MQ, SOA, DataPower)</span>
+          <span class="pill">Cloud and DevOps (AWS, Kubernetes, CI/CD)</span>
+          <span class="pill">AI-driven systems and automation</span>
+          <span class="pill">Platform engineering and scalability</span>
+          <span class="pill">Data platforms and analytics</span>
+          <span class="pill">Database systems and architecture</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="hero-card">
+        <h2 class="section-title">Education</h2>
+        <p>University of Southern California — Business Administration, Management and Operations (September 1997 to May 2000). Bachelor's degree program, not completed.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-note">
+    <div class="container">
+      Athena Live builds intelligent systems with discipline, precision, and vision. For infrastructure, AI agents, and platform strategy, connect directly via the contact details above.
+    </div>
+  </footer>
 </body>
 </html>
