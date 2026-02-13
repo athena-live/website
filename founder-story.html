@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index, follow">
-  <title>Athena.live | About</title>
+  <title>Athena.live | Founder Story</title>
   <link rel="stylesheet" href="shared.css" />
   <style>
     :root {
@@ -146,7 +146,6 @@
       }
     }
 
-    /* Hero Section */
     .hero {
       display: flex;
       align-items: flex-start;
@@ -221,215 +220,84 @@
 
     .hero-panel-list {
       list-style: none;
+      margin: 0;
       padding: 0;
-      margin: 0 0 1.5rem;
       display: grid;
       gap: 0.75rem;
     }
 
     .hero-panel-list li {
-      padding: 0.75rem 1rem;
-      border-radius: 0.75rem;
-      background: rgba(5, 10, 20, 0.6);
-      border: 1px solid rgba(27, 43, 66, 0.7);
-      color: var(--text-light);
+      padding: 0.6rem 0.8rem;
+      border-radius: 0.85rem;
+      background: rgba(11, 45, 91, 0.2);
+      border: 1px solid rgba(63, 127, 196, 0.2);
+      color: var(--text-muted);
     }
 
     .hero-panel-note {
-      color: var(--text-muted);
+      margin-top: 1.5rem;
       font-size: 0.95rem;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(59, 130, 246, 0.15);
-      border: 1px solid rgba(59, 130, 246, 0.4);
-      color: var(--text-light);
-      padding: 0.5rem 1.25rem;
-      border-radius: 999px;
-      margin-bottom: 1.5rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-
-    .hero h1 {
-      font-size: 3.2rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-color) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero .lead {
-      font-size: 1.2rem;
       color: var(--text-muted);
-      margin-bottom: 2rem;
     }
 
-    .btn-primary {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-      color: #f8f6ef;
-      padding: 0.75rem 2rem;
-      font-weight: 600;
-      border-radius: 0.5rem;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary:hover {
-      background-color: var(--secondary-color);
-      border-color: var(--secondary-color);
-      color: #f8f6ef;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
-    }
-
-    .btn-outline-light {
-      border-color: var(--border-color);
-      color: var(--text-light);
-      padding: 0.75rem 2rem;
-      font-weight: 600;
-      border-radius: 0.5rem;
-      transition: all 0.3s ease;
-    }
-
-    .btn-outline-light:hover {
-      background-color: var(--accent-color);
-      border-color: var(--accent-color);
-      color: white;
-      transform: translateY(-2px);
-    }
-
-    /* Sections */
     .section {
-      padding: 4.5rem 0;
+      padding: 4rem 0;
     }
 
     .section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 1.5rem;
-      color: var(--text-light);
+      font-size: 2.3rem;
+      margin-bottom: 1rem;
     }
 
     .section-subtitle {
-      text-align: center;
+      max-width: 820px;
+      margin-bottom: 2.5rem;
       color: var(--text-muted);
       font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto 2.5rem;
     }
 
     .story-grid {
       display: grid;
-      gap: 1.75rem;
+      gap: 2rem;
     }
 
     .info-card {
-      background: linear-gradient(135deg, rgba(27, 43, 66, 0.18) 0%, rgba(5, 10, 20, 0.18) 100%);
-      border: 1px solid var(--border-color);
-      border-radius: 1rem;
-      padding: 2rem;
-      height: 100%;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
-
-    .info-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent-color);
-      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
+      background: rgba(6, 16, 32, 0.72);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      border: 1px solid rgba(63, 127, 196, 0.2);
+      box-shadow: 0 25px 45px rgba(3, 10, 20, 0.5);
     }
 
     .info-card h3 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      color: var(--text-light);
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
     }
 
     .info-card p {
-      color: var(--text-muted);
       margin-bottom: 1rem;
+      color: var(--text-muted);
     }
 
     .feature-list {
       list-style: none;
       padding: 0;
-      margin: 0 0 1rem;
+      margin: 1.5rem 0;
+      display: grid;
+      gap: 0.75rem;
     }
 
     .feature-list li {
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-      padding-left: 1.5rem;
-      position: relative;
-    }
-
-    .feature-list li::before {
-      content: '✓';
-      color: var(--accent-color);
-      font-weight: bold;
-      position: absolute;
-      left: 0;
-    }
-
-    @media (min-width: 768px) {
-      .col-md-6 {
-        width: 50%;
-      }
-
-      .text-md-start {
-        text-align: left !important;
-      }
-
-      .text-md-end {
-        text-align: right !important;
-      }
+      background: rgba(11, 45, 91, 0.2);
+      border-radius: 0.85rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(63, 127, 196, 0.25);
+      color: var(--text-light);
     }
 
     @media (min-width: 992px) {
-      .col-lg-6 {
-        width: 50%;
-      }
-
-      .col-lg-8 {
-        width: 66.6667%;
-      }
-
-      .col-lg-10 {
-        width: 83.3333%;
-      }
-
       .hero-grid {
-        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      }
-
-      .story-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .info-card.is-wide {
-        grid-column: span 2;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.4rem;
-      }
-
-      .section-title {
-        font-size: 2rem;
-      }
-
-      .hero-panel {
-        padding: 1.5rem;
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.9fr);
       }
     }
   </style>
@@ -493,31 +361,31 @@
       <div class="container">
         <div class="hero-grid">
           <div class="hero-content">
-          <div class="hero-badge">
-            <svg class="icon icon-fill" aria-hidden="true" focusable="false">
-              <use href="icons.svg#icon-dot"></use>
-            </svg>
-            About Athena.live
-          </div>
-            <h1>Live support, live intelligence, live presence.</h1>
+            <div class="hero-badge">
+              <svg class="icon icon-fill" aria-hidden="true" focusable="false">
+                <use href="icons.svg#icon-dot"></use>
+              </svg>
+              Founder Story
+            </div>
+            <h1>The origin of Athena Live</h1>
             <p class="lead">
-              Athena.live is not software you install and hope for the best. It is intelligent support that is live -
-              present, responsive, and working alongside you in real time.
+              The founder story is the blueprint: near zero latency, real-time intelligence, and systems built to remove
+              delay. This page anchors the timeline as more team members join the story.
             </p>
             <div class="d-flex flex-wrap gap-3">
+              <a href="about.html" class="btn btn-outline-light btn-lg">Back to About</a>
               <a href="index.html#contact" class="btn btn-primary btn-lg">Talk With Us</a>
-              <a href="index.html#home" class="btn btn-outline-light btn-lg">Back to Home</a>
             </div>
           </div>
           <aside class="hero-panel">
-            <div class="hero-panel-eyebrow">At a glance</div>
-            <h2>What Live promises</h2>
+            <div class="hero-panel-eyebrow">Core Thesis</div>
+            <h2>Live = near zero latency</h2>
             <ul class="hero-panel-list">
-              <li>Live support, not delayed tickets</li>
-              <li>Real-time guidance, not canned responses</li>
-              <li>Expert-on-call intelligence</li>
+              <li>Instant signal, not delayed updates</li>
+              <li>Systems that act while the moment exists</li>
+              <li>Precision infrastructure built for speed</li>
             </ul>
-            <div class="hero-panel-note">Always available. Always thinking. Always with you.</div>
+            <div class="hero-panel-note">Always on call. Always moving at the speed of the problem.</div>
           </aside>
         </div>
       </div>
@@ -525,27 +393,94 @@
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">About Us: The Origin</h2>
+        <h2 class="section-title">The Founder Story</h2>
         <p class="section-subtitle">
-          The word "Live" is not branding flair. It is a promise. Live means near zero latency. When people see
-          Live, they expect one thing instinctively: "I can get real help, right now." That expectation is exactly
-          what Athena.live is built to deliver.
+          Athena Live did not begin as a SaaS company. It began in 1999 with WhittierLive.com, a college project built
+          around a conviction: information should move with near zero latency.
         </p>
 
         <div class="row justify-content-center">
           <div class="col-lg-10">
             <div class="story-grid">
               <div class="info-card is-wide">
-                <h3>The Founder Story</h3>
+                <h3>WhittierLive.com</h3>
                 <p>
-                  The origin of Athena Live begins in 1999 with WhittierLive.com, a college project built on a single
-                  conviction: the internet should be instant and information should move with near zero latency.
+                  WhittierLive.com was launched by the founder as a college project. It was not built like a hobby site.
+                  It was built around a conviction.
                 </p>
+                <p>The internet should be instant.</p>
+                <p>Information should move with zero latency.</p>
+                <p>A city should be able to see itself in real time.</p>
                 <p>
-                  That thesis evolved through enterprise systems, real-time intelligence, and AI platforms. The full
-                  story now lives on a dedicated page as we expand the team timeline.
+                  At the time, most websites were static brochures. Updates were slow. Information lagged behind
+                  reality.
                 </p>
-                <a class="btn btn-primary btn-lg mt-4" href="founder-story.html">Read the Founder Story</a>
+                <p>WhittierLive was different.</p>
+                <p>
+                  It was city focused. It was designed to act as a living digital layer over Whittier. The goal was
+                  simple but ambitious.
+                </p>
+                <ul class="feature-list">
+                  <li>Real time local news</li>
+                  <li>Instant updates for community events</li>
+                  <li>Visibility for businesses</li>
+                  <li>Exposure for organizations</li>
+                  <li>Advertising that moved at the speed of conversation</li>
+                </ul>
+                <p>It aimed to eliminate friction in how information traveled across a town.</p>
+                <p>For local companies, that meant:</p>
+                <ul class="feature-list">
+                  <li>Promotions seen immediately</li>
+                  <li>Events shared instantly</li>
+                  <li>Updates without delay</li>
+                </ul>
+                <p>For organizations:</p>
+                <ul class="feature-list">
+                  <li>Direct communication with the community</li>
+                  <li>Faster awareness and coordination</li>
+                </ul>
+                <p>For advertising:</p>
+                <ul class="feature-list">
+                  <li>Timely, contextual placement instead of static listings</li>
+                  <li>Presence inside a living, always on digital city</li>
+                </ul>
+                <p>WhittierLive was not just a website.</p>
+                <p>It was an early experiment in zero latency information flow at the local level.</p>
+                <h3>From Local Signal to Intelligent Systems</h3>
+                <p>As the vision evolved, WhittierLive became something larger.</p>
+                <p>The idea of instant information matured into intelligent systems.</p>
+                <p>That evolution became:</p>
+                <p>Athena Systems LLC</p>
+                <p>
+                  Athena Systems took the original principle, real time awareness, and expanded it into software,
+                  automation, and scalable systems.
+                </p>
+                <p>The core belief remained the same:</p>
+                <p>Power comes from intelligent systems operating with minimal delay.</p>
+                <p>The combination of:</p>
+                <ul class="feature-list">
+                  <li>Live information</li>
+                  <li>Automated decision logic</li>
+                  <li>Precision infrastructure</li>
+                  <li>Zero latency execution</li>
+                </ul>
+                <p>became the foundation of a serious SaaS player.</p>
+                <p>Where WhittierLive focused on a city, Athena Systems focused on systems.</p>
+                <p>Where WhittierLive accelerated community information, Athena accelerated business intelligence.</p>
+                <h3>The Real Vision</h3>
+                <p>The fusion of WhittierLive and Athena Systems formed a single thesis:</p>
+                <p>Information must be immediate.</p>
+                <p>Systems must be intelligent.</p>
+                <p>Infrastructure must remove delay.</p>
+                <p>Influence comes from clarity and speed.</p>
+                <p>
+                  What started as a city focused digital layer evolved into a broader mission. To build powerful,
+                  intelligent platforms that operate live, always on call, with precision.
+                </p>
+                <p>Athena.Live is not a pivot.</p>
+                <p>It is the continuation of a 1999 experiment:</p>
+                <p>How do you remove latency from the world?</p>
+                <p>And what becomes possible when you do?</p>
               </div>
             </div>
           </div>
@@ -593,40 +528,21 @@
           </svg>
         </a>
       </div>
-
-      <div class="row">
-        <div class="col-md-6 text-md-start text-center">
-          <p>&copy; <span id="year"></span> Athena Live LLC. All rights reserved.</p>
-        </div>
-        <div class="col-md-6 text-md-end text-center">
-          <p>
-            Powered by Innovation &amp; Intelligence | Legal and Privacy:
-            <a class="legal-link" href="terms.html">Terms of Service</a> |
-            <a class="legal-link" href="privacy.html">Privacy Policy</a> |
-            <a class="legal-link" href="cookie-policy.html">Cookie Policy</a> |
-            <a class="legal-link" href="about.html">About Athena.live</a> |
-            <a class="legal-link" href="athena-live-profile.html">Athena Live Profile</a> |
-            <a class="legal-link" href="athena-live-agent.html">Athena Live Agent</a> |
-            <a class="legal-link" href="openclaw-bots.html">OpenClaw Bots</a> |
-            <a class="legal-link" href="athena-graphs.html">Athena Graphs</a> |
-            <a class="legal-link" href="athena-live-news.html">Athena Live News</a> |
-            <a class="legal-link" href="https://athena.live/robots.txt" target="_blank">Robots.txt</a> |
-            <a class="legal-link" href="https://athena.live/sitemap.xml" target="_blank">Sitemap</a>
-          </p>
-        </div>
+      <div class="footer-links">
+        <a class="legal-link" href="privacy.html">Privacy Policy</a> |
+        <a class="legal-link" href="terms.html">Terms</a> |
+        <a class="legal-link" href="ethics-code.html">Ethics Code</a> |
+        <a class="legal-link" href="about.html">About Athena.live</a> |
+        <a class="legal-link" href="athena-live-profile.html">Athena Live Profile</a> |
+        <a class="legal-link" href="athena-live-agent.html">Athena Live Agent</a> |
+        <a class="legal-link" href="athena-live-news.html">Athena Live News</a> |
+        <a class="legal-link" href="https://athena.live/robots.txt" target="_blank">Robots.txt</a> |
+        <a class="legal-link" href="https://athena.live/sitemap.xml" target="_blank">Sitemap</a>
+      </div>
+      <div class="footer-copy">
+        <span>© 2025 Athena.live. All rights reserved.</span>
       </div>
     </div>
   </footer>
-
-  <script src="shared.js" defer></script>
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MW9Z4L9WTY"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-MW9Z4L9WTY');
-  </script>
-  <script src="cookie-consent.js" defer></script>
 </body>
 </html>
