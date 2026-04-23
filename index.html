@@ -6,12 +6,16 @@
   <meta name="robots" content="index, follow" />
   <title>Athena</title>
   <style>
+    @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Cormorant+Garamond:wght@600&display=swap");
+
     :root {
-      --bg: #f5f3ed;
-      --panel: rgba(255, 255, 255, 0.78);
-      --border: rgba(24, 32, 36, 0.12);
-      --text: #182024;
-      --muted: #5c666c;
+      --bg: #000000;
+      --panel: rgba(255, 255, 255, 0.04);
+      --panel-strong: rgba(255, 255, 255, 0.07);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f6f1e8;
+      --muted: #a6a09a;
+      --accent: #d6b889;
     }
 
     * {
@@ -20,100 +24,360 @@
       padding: 0;
     }
 
+    @keyframes drift {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(1.5rem, -1rem, 0) scale(1.04); }
+      100% { transform: translate3d(0, 0, 0) scale(1); }
+    }
+
+    @keyframes haloPulse {
+      0% { opacity: 0.25; transform: scale(0.96); }
+      50% { opacity: 0.55; transform: scale(1); }
+      100% { opacity: 0.25; transform: scale(0.96); }
+    }
+
+    @keyframes riseIn {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes lineReveal {
+      from { transform: scaleX(0); opacity: 0; }
+      to { transform: scaleX(1); opacity: 1; }
+    }
+
     body {
       min-height: 100vh;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(214, 184, 137, 0.14), transparent 26%),
+        radial-gradient(circle at 82% 78%, rgba(214, 184, 137, 0.12), transparent 24%),
+        linear-gradient(180deg, #050505 0%, #000000 48%, #060606 100%);
+      color: var(--text);
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      pointer-events: none;
+    }
+
+    body::before {
+      inset: 6vh auto auto 4vw;
+      width: min(30vw, 22rem);
+      aspect-ratio: 1;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: haloPulse 9s ease-in-out infinite;
+    }
+
+    body::after {
+      right: -7rem;
+      bottom: -7rem;
+      width: min(34rem, 52vw);
+      aspect-ratio: 1;
+      background: radial-gradient(circle, rgba(214, 184, 137, 0.14), transparent 62%);
+      filter: blur(10px);
+      animation: drift 16s ease-in-out infinite;
+    }
+
+    .frame {
+      position: relative;
+      min-height: 100vh;
+      padding: clamp(1rem, 2vw, 2rem);
       display: grid;
       place-items: center;
-      padding: 2rem;
+    }
+
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(circle at center, black 24%, transparent 78%);
+      opacity: 0.16;
+      pointer-events: none;
+    }
+
+    .shell {
+      position: relative;
+      width: min(100%, 72rem);
+      min-height: min(82vh, 46rem);
+      padding: clamp(1rem, 2vw, 2rem);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       background:
-        radial-gradient(circle at top left, rgba(210, 219, 209, 0.8), transparent 34%),
-        radial-gradient(circle at bottom right, rgba(231, 223, 201, 0.85), transparent 30%),
-        var(--bg);
-      color: var(--text);
-      font-family: Georgia, "Times New Roman", serif;
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)),
+        rgba(10, 10, 10, 0.82);
+      box-shadow: 0 24px 120px rgba(0, 0, 0, 0.55);
+      overflow: hidden;
+      animation: riseIn 0.9s ease-out both;
+    }
+
+    .shell::before {
+      content: "";
+      position: absolute;
+      inset: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      pointer-events: none;
+    }
+
+    .shell::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 auto;
+      width: 18rem;
+      height: 18rem;
+      background: linear-gradient(135deg, transparent, rgba(214, 184, 137, 0.08));
+      clip-path: polygon(100% 0, 100% 100%, 0 100%);
+      pointer-events: none;
     }
 
     main {
-      width: min(100%, 34rem);
-      padding: 2.5rem;
-      border: 1px solid var(--border);
-      border-radius: 1.5rem;
-      background: var(--panel);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 24px 80px rgba(24, 32, 36, 0.08);
+      position: relative;
+      z-index: 1;
+      min-height: inherit;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.9fr);
+      gap: clamp(1.25rem, 3vw, 2rem);
+      align-items: end;
+    }
+
+    .hero,
+    .contact-card {
+      animation: riseIn 0.9s ease-out both;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: clamp(1rem, 2vw, 2rem);
+      animation-delay: 0.08s;
+    }
+
+    .kicker {
+      color: var(--accent);
+      font-size: 0.75rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
     }
 
     h1 {
-      font-size: clamp(2.3rem, 8vw, 4.5rem);
+      max-width: 7ch;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(4rem, 11vw, 8.5rem);
+      line-height: 0.9;
       font-weight: 600;
-      letter-spacing: -0.04em;
-      margin-bottom: 0.6rem;
+      letter-spacing: -0.05em;
+      text-wrap: balance;
     }
 
-    p {
+    .slogan {
+      position: relative;
+      display: inline-block;
+      max-width: 18rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
       color: var(--muted);
-      margin-bottom: 2rem;
-      font-size: 1rem;
+      font-size: clamp(0.98rem, 1.5vw, 1.05rem);
+      line-height: 1.6;
+    }
+
+    .slogan::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4.5rem;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      transform-origin: left;
+      animation: lineReveal 1s ease-out 0.6s both;
+    }
+
+    .contact-card {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 1.6rem;
+      padding: clamp(1.25rem, 2.4vw, 2rem);
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(180deg, var(--panel-strong), var(--panel)),
+        rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(12px);
+      animation-delay: 0.2s;
+    }
+
+    .contact-card h2 {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
     }
 
     dl {
       display: grid;
-      gap: 1.1rem;
+      gap: 1.4rem;
+    }
+
+    .contact-row {
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .contact-row:hover {
+      transform: translateX(4px);
+      border-color: rgba(214, 184, 137, 0.34);
     }
 
     dt {
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      margin-bottom: 0.35rem;
       color: var(--muted);
-      margin-bottom: 0.18rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
     }
 
-    dd {
-      font-size: 1.15rem;
-      line-height: 1.4;
+    dd,
+    dd a {
+      color: var(--text);
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      line-height: 1.35;
+      text-decoration: none;
     }
 
     a {
-      color: inherit;
-      text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     a:hover,
     a:focus-visible {
-      text-decoration: underline;
-      text-underline-offset: 0.18em;
+      color: var(--accent);
     }
 
-    @media (max-width: 640px) {
-      body {
-        padding: 1rem;
+    @media (max-width: 840px) {
+      .shell {
+        min-height: auto;
       }
 
       main {
-        padding: 1.5rem;
+        min-height: auto;
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .hero {
+        gap: 4.5rem;
+        padding-bottom: 0;
+      }
+
+      h1,
+      .slogan {
+        max-width: none;
+      }
+
+      .contact-card {
+        min-height: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body::before {
+        inset: 3vh auto auto -2rem;
+        width: 14rem;
+      }
+
+      body::after {
+        right: -5rem;
+        bottom: -4rem;
+        width: 16rem;
+      }
+
+      .frame {
+        align-items: stretch;
+      }
+
+      .shell::before {
+        inset: 0.65rem;
+      }
+
+      .hero {
+        gap: 3rem;
+      }
+
+      h1 {
+        font-size: clamp(3.2rem, 22vw, 5.25rem);
+      }
+
+      .contact-card {
+        padding: 1.1rem;
+      }
+
+      dd,
+      dd a {
+        font-size: 1.05rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
       }
     }
   </style>
 </head>
 <body>
-  <main>
-    <h1>Athena</h1>
-    <p>Contact</p>
-    <dl>
-      <div>
-        <dt>Email</dt>
-        <dd><a href="mailto:info@athena.live">info@athena.live</a></dd>
-      </div>
-      <div>
-        <dt>Phone</dt>
-        <dd><a href="tel:+15708925483">1 (570) 892-5483</a></dd>
-      </div>
-      <div>
-        <dt>X</dt>
-        <dd><a href="https://x.com/_athenalive">@_athenalive</a></dd>
-      </div>
-    </dl>
-  </main>
+  <div class="frame">
+    <div class="shell">
+      <main>
+        <section class="hero" aria-label="Athena introduction">
+          <div class="kicker">Athena</div>
+          <div>
+            <h1>Athena</h1>
+            <p class="slogan">Inteligence in action</p>
+          </div>
+        </section>
+
+        <section class="contact-card" aria-label="Contact details">
+          <h2>Contact</h2>
+          <dl>
+            <div class="contact-row">
+              <dt>Email</dt>
+              <dd><a href="mailto:info@athena.live">info@athena.live</a></dd>
+            </div>
+            <div class="contact-row">
+              <dt>Phone</dt>
+              <dd><a href="tel:+15708925483">1 (570) 892-5483</a></dd>
+            </div>
+            <div class="contact-row">
+              <dt>X</dt>
+              <dd><a href="https://x.com/_athenalive">@_athenalive</a></dd>
+            </div>
+          </dl>
+        </section>
+      </main>
+    </div>
+  </div>
 </body>
 </html>
