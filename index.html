@@ -4,18 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index, follow" />
-  <title>Athena | AI-Native Software Development Agency</title>
+  <title>Athena</title>
   <style>
     :root {
-      --bg: #0d1724;
-      --surface: #142233;
-      --surface-alt: #1a2d43;
-      --border: #2a4563;
-      --text: #eef4fb;
-      --muted: #9fb0c3;
-      --accent: #4f8edb;
-      --accent-strong: #73a9eb;
-      --max-width: 1080px;
+      --bg: #f5f3ed;
+      --panel: rgba(255, 255, 255, 0.78);
+      --border: rgba(24, 32, 36, 0.12);
+      --text: #182024;
+      --muted: #5c666c;
     }
 
     * {
@@ -24,436 +20,100 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      background:
+        radial-gradient(circle at top left, rgba(210, 219, 209, 0.8), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(231, 223, 201, 0.85), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
     }
 
-    body {
-      background: linear-gradient(180deg, #0a111b 0%, var(--bg) 100%);
-      color: var(--text);
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
+    main {
+      width: min(100%, 34rem);
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+      border-radius: 1.5rem;
+      background: var(--panel);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 24px 80px rgba(24, 32, 36, 0.08);
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 8vw, 4.5rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.6rem;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    dl {
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    dt {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.18rem;
+    }
+
+    dd {
+      font-size: 1.15rem;
+      line-height: 1.4;
     }
 
     a {
       color: inherit;
-    }
-
-    .container {
-      width: min(var(--max-width), calc(100% - 2rem));
-      margin: 0 auto;
-    }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(10, 17, 27, 0.94);
-      border-bottom: 1px solid rgba(42, 69, 99, 0.8);
-      backdrop-filter: blur(12px);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 1rem 0;
-    }
-
-    .brand {
-      text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 0.35rem;
-      list-style: none;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .nav-links a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 2.4rem;
-      padding: 0.45rem 0.8rem;
-      border-radius: 999px;
-      text-decoration: none;
-      color: var(--muted);
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
-      color: var(--text);
-      background: rgba(20, 34, 51, 0.9);
-    }
-
-    .hero,
-    .section {
-      padding: 5rem 0;
-    }
-
-    .hero {
-      padding-top: 6rem;
-    }
-
-    .eyebrow {
-      color: var(--accent-strong);
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    h1,
-    h2,
-    h3 {
-      line-height: 1.15;
-    }
-
-    h1 {
-      max-width: 12ch;
-      font-size: clamp(2.4rem, 7vw, 4.6rem);
-      margin-bottom: 1rem;
-    }
-
-    .hero-copy,
-    .section-intro {
-      max-width: 44rem;
-      color: var(--muted);
-      font-size: 1.08rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 2.9rem;
-      padding: 0.8rem 1.2rem;
-      border: 1px solid var(--border);
-      border-radius: 0.7rem;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .button-primary {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #08111c;
-    }
-
-    .button-secondary {
-      background: transparent;
-      color: var(--text);
-    }
-
-    .hero-grid,
-    .contact-grid,
-    .about-grid {
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    .hero-grid {
-      grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
-      align-items: start;
-    }
-
-    .panel,
-    .service-card,
-    .contact-card {
-      background: rgba(20, 34, 51, 0.92);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 1.5rem;
-    }
-
-    .panel ul,
-    .service-card ul {
-      margin-top: 1rem;
-      padding-left: 1.1rem;
-      color: var(--muted);
-    }
-
-    .panel li + li,
-    .service-card li + li {
-      margin-top: 0.45rem;
-    }
-
-    .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      margin-bottom: 0.85rem;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.25rem;
-      margin-top: 2rem;
-    }
-
-    .service-card h3,
-    .contact-card h3 {
-      margin-bottom: 0.8rem;
-      font-size: 1.2rem;
-    }
-
-    .service-card p,
-    .contact-card p,
-    .about-grid p {
-      color: var(--muted);
-    }
-
-    .service-card p + ul {
-      margin-top: 1rem;
-    }
-
-    .about-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      margin-top: 2rem;
-    }
-
-    .contact-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      margin-top: 2rem;
-    }
-
-    .contact-list {
-      list-style: none;
-      display: grid;
-      gap: 1rem;
-      color: var(--muted);
-    }
-
-    .contact-label {
-      display: block;
-      color: var(--text);
-      font-weight: 700;
-      margin-bottom: 0.2rem;
-    }
-
-    .footer {
-      border-top: 1px solid rgba(42, 69, 99, 0.8);
-      padding: 1.5rem 0 3rem;
-      color: var(--muted);
-    }
-
-    .footer-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .footer a {
       text-decoration: none;
     }
 
-    @media (max-width: 900px) {
-      .hero-grid,
-      .services-grid,
-      .about-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero,
-      .section {
-        padding: 4rem 0;
-      }
-
-      .hero {
-        padding-top: 5rem;
-      }
+    a:hover,
+    a:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 0.18em;
     }
 
     @media (max-width: 640px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
+      body {
+        padding: 1rem;
       }
 
-      .button {
-        width: 100%;
+      main {
+        padding: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="#home">Athena</a>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </header>
-
   <main>
-    <section id="home" class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">Athena</p>
-          <h1>AI-native agency turning ideas into products in days.</h1>
-          <p class="hero-copy">
-            Athena designs, builds, and deploys AI-native products on compressed timelines. We take ideas from
-            concept to working software fast, with the engineering depth to ship stable platforms, agentic
-            applications, and production-ready systems.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#contact">Start a Conversation</a>
-            <a class="button button-secondary" href="#services">View Services</a>
-          </div>
-        </div>
-        <aside class="panel">
-          <h2>What we handle</h2>
-          <ul>
-            <li>Cloud and server infrastructure</li>
-            <li>Platform development and SaaS architecture</li>
-            <li>Agentic application development</li>
-            <li>Application operations and release support</li>
-            <li>Multi-tenant application delivery</li>
-            <li>SOC 1 and SOC 2 aligned system design and operations</li>
-          </ul>
-        </aside>
+    <h1>Athena</h1>
+    <p>Contact</p>
+    <dl>
+      <div>
+        <dt>Email</dt>
+        <dd><a href="mailto:info@athena.live">info@athena.live</a></dd>
       </div>
-    </section>
-
-    <section id="services" class="section">
-      <div class="container">
-        <h2 class="section-title">Services</h2>
-        <p class="section-intro">
-          The work stays direct: build the platform, ship the application, run the environment, and support
-          compliant operations as the product scales.
-        </p>
-        <div class="services-grid">
-          <article class="service-card">
-            <h3>Infrastructure</h3>
-            <p>We set up and maintain the underlying stack your applications rely on.</p>
-            <ul>
-              <li>Cloud environments and servers</li>
-              <li>Networking, storage, and access setup</li>
-              <li>Deployment pipelines and environment management</li>
-            </ul>
-          </article>
-          <article class="service-card">
-            <h3>Platform and SaaS Development</h3>
-            <p>We build product foundations for internal platforms and multi-tenant SaaS applications.</p>
-            <ul>
-              <li>Platform architecture and service design</li>
-              <li>Multi-tenant application development</li>
-              <li>Scalable admin, billing, and tenant workflows</li>
-            </ul>
-          </article>
-          <article class="service-card">
-            <h3>Agentic App Development</h3>
-            <p>We develop agentic applications that connect reasoning, workflow execution, and production systems.</p>
-            <ul>
-              <li>Agent workflows and orchestration</li>
-              <li>Operational automation and internal tools</li>
-              <li>System integrations and execution layers</li>
-            </ul>
-          </article>
-        </div>
+      <div>
+        <dt>Phone</dt>
+        <dd><a href="tel:+15708925483">1 (570) 892-5483</a></dd>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">How We Work</h2>
-        <p class="section-intro">
-          Athena is structured around execution. We prefer simple systems, explicit ownership, and production
-          standards that support reliability, auditability, and operational clarity.
-        </p>
-        <div class="about-grid">
-          <div class="panel">
-            <h3>What you can expect</h3>
-            <p>
-              Clear scope, direct communication, and engineering decisions that match the actual needs of the
-              platform and application.
-            </p>
-          </div>
-          <div class="panel">
-            <h3>What we optimize for</h3>
-            <p>
-              Stability, maintainability, tenant isolation, and SOC 1 / SOC 2 aligned operational discipline.
-            </p>
-          </div>
-        </div>
+      <div>
+        <dt>X</dt>
+        <dd><a href="https://x.com/_athenalive">@_athenalive</a></dd>
       </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <p class="section-intro">
-          If you need infrastructure, platform development, multi-tenant SaaS delivery, agentic app development,
-          or application operations support, use the contact details below.
-        </p>
-        <div class="contact-grid">
-          <div class="contact-card">
-            <h3>Reach Athena</h3>
-            <ul class="contact-list">
-              <li>
-                <span class="contact-label">Email</span>
-                <a href="mailto:info@athena.live">info@athena.live</a>
-              </li>
-              <li>
-                <span class="contact-label">Phone</span>
-                <a href="tel:+15708925483">1 (570) 892-5483</a>
-              </li>
-              <li>
-                <span class="contact-label">X</span>
-                <a href="https://x.com/_athenalive" target="_blank" rel="noopener">@_athenalive</a>
-              </li>
-              <li>
-                <span class="contact-label">LinkedIn</span>
-                <a href="https://www.linkedin.com/company/athena-live" target="_blank" rel="noopener">Athena Live</a>
-              </li>
-            </ul>
-          </div>
-          <div class="contact-card">
-            <h3>Project Requests</h3>
-            <p>
-              Send a short summary of your infrastructure or operations need and we can scope from there.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="mailto:info@athena.live?subject=Infrastructure%20and%20Application%20Operations%20Inquiry">
-                Email Athena
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    </dl>
   </main>
-
-  <footer class="footer">
-    <div class="container footer-row">
-      <span>© Athena Live LLC</span>
-      <span>
-        <a href="about.html">About</a>
-        |
-        <a href="privacy.html">Privacy</a>
-        |
-        <a href="terms.html">Terms</a>
-      </span>
-    </div>
-  </footer>
 </body>
 </html>
