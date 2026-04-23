@@ -239,6 +239,24 @@
       word-break: break-word;
     }
 
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .contact-icon {
+      width: 1rem;
+      height: 1rem;
+      flex: 0 0 auto;
+      opacity: 0.72;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
     a {
       transition: opacity 0.2s ease;
     }
@@ -328,19 +346,63 @@
           <dl>
             <div class="contact-row">
               <dt>Email</dt>
-              <dd><a href="mailto:info@athena.live">info@athena.live</a></dd>
+              <dd>
+                <a class="contact-link" href="mailto:info@athena.live">
+                  <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 6h16v12H4z" />
+                    <path d="m4 7 8 6 8-6" />
+                  </svg>
+                  <span>info@athena.live</span>
+                </a>
+              </dd>
             </div>
             <div class="contact-row">
               <dt>Phone</dt>
-              <dd><a href="tel:+15708925483">1 (570) 892-5483</a></dd>
+              <dd>
+                <a class="contact-link" href="tel:+15708925483">
+                  <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.8l-1.3 1.3a16 16 0 0 0 6.4 6.4l1.3-1.3a2 2 0 0 1 1.8-.6l3 .5A2 2 0 0 1 22 16.9z" />
+                  </svg>
+                  <span>1 (570) 892-5483</span>
+                </a>
+              </dd>
             </div>
             <div class="contact-row">
               <dt>X</dt>
-              <dd><a href="https://x.com/_athenalive">@_athenalive</a></dd>
+              <dd>
+                <a class="contact-link" href="https://x.com/_athenalive">
+                  <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 4 20 20" />
+                    <path d="M20 4 4 20" />
+                  </svg>
+                  <span>@_athenalive</span>
+                </a>
+              </dd>
             </div>
             <div class="contact-row">
               <dt>Chat</dt>
-              <dd><a href="https://chatgpt.com/g/g-69697ed9b42481918419bdd2b5deff6d-athena">Chat with Athena</a></dd>
+              <dd>
+                <a class="contact-link" href="https://chatgpt.com/g/g-69697ed9b42481918419bdd2b5deff6d-athena">
+                  <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 10h8" />
+                    <path d="M8 14h5" />
+                    <path d="M5 5h14v11H9l-4 3z" />
+                  </svg>
+                  <span>Chat with Athena</span>
+                </a>
+              </dd>
+            </div>
+            <div class="contact-row">
+              <dt>GitHub</dt>
+              <dd>
+                <a class="contact-link" href="https://github.com/athena-live/">
+                  <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 18c-4 1.2-4-2-6-2" />
+                    <path d="M15 22v-3.1c0-1 .1-1.4-.5-2 2.7-.3 5.5-1.3 5.5-6a4.7 4.7 0 0 0-1.3-3.3 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.4 0C6.4 4.1 5.4 4.4 5.4 4.4a4.3 4.3 0 0 0-.1 3.2A4.7 4.7 0 0 0 4 10.9c0 4.7 2.8 5.7 5.5 6-.6.6-.6 1.2-.5 2V22" />
+                  </svg>
+                  <span>github.com/athena-live</span>
+                </a>
+              </dd>
             </div>
           </dl>
         </section>
