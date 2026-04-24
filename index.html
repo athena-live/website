@@ -154,7 +154,7 @@
 
     .hero {
       display: grid;
-      gap: 1rem;
+      gap: 1.15rem;
       animation: riseIn 0.9s ease-out 0.08s both;
     }
 
@@ -178,81 +178,78 @@
     }
 
     .slogan {
-      max-width: 22rem;
+      max-width: 32rem;
       padding-top: 1rem;
       border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: clamp(1rem, 1.8vw, 1.08rem);
-      line-height: 1.55;
+      color: var(--text);
+      font-size: clamp(1.35rem, 3vw, 2.2rem);
+      line-height: 1.15;
+      font-weight: 700;
     }
 
-    .intro-copy {
+    .statement {
+      display: grid;
+      gap: 0.45rem;
+      max-width: 42rem;
+    }
+
+    .statement-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      color: var(--text);
+      font-size: clamp(3rem, 8vw, 5.4rem);
+      line-height: 0.92;
+      font-weight: 600;
+    }
+
+    .statement-subtitle {
       max-width: 38rem;
       color: var(--text);
-      font-size: clamp(1.05rem, 2vw, 1.28rem);
+      font-size: clamp(1.25rem, 2.8vw, 2rem);
+      line-height: 1.18;
+      font-weight: 700;
+    }
+
+    .statement-copy {
+      max-width: 42rem;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.7vw, 1.18rem);
       line-height: 1.6;
     }
 
-    .contact {
+    .connect {
       display: grid;
-      gap: 0;
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, var(--panel-strong), var(--panel));
+      gap: 1rem;
+      padding-top: clamp(1rem, 2vw, 1.4rem);
+      border-top: 1px solid var(--border-soft);
       animation: riseIn 0.9s ease-out 0.2s both;
     }
 
-    .contact-header {
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid var(--border-soft);
+    .connect-title {
       color: var(--muted);
       font-size: 0.74rem;
       letter-spacing: 0.24em;
       text-transform: uppercase;
     }
 
-    .contact-row {
-      display: grid;
-      grid-template-columns: minmax(6rem, 7.5rem) minmax(0, 1fr);
-      gap: 1rem;
+    .connect-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1.2rem;
       align-items: center;
-      padding: 1rem 1.25rem;
-      border-top: 1px solid var(--border-soft);
-      transition: background-color 0.25s ease, transform 0.25s ease;
     }
 
-    .contact-row:first-of-type {
-      border-top: 0;
-    }
-
-    .contact-row:hover {
-      background: rgba(255, 255, 255, 0.025);
-      transform: translateX(4px);
-    }
-
-    dt {
-      color: var(--muted);
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    dd,
-    dd a {
-      min-width: 0;
+    .connect-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
       color: var(--text);
-      font-size: clamp(1rem, 1.8vw, 1.22rem);
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
       line-height: 1.35;
       text-decoration: none;
       word-break: break-word;
     }
 
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-
-    .contact-icon {
+    .connect-icon {
       width: 1rem;
       height: 1rem;
       flex: 0 0 auto;
@@ -296,9 +293,9 @@
         max-width: none;
       }
 
-      .contact-row {
-        grid-template-columns: 1fr;
-        gap: 0.35rem;
+      .connect-list {
+        display: grid;
+        align-items: start;
       }
     }
 
@@ -320,11 +317,6 @@
         inset: 0.6rem;
       }
 
-      .contact-header,
-      .contact-row {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -345,74 +337,38 @@
         <section class="hero" aria-label="Athena introduction">
           <p class="eyebrow">Athena</p>
           <h1>Athena</h1>
-          <p class="slogan">Inteligence in action</p>
-          <p class="intro-copy">We design and deploy information technology solutions that automate operations and scale organizations.</p>
+          <p class="slogan">Intelligence in action</p>
+          <div class="statement">
+            <p class="statement-title">We</p>
+            <p class="statement-subtitle">design and deploy information technology solutions</p>
+            <p class="statement-copy">that automate operations and scale organizations.</p>
+          </div>
         </section>
 
-        <section class="contact" aria-label="Contact details">
-          <p class="contact-header">Contact</p>
-          <dl>
-            <div class="contact-row">
-              <dt>Email</dt>
-              <dd>
-                <a class="contact-link" href="mailto:info@athena.live">
-                  <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M4 6h16v12H4z" />
-                    <path d="m4 7 8 6 8-6" />
-                  </svg>
-                  <span>info@athena.live</span>
-                </a>
-              </dd>
-            </div>
-            <div class="contact-row">
-              <dt>Phone</dt>
-              <dd>
-                <a class="contact-link" href="tel:+15708925483">
-                  <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.8l-1.3 1.3a16 16 0 0 0 6.4 6.4l1.3-1.3a2 2 0 0 1 1.8-.6l3 .5A2 2 0 0 1 22 16.9z" />
-                  </svg>
-                  <span>1 (570) 892-5483</span>
-                </a>
-              </dd>
-            </div>
-            <div class="contact-row">
-              <dt>X</dt>
-              <dd>
-                <a class="contact-link" href="https://x.com/_athenalive">
-                  <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M4 4 20 20" />
-                    <path d="M20 4 4 20" />
-                  </svg>
-                  <span>@_athenalive</span>
-                </a>
-              </dd>
-            </div>
-            <div class="contact-row">
-              <dt>Chat</dt>
-              <dd>
-                <a class="contact-link" href="https://chatgpt.com/g/g-69697ed9b42481918419bdd2b5deff6d-athena">
-                  <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M8 10h8" />
-                    <path d="M8 14h5" />
-                    <path d="M5 5h14v11H9l-4 3z" />
-                  </svg>
-                  <span>Chat with Athena</span>
-                </a>
-              </dd>
-            </div>
-            <div class="contact-row">
-              <dt>GitHub</dt>
-              <dd>
-                <a class="contact-link" href="https://github.com/athena-live/">
-                  <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M9 18c-4 1.2-4-2-6-2" />
-                    <path d="M15 22v-3.1c0-1 .1-1.4-.5-2 2.7-.3 5.5-1.3 5.5-6a4.7 4.7 0 0 0-1.3-3.3 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.4 0C6.4 4.1 5.4 4.4 5.4 4.4a4.3 4.3 0 0 0-.1 3.2A4.7 4.7 0 0 0 4 10.9c0 4.7 2.8 5.7 5.5 6-.6.6-.6 1.2-.5 2V22" />
-                  </svg>
-                  <span>github.com/athena-live</span>
-                </a>
-              </dd>
-            </div>
-          </dl>
+        <section class="connect" aria-label="Connect with Athena">
+          <p class="connect-title">Connect</p>
+          <div class="connect-list">
+            <a class="connect-link" href="mailto:info@athena.live">
+              <svg class="connect-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16v12H4z" />
+                <path d="m4 7 8 6 8-6" />
+              </svg>
+              <span>info@athena.live</span>
+            </a>
+            <a class="connect-link" href="tel:+15708925483">
+              <svg class="connect-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.8l-1.3 1.3a16 16 0 0 0 6.4 6.4l1.3-1.3a2 2 0 0 1 1.8-.6l3 .5A2 2 0 0 1 22 16.9z" />
+              </svg>
+              <span>1 (570) 892-5483</span>
+            </a>
+            <a class="connect-link" href="https://x.com/_athenalive">
+              <svg class="connect-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4 20 20" />
+                <path d="M20 4 4 20" />
+              </svg>
+              <span>@_athenalive</span>
+            </a>
+          </div>
         </section>
       </div>
     </main>
