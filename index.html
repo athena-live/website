@@ -63,6 +63,35 @@
       }
     }
 
+    @keyframes sloganSweep {
+      0% { background-position: 120% center; }
+      100% { background-position: -120% center; }
+    }
+
+    @keyframes sloganPulse {
+      0%, 100% {
+        text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+      }
+      50% {
+        text-shadow: 0 0 22px rgba(255, 255, 255, 0.34);
+      }
+    }
+
+    @keyframes lineScan {
+      0% {
+        transform: scaleX(0);
+        opacity: 0;
+      }
+      42%, 64% {
+        transform: scaleX(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scaleX(0);
+        opacity: 0;
+      }
+    }
+
     body {
       min-height: 100vh;
       overflow-x: hidden;
@@ -178,12 +207,40 @@
     }
 
     .slogan {
+      position: relative;
       max-width: 22rem;
       padding-top: 1rem;
       border-top: 1px solid var(--border);
-      color: var(--muted);
+      width: fit-content;
+      color: transparent;
+      background:
+        linear-gradient(
+          105deg,
+          rgba(255, 255, 255, 0.58) 0%,
+          rgba(255, 255, 255, 0.58) 34%,
+          #ffffff 46%,
+          rgba(255, 255, 255, 0.72) 58%,
+          rgba(255, 255, 255, 0.58) 72%
+        );
+      background-size: 240% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
       font-size: clamp(1rem, 1.8vw, 1.08rem);
       line-height: 1.55;
+      animation: sloganSweep 4.2s ease-in-out infinite, sloganPulse 4.2s ease-in-out infinite;
+    }
+
+    .slogan::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.28rem;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.88), transparent);
+      transform: scaleX(0);
+      transform-origin: left center;
+      animation: lineScan 4.2s ease-in-out infinite;
     }
 
     .intro-copy {
@@ -345,7 +402,7 @@
         <section class="hero" aria-label="Athena introduction">
           <p class="eyebrow">Athena</p>
           <h1>Athena</h1>
-          <p class="slogan">Inteligence in action</p>
+          <p class="slogan">Intelligence in action</p>
           <p class="intro-copy">Athena designs and deploys information technology solutions.</p>
         </section>
 
