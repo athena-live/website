@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index, follow" />
-  <title>Athena</title>
+  <title>Athena | AI-Native Software, Agents, and Operations</title>
+  <meta
+    name="description"
+    content="Athena designs, builds, deploys, and operates AI-native products, agents, infrastructure, customer data systems, and planning tools."
+  />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MW9Z4L9WTY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -26,6 +30,7 @@
       --border-soft: rgba(255, 255, 255, 0.07);
       --text: #ffffff;
       --muted: rgba(255, 255, 255, 0.62);
+      --accent: #83d4ff;
     }
 
     * {
@@ -103,6 +108,10 @@
       font-family: "Manrope", "Segoe UI", sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body::before,
     body::after {
       content: "";
@@ -135,7 +144,7 @@
       min-height: 100vh;
       padding: clamp(1rem, 2vw, 2rem);
       display: grid;
-      place-items: center;
+      justify-items: center;
     }
 
     .page::before {
@@ -154,7 +163,7 @@
     main {
       position: relative;
       z-index: 1;
-      width: min(100%, 56rem);
+      width: min(100%, 72rem);
       padding: clamp(1.2rem, 2vw, 2rem);
       border: 1px solid var(--border-soft);
       background:
@@ -181,6 +190,55 @@
       padding: clamp(1rem, 2vw, 2rem);
     }
 
+    .site-nav {
+      position: sticky;
+      top: clamp(0.5rem, 2vw, 1.25rem);
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border-soft);
+      background: rgba(4, 4, 4, 0.72);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      color: var(--text);
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      justify-content: flex-end;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 0.45rem 0.7rem;
+      border: 1px solid transparent;
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      border-color: var(--border);
+      color: var(--text);
+      opacity: 1;
+    }
+
     .hero {
       display: grid;
       gap: 1rem;
@@ -204,6 +262,11 @@
       letter-spacing: -0.05em;
       transform-origin: left center;
       animation: breatheWordmark 6s ease-in-out 1s infinite;
+    }
+
+    h2,
+    h3 {
+      line-height: 1.15;
     }
 
     .slogan {
@@ -244,10 +307,121 @@
     }
 
     .intro-copy {
-      max-width: 38rem;
+      max-width: 48rem;
       color: var(--text);
       font-size: clamp(1.05rem, 2vw, 1.28rem);
       line-height: 1.6;
+    }
+
+    .section {
+      display: grid;
+      gap: 1.35rem;
+      scroll-margin-top: 7rem;
+    }
+
+    .section-heading {
+      display: grid;
+      gap: 0.65rem;
+      max-width: 48rem;
+    }
+
+    .section-label {
+      color: var(--accent);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .section-copy,
+    .card p,
+    .card li,
+    .steps li {
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.65;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      display: grid;
+      align-content: start;
+      gap: 0.8rem;
+      min-height: 100%;
+      padding: 1.15rem;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--panel-strong), var(--panel));
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      letter-spacing: 0;
+    }
+
+    .card ul,
+    .steps {
+      display: grid;
+      gap: 0.5rem;
+      padding-left: 1.05rem;
+    }
+
+    .signal {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.85fr);
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .signal-panel {
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(135deg, rgba(131, 212, 255, 0.14), transparent 42%),
+        linear-gradient(180deg, var(--panel-strong), var(--panel));
+    }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.45rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.65rem;
+      padding: 0.7rem 0.95rem;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .button.primary {
+      border-color: rgba(131, 212, 255, 0.5);
+      background: rgba(131, 212, 255, 0.12);
+    }
+
+    .button.secondary {
+      color: var(--muted);
     }
 
     .contact {
@@ -256,6 +430,21 @@
       border: 1px solid var(--border);
       background: linear-gradient(180deg, var(--panel-strong), var(--panel));
       animation: riseIn 0.9s ease-out 0.2s both;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      border-top: 1px solid var(--border-soft);
+      padding-top: 1.25rem;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
     }
 
     .contact-header {
@@ -345,6 +534,15 @@
         padding: 0.8rem;
       }
 
+      .site-nav {
+        position: static;
+        display: grid;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
       h1 {
         font-size: clamp(3.3rem, 20vw, 5.4rem);
       }
@@ -356,6 +554,12 @@
       .contact-row {
         grid-template-columns: 1fr;
         gap: 0.35rem;
+      }
+
+      .grid,
+      .grid.two,
+      .signal {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -399,13 +603,190 @@
   <div class="page">
     <main>
       <div class="stack">
-        <section class="hero" aria-label="Athena introduction">
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a class="brand" href="#home">Athena</a>
+          <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#approach">Approach</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <section id="home" class="hero" aria-label="Athena introduction">
           <p class="eyebrow">Athena</p>
           <h1>Athena</h1>
           <p class="slogan">Intelligence in action</p>
+          <p class="intro-copy">
+            Athena designs, develops, deploys, and operates AI-native products, agents, data platforms, planning
+            systems, and the infrastructure they depend on.
+          </p>
+          <div class="link-row">
+            <a class="button primary" href="#contact">Start a Conversation</a>
+            <a class="button secondary" href="#services">View Services</a>
+          </div>
         </section>
 
-        <section class="contact" aria-label="Contact details">
+        <section id="services" class="section" aria-label="Athena services">
+          <div class="section-heading">
+            <p class="section-label">Services</p>
+            <h2 class="section-title">Build the platform. Run the application.</h2>
+            <p class="section-copy">
+              The work stays direct: ship the software, manage the environment, connect the systems, and keep
+              operations clear as the product scales.
+            </p>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <h3>Infrastructure</h3>
+              <p>Setup and maintenance for the stack your applications rely on.</p>
+              <ul>
+                <li>Cloud environments, servers, networking, storage, and access controls</li>
+                <li>Deployment pipelines, releases, environment management, and monitoring</li>
+                <li>Runtime support for production systems</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Platform and SaaS Development</h3>
+              <p>Product foundations for internal platforms, customer portals, and multi-tenant SaaS.</p>
+              <ul>
+                <li>Platform architecture, service design, and admin workflows</li>
+                <li>Tenant isolation, billing flows, permissions, and data boundaries</li>
+                <li>Product foundations built for scale and maintainability</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Agentic Applications</h3>
+              <p>AI systems that connect reasoning, workflow execution, and production tools.</p>
+              <ul>
+                <li>Agent workflows, orchestration, and automation layers</li>
+                <li>Internal tools, operational copilots, and system integrations</li>
+                <li>Human approval models for staged and confirmed actions</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section id="products" class="section" aria-label="Athena products">
+          <div class="section-heading">
+            <p class="section-label">Products</p>
+            <h2 class="section-title">Systems for execution, data, planning, and agents.</h2>
+            <p class="section-copy">
+              Athena products share one purpose: move from intent to useful output faster, with structure that
+              supports real operations.
+            </p>
+          </div>
+          <div class="grid two">
+            <article class="card">
+              <h3>Athena GPT</h3>
+              <p>
+                The intelligence layer behind Athena. It assists with content, data analysis, automation, product
+                operations, and system design.
+              </p>
+              <ul>
+                <li>Coordinates Athena products and workflows</li>
+                <li>Generates and assists with content at scale</li>
+                <li>Learns from structure and adapts as the platform grows</li>
+              </ul>
+              <div class="link-row">
+                <a class="button secondary" href="https://chatgpt.com/g/g-69697ed9b42481918419bdd2b5deff6d-athena" target="_blank" rel="noopener">Launch Athena GPT</a>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Athena Live Agent</h3>
+              <p>
+                A real-time AI agent model that listens, reasons, and starts execution while a conversation is still
+                unfolding.
+              </p>
+              <ul>
+                <li>Perception, reasoning, and execution loops running in parallel</li>
+                <li>Artifact creation, system orchestration, and resource preparation</li>
+                <li>Rollback-capable work with graduated autonomy controls</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Athena Graphs</h3>
+              <p>
+                A graph-based planning workspace for route maps, dependencies, branches, checkpoints, and shared
+                execution.
+              </p>
+              <ul>
+                <li>Route-based planning for goals, tasks, and constraints</li>
+                <li>Versioned iterations, snapshots, and decision history</li>
+                <li>AI-powered flowchart and network model generation</li>
+              </ul>
+              <div class="link-row">
+                <a class="button secondary" href="https://graphs.athena.live/" target="_blank" rel="noopener">Open Graph Planner</a>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Athena Customer Data Platform</h3>
+              <p>
+                A centralized intelligence layer for customer profiles, live segmentation, activation, attribution,
+                and privacy-aware governance.
+              </p>
+              <ul>
+                <li>Identity resolution, event streaming, and schema governance</li>
+                <li>Real-time cohorts, audience orchestration, and data quality alerts</li>
+                <li>Revenue attribution and lifecycle analysis</li>
+              </ul>
+              <div class="link-row">
+                <a class="button secondary" href="https://data.athena.live" target="_blank" rel="noopener">Open data.athena.live</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" aria-label="OpenClaw services">
+          <div class="signal">
+            <div class="signal-panel">
+              <div class="section-heading">
+                <p class="section-label">OpenClaw</p>
+                <h2 class="section-title">Bot implementation and managed operations.</h2>
+                <p class="section-copy">
+                  Athena implements, trains, manages, and hosts OpenClaw bots so teams can deploy AI agents across
+                  WhatsApp, Telegram, Discord, iMessage, and other channels with clear governance.
+                </p>
+              </div>
+            </div>
+            <div class="card">
+              <h3>Delivery framework</h3>
+              <ol class="steps">
+                <li>Define use cases, channels, routing, and data access.</li>
+                <li>Deploy the gateway, pair channels, and configure skills.</li>
+                <li>Run pilot cohorts, tune prompts, and ship to production.</li>
+                <li>Monitor uptime, quality, security, and performance over time.</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <section id="approach" class="section" aria-label="How Athena works">
+          <div class="section-heading">
+            <p class="section-label">Approach</p>
+            <h2 class="section-title">Simple systems, explicit ownership, production standards.</h2>
+            <p class="section-copy">
+              Athena optimizes for stability, maintainability, tenant isolation, operational clarity, and SOC 1 /
+              SOC 2 aligned delivery practices.
+            </p>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <h3>Fast, grounded delivery</h3>
+              <p>Compressed timelines only work when scope, architecture, and ownership are concrete from the start.</p>
+            </article>
+            <article class="card">
+              <h3>Operational discipline</h3>
+              <p>Release support, monitoring, controls, and incident response are treated as product requirements.</p>
+            </article>
+            <article class="card">
+              <h3>AI where it belongs</h3>
+              <p>Agents and automation are connected to real workflows, data boundaries, and approval paths.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="contact" class="contact" aria-label="Contact details">
           <p class="contact-header">Contact</p>
           <dl>
             <div class="contact-row">
@@ -434,7 +815,7 @@
             <div class="contact-row">
               <dt>X</dt>
               <dd>
-                <a class="contact-link" href="https://x.com/_athenalive">
+                <a class="contact-link" href="https://x.com/_athenalive" target="_blank" rel="noopener">
                   <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M4 4 20 20" />
                     <path d="M20 4 4 20" />
@@ -446,7 +827,7 @@
             <div class="contact-row">
               <dt>Chat</dt>
               <dd>
-                <a class="contact-link" href="https://chatgpt.com/g/g-69697ed9b42481918419bdd2b5deff6d-athena">
+                <a class="contact-link" href="https://chatgpt.com/g/g-69697ed9b42481918419bdd2b5deff6d-athena" target="_blank" rel="noopener">
                   <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M8 10h8" />
                     <path d="M8 14h5" />
@@ -457,9 +838,22 @@
               </dd>
             </div>
             <div class="contact-row">
+              <dt>LinkedIn</dt>
+              <dd>
+                <a class="contact-link" href="https://www.linkedin.com/company/athena-live" target="_blank" rel="noopener">
+                  <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 9h4v12H4z" />
+                    <path d="M6 4v.01" />
+                    <path d="M12 9h4v2a4 4 0 0 1 8 0v8h-4v-8a2 2 0 0 0-4 0v8h-4z" />
+                  </svg>
+                  <span>Athena Live</span>
+                </a>
+              </dd>
+            </div>
+            <div class="contact-row">
               <dt>GitHub</dt>
               <dd>
-                <a class="contact-link" href="https://github.com/athena-live/">
+                <a class="contact-link" href="https://github.com/athena-live/" target="_blank" rel="noopener">
                   <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M9 18c-4 1.2-4-2-6-2" />
                     <path d="M15 22v-3.1c0-1 .1-1.4-.5-2 2.7-.3 5.5-1.3 5.5-6a4.7 4.7 0 0 0-1.3-3.3 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.4 0C6.4 4.1 5.4 4.4 5.4 4.4a4.3 4.3 0 0 0-.1 3.2A4.7 4.7 0 0 0 4 10.9c0 4.7 2.8 5.7 5.5 6-.6.6-.6 1.2-.5 2V22" />
@@ -470,6 +864,15 @@
             </div>
           </dl>
         </section>
+
+        <footer class="footer-links" aria-label="Legal links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="cookie-policy.html">Cookie Policy</a>
+          <a href="athena-live-news.html">News Policies</a>
+          <a href="robots.txt">Robots.txt</a>
+          <a href="sitemap.xml">Sitemap</a>
+        </footer>
       </div>
     </main>
   </div>
