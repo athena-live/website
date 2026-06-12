@@ -10,6 +10,10 @@
   --text: #ffffff;
   --muted: rgba(255, 255, 255, 0.62);
   --accent: #83d4ff;
+  --accent-warm: #ffc978;
+  --accent-rose: #ff7aa8;
+  --cursor-x: 50vw;
+  --cursor-y: 18vh;
 }
 
 * {
@@ -22,6 +26,26 @@
   0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.2; }
   50% { transform: translate3d(1.5rem, -1rem, 0) scale(1.06); opacity: 0.34; }
   100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.2; }
+}
+
+@keyframes auroraRoll {
+  0% { transform: translate3d(-6vw, 8vh, 0) rotate(0deg) scale(1); opacity: 0.28; }
+  35% { transform: translate3d(8vw, -4vh, 0) rotate(8deg) scale(1.16); opacity: 0.44; }
+  70% { transform: translate3d(2vw, 7vh, 0) rotate(-7deg) scale(0.92); opacity: 0.34; }
+  100% { transform: translate3d(-6vw, 8vh, 0) rotate(0deg) scale(1); opacity: 0.28; }
+}
+
+@keyframes starTwinkle {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(0.72); opacity: 0.12; }
+  45% { transform: translate3d(0.4rem, -0.8rem, 0) scale(1); opacity: 0.9; }
+  70% { opacity: 0.24; }
+}
+
+@keyframes cometArc {
+  0% { transform: translate3d(-18vw, 8vh, 0) rotate(-18deg) scaleX(0.65); opacity: 0; }
+  8% { opacity: 0.8; }
+  34% { transform: translate3d(118vw, -24vh, 0) rotate(-18deg) scaleX(1); opacity: 0; }
+  100% { transform: translate3d(118vw, -24vh, 0) rotate(-18deg) scaleX(1); opacity: 0; }
 }
 
 @keyframes frameFloat {
@@ -76,6 +100,40 @@
   }
 }
 
+@keyframes prismShift {
+  0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+  50% { background-position: 100% 50%; filter: hue-rotate(14deg); }
+  100% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+}
+
+@keyframes navGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(131, 212, 255, 0); }
+  50% { box-shadow: 0 0 36px rgba(131, 212, 255, 0.16); }
+}
+
+@keyframes cardWake {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes borderTrace {
+  0% { transform: translateX(-110%); opacity: 0; }
+  18% { opacity: 0.85; }
+  54% { opacity: 0.4; }
+  100% { transform: translateX(110%); opacity: 0; }
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); opacity: 0.72; }
+  50% { transform: scale(1.16); opacity: 1; }
+}
+
 body {
   min-height: 100vh;
   overflow-x: hidden;
@@ -118,8 +176,122 @@ body::after {
   animation-delay: -7s;
 }
 
+.motion-field {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.motion-field::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(255, 255, 255, 0.14), transparent 14rem),
+    conic-gradient(from 180deg at 50% 50%, transparent, rgba(131, 212, 255, 0.1), transparent, rgba(255, 201, 120, 0.08), transparent);
+  mix-blend-mode: screen;
+  opacity: 0.72;
+  animation: prismShift 16s ease-in-out infinite;
+}
+
+.motion-field::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.42) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(131, 212, 255, 0.34) 0 1px, transparent 1.5px);
+  background-position: 0 0, 32px 44px;
+  background-size: 118px 118px, 164px 164px;
+  opacity: 0.18;
+  animation: haloDrift 24s linear infinite;
+}
+
+.aurora,
+.star,
+.comet {
+  position: absolute;
+  display: block;
+}
+
+.aurora {
+  width: 42rem;
+  max-width: 76vw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(46px);
+  mix-blend-mode: screen;
+  animation: auroraRoll 18s ease-in-out infinite;
+}
+
+.aurora-one {
+  top: -16rem;
+  left: 10vw;
+  background: radial-gradient(circle, rgba(131, 212, 255, 0.36), transparent 62%);
+}
+
+.aurora-two {
+  right: -18rem;
+  top: 24vh;
+  background: radial-gradient(circle, rgba(255, 122, 168, 0.25), transparent 64%);
+  animation-delay: -6s;
+}
+
+.aurora-three {
+  left: 12vw;
+  bottom: -20rem;
+  background: radial-gradient(circle, rgba(255, 201, 120, 0.22), transparent 66%);
+  animation-delay: -11s;
+}
+
+.star {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.9), 0 0 34px rgba(131, 212, 255, 0.48);
+  animation: starTwinkle 3.8s ease-in-out infinite;
+}
+
+.star-one {
+  top: 18vh;
+  left: 18vw;
+}
+
+.star-two {
+  top: 42vh;
+  right: 22vw;
+  animation-delay: -1.6s;
+}
+
+.star-three {
+  bottom: 16vh;
+  left: 62vw;
+  animation-delay: -2.7s;
+}
+
+.comet {
+  left: 0;
+  top: 34vh;
+  width: 18rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.96), rgba(131, 212, 255, 0.28), transparent);
+  box-shadow: 0 0 18px rgba(131, 212, 255, 0.3);
+  animation: cometArc 9s ease-in-out infinite;
+}
+
+.comet-two {
+  top: 72vh;
+  width: 14rem;
+  animation-delay: -4.8s;
+  animation-duration: 12s;
+}
+
 .page {
   position: relative;
+  z-index: 1;
   min-height: 100vh;
   padding: clamp(1rem, 2vw, 2rem);
   display: grid;
@@ -161,6 +333,19 @@ main::before {
   pointer-events: none;
 }
 
+main::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(115deg, transparent 0 35%, rgba(255, 255, 255, 0.08) 48%, transparent 62%),
+    radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(131, 212, 255, 0.1), transparent 18rem);
+  opacity: 0.42;
+  transform: translateX(-18%);
+  pointer-events: none;
+  animation: prismShift 12s ease-in-out infinite;
+}
+
 .stack {
   position: relative;
   z-index: 1;
@@ -181,15 +366,36 @@ main::before {
   border: 1px solid var(--border-soft);
   background: rgba(4, 4, 4, 0.72);
   backdrop-filter: blur(12px);
+  animation: navGlow 5s ease-in-out infinite;
 }
 
 .brand {
+  position: relative;
   color: var(--text);
   font-size: 0.86rem;
   font-weight: 800;
   letter-spacing: 0.18em;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.brand::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0.18em;
+  bottom: -0.28rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transform: scaleX(0.3);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.brand:hover::after,
+.brand:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .nav-links {
@@ -201,6 +407,7 @@ main::before {
 }
 
 .nav-links a {
+  position: relative;
   display: inline-flex;
   align-items: center;
   min-height: 2.2rem;
@@ -209,6 +416,18 @@ main::before {
   color: var(--muted);
   font-size: 0.82rem;
   text-decoration: none;
+  overflow: hidden;
+}
+
+.nav-links a::before {
+  content: "";
+  position: absolute;
+  inset: auto 12% 0.28rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.24s ease;
 }
 
 .nav-links a:hover,
@@ -218,10 +437,21 @@ main::before {
   opacity: 1;
 }
 
+.nav-links a:hover::before,
+.nav-links a:focus-visible::before {
+  transform: scaleX(1);
+}
+
 .hero {
   display: grid;
   gap: 1rem;
   animation: riseIn 0.9s ease-out 0.08s both;
+}
+
+.compact-hero h1 {
+  max-width: 52rem;
+  font-size: clamp(3.1rem, 9vw, 6.4rem);
+  line-height: 0.95;
 }
 
 .eyebrow {
@@ -234,13 +464,20 @@ main::before {
 h1 {
   width: fit-content;
   max-width: 100%;
+  color: transparent;
+  background:
+    linear-gradient(95deg, #ffffff 0%, #dff5ff 24%, #ffc978 48%, #ff7aa8 62%, #ffffff 88%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(4rem, 14vw, 8rem);
   line-height: 0.88;
   font-weight: 600;
   letter-spacing: -0.05em;
   transform-origin: left center;
-  animation: breatheWordmark 6s ease-in-out 1s infinite;
+  text-shadow: 0 0 44px rgba(131, 212, 255, 0.18);
+  animation: breatheWordmark 6s ease-in-out 1s infinite, prismShift 9s ease-in-out infinite;
 }
 
 h2,
@@ -296,6 +533,15 @@ h3 {
   display: grid;
   gap: 1.35rem;
   scroll-margin-top: 7rem;
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.section.is-visible,
+.contact.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section-heading {
@@ -327,6 +573,14 @@ h3 {
   line-height: 1.65;
 }
 
+.service-detail .card {
+  min-height: 11rem;
+}
+
+.mini-contact {
+  max-width: 38rem;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -338,6 +592,7 @@ h3 {
 }
 
 .card {
+  position: relative;
   display: grid;
   align-content: start;
   gap: 0.8rem;
@@ -345,6 +600,44 @@ h3 {
   padding: 1.15rem;
   border: 1px solid var(--border);
   background: linear-gradient(180deg, var(--panel-strong), var(--panel));
+  overflow: hidden;
+  transform: translateY(0);
+  transition: border-color 0.26s ease, box-shadow 0.26s ease, transform 0.26s ease, background 0.26s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
+  transform: translateX(-110%);
+  opacity: 0;
+  animation: borderTrace 5.8s ease-in-out infinite;
+}
+
+.card:nth-child(2n)::before {
+  animation-delay: -2s;
+}
+
+.card:nth-child(3n)::before {
+  animation-delay: -3.8s;
+}
+
+.card.is-visible {
+  animation: cardWake 0.65s ease-out both;
+}
+
+.card:hover,
+.card:focus-within {
+  border-color: rgba(131, 212, 255, 0.42);
+  background:
+    radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(131, 212, 255, 0.1), transparent 14rem),
+    linear-gradient(180deg, var(--panel-strong), var(--panel));
+  box-shadow: 0 20px 62px rgba(0, 0, 0, 0.38), 0 0 40px rgba(131, 212, 255, 0.08);
+  transform: translateY(-6px);
 }
 
 .card h3 {
@@ -367,11 +660,23 @@ h3 {
 }
 
 .signal-panel {
+  position: relative;
   padding: 1.25rem;
   border: 1px solid var(--border);
   background:
     linear-gradient(135deg, rgba(131, 212, 255, 0.14), transparent 42%),
     linear-gradient(180deg, var(--panel-strong), var(--panel));
+  overflow: hidden;
+}
+
+.signal-panel::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(from 110deg, transparent, rgba(131, 212, 255, 0.18), transparent, rgba(255, 201, 120, 0.12), transparent);
+  animation: prismShift 10s ease-in-out infinite;
+  opacity: 0.55;
+  pointer-events: none;
 }
 
 .link-row {
@@ -382,6 +687,7 @@ h3 {
 }
 
 .button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -392,11 +698,34 @@ h3 {
   font-size: 0.88rem;
   font-weight: 800;
   text-decoration: none;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 0 30%, rgba(255, 255, 255, 0.2) 48%, transparent 66%);
+  transform: translateX(-120%);
+  transition: transform 0.48s ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.button:hover::before,
+.button:focus-visible::before {
+  transform: translateX(120%);
 }
 
 .button.primary {
   border-color: rgba(131, 212, 255, 0.5);
   background: rgba(131, 212, 255, 0.12);
+  box-shadow: 0 0 24px rgba(131, 212, 255, 0.1);
 }
 
 .button.secondary {
@@ -409,6 +738,10 @@ h3 {
   border: 1px solid var(--border);
   background: linear-gradient(180deg, var(--panel-strong), var(--panel));
   animation: riseIn 0.9s ease-out 0.2s both;
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+  overflow: hidden;
 }
 
 .footer-links {
@@ -452,6 +785,11 @@ h3 {
 .contact-row:hover {
   background: rgba(255, 255, 255, 0.025);
   transform: translateX(4px);
+}
+
+.contact-row:hover .contact-icon,
+.contact-row:focus-within .contact-icon {
+  animation: iconPulse 0.72s ease-in-out both;
 }
 
 dt {
@@ -574,5 +912,12 @@ a:focus-visible {
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
+  }
+
+  .section,
+  .contact,
+  .card {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
