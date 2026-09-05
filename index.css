@@ -457,6 +457,42 @@ h3 {
   line-height: 1.6;
 }
 
+.architecture-components {
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--panel-strong), var(--panel));
+}
+
+.architecture-components > div {
+  display: grid;
+  grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
+  gap: 0.5rem 1.5rem;
+  padding: 1.15rem;
+}
+
+.architecture-components > div + div {
+  border-top: 1px solid var(--border);
+}
+
+.architecture-components dt {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.architecture-components dd {
+  color: var(--text);
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: clamp(2.8rem, 11vw, 4rem);
+  }
+
+  .architecture-components > div {
+    grid-template-columns: 1fr;
+  }
+}
+
 .section {
   display: grid;
   gap: 1.35rem;
