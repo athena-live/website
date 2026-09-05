@@ -7,43 +7,38 @@ gtag("config", "G-MW9Z4L9WTY");
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-function updateCursorLight(event) {
-  document.documentElement.style.setProperty("--cursor-x", `${event.clientX}px`);
-  document.documentElement.style.setProperty("--cursor-y", `${event.clientY}px`);
-}
-
 function revealMotionTargets() {
-  const targets = document.querySelectorAll(".section, .contact, .card");
-
-  if (prefersReducedMotion.matches || !("IntersectionObserver" in window)) {
-    targets.forEach((target) => target.classList.add("is-visible"));
-    return;
-  }
+  // Content is visible by default, including without JavaScript or observer support.
+  if (prefersReducedMotion.matches || !("IntersectionObserver" in window)) return;
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        const target = entry.target;
+        observer.unobserve(target);
+        if (prefersReducedMotion.matches) return;
+        target.classList.add("is-entering");
+        target.addEventListener("animationend", () => {
+          target.classList.remove("is-entering");
+        }, { once: true });
       });
     },
-    { rootMargin: "0px 0px -12% 0px", threshold: 0.12 }
+    { threshold: 0.05 }
   );
 
-  targets.forEach((target, index) => {
-    if (target.classList.contains("card")) {
-      target.style.animationDelay = `${Math.min(index * 0.035, 0.28)}s`;
-    }
+  // Animate individual blocks, never both a section and the cards inside it.
+  document.querySelectorAll(".section-heading, .card, .contact-row").forEach((target) => {
     observer.observe(target);
+  });
+
+  prefersReducedMotion.addEventListener("change", (event) => {
+    if (!event.matches) return;
+    observer.disconnect();
+    document.querySelectorAll(".is-entering").forEach((target) => {
+      target.classList.remove("is-entering");
+    });
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  revealMotionTargets();
-
-  if (!prefersReducedMotion.matches) {
-    window.addEventListener("pointermove", updateCursorLight, { passive: true });
-  }
-});
+document.addEventListener("DOMContentLoaded", revealMotionTargets);

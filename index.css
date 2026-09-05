@@ -10,8 +10,6 @@
   --text: #ffffff;
   --muted: rgba(255, 255, 255, 0.62);
   --accent: #83d4ff;
-  --cursor-x: 50vw;
-  --cursor-y: 18vh;
 }
 
 * {
@@ -20,86 +18,16 @@
   padding: 0;
 }
 
-@keyframes haloDrift {
-  0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.2; }
-  50% { transform: translate3d(1.5rem, -1rem, 0) scale(1.06); opacity: 0.34; }
-  100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.2; }
-}
-
-@keyframes auroraRoll {
-  0% { transform: translate3d(-2vw, 2vh, 0) scale(1); opacity: 0.16; }
-  50% { transform: translate3d(3vw, -2vh, 0) scale(1.08); opacity: 0.24; }
-  100% { transform: translate3d(-2vw, 2vh, 0) scale(1); opacity: 0.16; }
-}
-
-@keyframes breatheWordmark {
-  0% { transform: scale(1); opacity: 0.98; }
-  50% { transform: scale(1.008); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.98; }
-}
-
+/* Keep motion local and brief; avoid animated layers spanning the page. */
 @keyframes riseIn {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
-}
-
-@keyframes sloganSweep {
-  0% { background-position: 120% center; }
-  100% { background-position: -120% center; }
-}
-
-@keyframes sloganPulse {
-  0%, 100% {
-    text-shadow: 0 0 0 rgba(255, 255, 255, 0);
-  }
-  50% {
-    text-shadow: 0 0 18px rgba(131, 212, 255, 0.2);
-  }
-}
-
-@keyframes lineScan {
-  0% {
-    transform: scaleX(0);
-    opacity: 0;
-  }
-  42%, 64% {
-    transform: scaleX(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scaleX(0);
-    opacity: 0;
-  }
-}
-
-@keyframes prismShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes cardWake {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes borderTrace {
-  0% { transform: translateX(-110%); opacity: 0; }
-  22% { opacity: 0.55; }
-  58% { opacity: 0.24; }
-  100% { transform: translateX(110%); opacity: 0; }
 }
 
 body {
@@ -114,102 +42,9 @@ body {
 }
 
 html {
+  background: var(--bg);
+  color-scheme: dark;
   scroll-behavior: smooth;
-}
-
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  pointer-events: none;
-  border-radius: 50%;
-  filter: blur(28px);
-  animation: haloDrift 18s ease-in-out infinite;
-}
-
-body::before {
-  top: 8vh;
-  left: -6vw;
-  width: min(28rem, 42vw);
-  height: min(28rem, 42vw);
-  background: radial-gradient(circle, rgba(131, 212, 255, 0.11), transparent 68%);
-}
-
-body::after {
-  right: -8vw;
-  bottom: 0;
-  width: min(32rem, 48vw);
-  height: min(32rem, 48vw);
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.07), transparent 70%);
-  animation-delay: -7s;
-}
-
-.motion-field {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.motion-field::before {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  background:
-    radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(255, 255, 255, 0.08), transparent 15rem),
-    linear-gradient(135deg, transparent 0%, rgba(131, 212, 255, 0.07) 42%, transparent 68%);
-  mix-blend-mode: screen;
-  opacity: 0.58;
-  animation: prismShift 22s ease-in-out infinite;
-}
-
-.motion-field::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.28) 0 1px, transparent 1.5px),
-    radial-gradient(circle, rgba(131, 212, 255, 0.2) 0 1px, transparent 1.5px);
-  background-position: 0 0, 32px 44px;
-  background-size: 118px 118px, 164px 164px;
-  opacity: 0.1;
-  animation: haloDrift 30s linear infinite;
-}
-
-.aurora {
-  position: absolute;
-  display: block;
-}
-
-.aurora {
-  width: 42rem;
-  max-width: 76vw;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  filter: blur(58px);
-  mix-blend-mode: screen;
-  animation: auroraRoll 24s ease-in-out infinite;
-}
-
-.aurora-one {
-  top: -16rem;
-  left: 10vw;
-  background: radial-gradient(circle, rgba(131, 212, 255, 0.28), transparent 64%);
-}
-
-.aurora-two {
-  right: -18rem;
-  top: 24vh;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 66%);
-  animation-delay: -6s;
-}
-
-.aurora-three {
-  left: 12vw;
-  bottom: -20rem;
-  background: radial-gradient(circle, rgba(131, 212, 255, 0.12), transparent 68%);
-  animation-delay: -11s;
 }
 
 .page {
@@ -219,19 +54,6 @@ body::after {
   padding: clamp(1rem, 2vw, 2rem);
   display: grid;
   justify-items: center;
-}
-
-.page::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: radial-gradient(circle at center, black 28%, transparent 80%);
-  opacity: 0.14;
-  pointer-events: none;
 }
 
 main {
@@ -244,7 +66,6 @@ main {
     linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.01)),
     rgba(5, 5, 5, 0.9);
   box-shadow: 0 30px 110px rgba(0, 0, 0, 0.58);
-  animation: riseIn 0.85s ease-out both;
   overflow: hidden;
 }
 
@@ -255,20 +76,6 @@ main::before {
   z-index: 1;
   border: 1px solid var(--border-soft);
   pointer-events: none;
-}
-
-main::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background:
-    linear-gradient(115deg, transparent 0 44%, rgba(255, 255, 255, 0.026) 52%, transparent 64%),
-    radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(131, 212, 255, 0.075), transparent 18rem);
-  opacity: 0.28;
-  transform: translateX(-18%);
-  pointer-events: none;
-  animation: prismShift 18s ease-in-out infinite;
 }
 
 .stack {
@@ -291,8 +98,7 @@ main::after {
   gap: 1rem;
   padding: 0.85rem 1rem;
   border: 1px solid var(--border-soft);
-  background: rgba(4, 4, 4, 0.82);
-  backdrop-filter: blur(14px);
+  background: #080808;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.24);
 }
 
@@ -373,7 +179,7 @@ main::after {
   display: grid;
   gap: 1rem;
   width: min(100%, 66rem);
-  animation: riseIn 0.9s ease-out 0.08s both;
+  animation: riseIn 0.45s ease-out;
 }
 
 .compact-hero h1 {
@@ -392,20 +198,13 @@ main::after {
 h1 {
   width: fit-content;
   max-width: 100%;
-  color: transparent;
-  background:
-    linear-gradient(92deg, #ffffff 0%, #f7fbff 42%, #bfeaff 66%, #ffffff 100%);
-  background-size: 180% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
+  color: var(--text);
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(4rem, 14vw, 8rem);
   line-height: 0.88;
   font-weight: 600;
   letter-spacing: -0.05em;
-  transform-origin: left center;
   text-shadow: 0 0 34px rgba(131, 212, 255, 0.14);
-  animation: breatheWordmark 8s ease-in-out 1s infinite, prismShift 16s ease-in-out infinite;
 }
 
 h2,
@@ -419,35 +218,9 @@ h3 {
   padding-top: 1rem;
   border-top: 1px solid var(--border);
   width: fit-content;
-  color: transparent;
-  background:
-    linear-gradient(
-      105deg,
-      rgba(255, 255, 255, 0.58) 0%,
-      rgba(255, 255, 255, 0.64) 34%,
-      #ffffff 48%,
-      rgba(191, 234, 255, 0.72) 62%,
-      rgba(255, 255, 255, 0.58) 78%
-    );
-  background-size: 240% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
+  color: var(--muted);
   font-size: clamp(1rem, 1.8vw, 1.08rem);
   line-height: 1.55;
-  animation: sloganSweep 7s ease-in-out infinite, sloganPulse 7s ease-in-out infinite;
-}
-
-.slogan::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.28rem;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.88), transparent);
-  transform: scaleX(0);
-  transform-origin: left center;
-  animation: lineScan 7s ease-in-out infinite;
 }
 
 .intro-copy {
@@ -498,15 +271,10 @@ h3 {
   gap: 1.35rem;
   width: min(100%, 66rem);
   scroll-margin-top: 7rem;
-  opacity: 0;
-  transform: translateY(34px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.section.is-visible,
-.contact.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+.is-entering {
+  animation: riseIn 0.45s ease-out;
 }
 
 .section-heading {
@@ -568,40 +336,13 @@ h3 {
   background: linear-gradient(180deg, var(--panel-strong), var(--panel));
   overflow: hidden;
   overflow-wrap: anywhere;
-  transform: translateY(0);
-  transition: border-color 0.24s ease, box-shadow 0.24s ease, transform 0.24s ease, background 0.24s ease;
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(131, 212, 255, 0.72), transparent);
-  transform: translateX(-110%);
-  opacity: 0;
-  animation: none;
-}
-
-.card.is-visible {
-  animation: cardWake 0.65s ease-out both;
+  transition: border-color 0.24s ease, box-shadow 0.24s ease;
 }
 
 .card:hover,
 .card:focus-within {
   border-color: rgba(131, 212, 255, 0.38);
-  background:
-    radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(131, 212, 255, 0.07), transparent 14rem),
-    linear-gradient(180deg, var(--panel-strong), var(--panel));
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.34), 0 0 32px rgba(131, 212, 255, 0.06);
-  transform: translateY(-3px);
-}
-
-.card:hover::before,
-.card:focus-within::before {
-  animation: borderTrace 1.6s ease-out both;
 }
 
 .card h3 {
@@ -631,16 +372,6 @@ h3 {
     linear-gradient(135deg, rgba(131, 212, 255, 0.14), transparent 42%),
     linear-gradient(180deg, var(--panel-strong), var(--panel));
   overflow: hidden;
-}
-
-.signal-panel::after {
-  content: "";
-  position: absolute;
-  inset: -40%;
-  background: linear-gradient(135deg, transparent, rgba(131, 212, 255, 0.12), transparent 62%);
-  animation: prismShift 18s ease-in-out infinite;
-  opacity: 0.4;
-  pointer-events: none;
 }
 
 .link-row {
@@ -702,9 +433,6 @@ h3 {
   width: min(100%, 66rem);
   border: 1px solid var(--border);
   background: linear-gradient(180deg, var(--panel-strong), var(--panel));
-  opacity: 0;
-  transform: translateY(34px);
-  transition: opacity 0.75s ease, transform 0.75s ease;
   overflow: hidden;
 }
 
@@ -841,19 +569,6 @@ a:focus-visible {
 }
 
 @media (max-width: 480px) {
-  body::before {
-    top: 4vh;
-    left: -5rem;
-    width: 14rem;
-    height: 14rem;
-  }
-
-  body::after {
-    right: -5rem;
-    width: 16rem;
-    height: 16rem;
-  }
-
   main::before {
     inset: 0.6rem;
   }
@@ -874,9 +589,8 @@ a:focus-visible {
     scroll-behavior: auto !important;
   }
 
-  .section,
-  .contact,
-  .card {
+  .hero,
+  .is-entering {
     opacity: 1 !important;
     transform: none !important;
   }
